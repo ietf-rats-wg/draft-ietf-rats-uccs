@@ -22,7 +22,7 @@ author:
   street: Rheinstrasse 75
   code: '64295'
   city: Darmstadt
-  country: Geramy
+  country: Germany
 - ins: J. O'Donoghue
   name: Jeremy O'Donoghue
   org: Qualcomm Technologies Inc.
