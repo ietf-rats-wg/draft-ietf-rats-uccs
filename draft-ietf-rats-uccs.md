@@ -53,21 +53,21 @@ author:
   email: cabo@tzi.org
 
 normative:
-  RFC7049: cbor
+  RFC8949: cbor
   RFC8152: cose
   RFC8725: jwt
   RFC8392: cwt
-  RFC8446: tls
   IANA.cbor-tags: tags
+
+informative:
+  RFC8446: tls
+  I-D.ietf-rats-architecture: rats
+  I-D.ietf-teep-architecture: teep
   TPM2:
     title: >
       Trusted Platform Module Library Specification, Family “2.0”, Level 00, Revision 01.59 ed.,
       Trusted Computing Group
     date: 2019
-
-informative:
-  I-D.ietf-rats-architecture: rats
-  I-D.ietf-teep-architecture: teep
   I-D.ietf-rats-eat: eat
   I-D.ietf-cose-rfc8152bis-struct: cose-new-struct
   I-D.ietf-cose-rfc8152bis-algs: cose-new-algs
