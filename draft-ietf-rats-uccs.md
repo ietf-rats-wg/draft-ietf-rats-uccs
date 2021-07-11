@@ -41,16 +41,15 @@ author:
   city: San Jose
   region: CA
   country: USA
-- ins: C. Bormann
+-
   name: Carsten Bormann
-  org: Universitaet Bremen TZI
-  abbrev: Universitaet Bremen TZI
-  email: cabo@tzi.de
-  street: Bibliothekstrasse 1
-  code: '28369'
+  org: Universität Bremen TZI
+  street: Postfach 330440
   city: Bremen
+  code: D-28359
   country: Germany
-  phone: '+49-421-218-63921'
+  phone: +49-421-218-63921
+  email: cabo@tzi.org
 
 normative:
   RFC7049: cbor
