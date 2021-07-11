@@ -314,7 +314,7 @@ factors such as:
 * The number of messages both successfully and unsuccessfully decrypted is used to
   determine when rekeying is required.
 
-{{-cose-new-algs}}, Section 4.2.1 constains a detailed explanation of these considerations.
+{{-cose-new-algs}}, Section 4.2.1 contains a detailed explanation of these considerations.
 
 ## ChaCha20 and Poly1305
 
@@ -344,3 +344,8 @@ an UCCS by enclosing it with a tag number TBD601:
    }
  )
 ~~~~
+
+<!--  LocalWords:  Attester Verifier UCCS decrypted rekeying JWT EATs
+ -->
+<!--  LocalWords:  Verifier's CWTs attester verifier FCFS
+ -->
