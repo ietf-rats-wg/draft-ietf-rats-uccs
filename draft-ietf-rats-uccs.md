@@ -8,6 +8,7 @@ area: Security
 wg: RATS Working Group
 kw: Internet-Draft
 cat: std
+consensus: true
 pi:
   toc: yes
   sortrefs: yes
@@ -128,7 +129,7 @@ associated for UCCS conveyance as CWT conveyance without any additional protecti
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
 
-{::boilerplate bcp14}
+{::boilerplate bcp14-tagged}
 
 # Motivation and Requirements
 
