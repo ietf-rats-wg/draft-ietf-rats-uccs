@@ -55,7 +55,8 @@ author:
 normative:
   RFC8949: cbor
   RFC8152: cose
-  RFC8725: jwt
+  RFC7519: jwt
+  RFC8725: jwtbcp
   RFC8392: cwt
   IANA.cbor-tags: tags
 
@@ -79,21 +80,37 @@ protection afforded by wrapping them into COSE, as is required for a true
 CWT.  This specification defines a CBOR tag for such unprotected CWT
 Claims Sets (UCCS) and discusses conditions for its proper use.
 
+
+[^status]
+
+[^status]:
+    The present version (-01) has a few editorial improvements over
+    -00 and attempts to address points from Thomas Fossati's
+    2021-03-16 review, for further discussion at IETF 111.
+
+
 --- middle
 
 # Introduction
 
 A CBOR Web Token (CWT) as specified by {{-cwt}} is always wrapped in a
-CBOR Object Signing and Encryption (COSE, {{-cose}}) envelope.  COSE
-provides -- amongst other things -- the integrity protection mandated by
-RFC 8392 and optional encryption for CWTs.  Under the right circumstances,
+CBOR Object Signing and Encryption (COSE, {{-cose}}) envelope.
+COSE provides -- amongst other things -- the end-to-end data origin
+authentication and integrity protection employed by RFC 8392 and
+optional encryption for CWTs.
+Under the right circumstances ({{secchan}}),
 though, a signature providing proof for authenticity and integrity can be
 provided through the transfer protocol and thus omitted from the
 information in a CWT without compromising the intended goal of authenticity
-and integrity.  If a mutually Secured Channel is established between two
-remote peers, and if that Secure Channel provides the required properties (as discussed below), it
-is possible to omit the protection provided by COSE, creating a use case for
-unprotected CWT Claims Sets.
+and integrity.
+In other words, if communicating parties have a pre-existing security
+association they can reuse it to provide authenticity and integrity
+for their messages, enabling the basic principle of using resources
+parsimoniously.
+Specifically, if a mutually Secured Channel is established between two
+remote peers, and if that Secure Channel provides the required
+properties (as discussed below), it is possible to omit the protection
+provided by COSE, creating a use case for unprotected CWT Claims Sets.
 Similarly, if there is one-way authentication, the party that did not
 authenticate may be in a position to send authentication information through
 this channel that allows the already authenticated party to authenticate the
@@ -106,8 +123,13 @@ Attester to a Verifier.
 
 This specification does not change {{-cwt}}: A true CWT does not make use of
 the tag allocated here; the UCCS tag is an alternative to using COSE
-protection and a CWT tag.  Consequently, in a well-defined scope, it might
-be acceptable to use the contents of a CWT without its COSE container and tag it with a UCCS CBOR tag for further processing -- or to use the contents of a UCCS CBOR tag for building a CWT to be signed by some entity that can vouch for those contents.
+protection and a CWT tag.
+Consequently, within the well-defined scope of a secured channel, it
+can be acceptable and economic to use the contents of a CWT without
+its COSE container and tag it with a UCCS CBOR tag for further
+processing within that scope -- or to use the contents of a UCCS CBOR
+tag for building a CWT to be signed by some entity that can vouch for
+those contents.
 
 ## Terminology
 
@@ -131,7 +153,7 @@ this document.
 
 {::boilerplate bcp14-tagged}
 
-# Motivation and Requirements
+# Example Use Cases
 
 Use cases involving the conveyance of Claims, in particular, remote attestation procedures (RATS, see
 {{-rats}}) require a standardized data definition and encoding format that can be transferred
@@ -144,23 +166,29 @@ transport is also the delegate to compose the Claim to be conveyed.  Whether it 
 or transport, a Secure Channel is presumed to be used for conveying such UCCS.  The following sections
 further describe the RATS usage scenario and corresponding requirements for UCCS deployment.
 
-{: #secchan}
-# Characteristics of a Secure Channel
+# Characteristics of a Secure Channel {#secchan}
 
 A Secure Channel for the conveyance of UCCS needs to provide the security
 properties that would otherwise be provided by COSE for a CWT.
-In this regard, UCCS is similar in security considerations to JWTs {{-jwt}}
-using the algorithm "none".  RFC 8725 states: "if a JWT is cryptographically
+In this regard, UCCS is similar in security considerations to JWTs {{-jwtbcp}}
+using the algorithm "none".  RFC 8725 states:
+
+<blockquote markdown="1">
+\[...] if a JWT is cryptographically
 protected end-to-end by a transport layer, such as TLS using
 cryptographically current algorithms, there may be no need to apply another
 layer of cryptographic protections to the JWT.  In such cases, the use of
-the "none" algorithm can be perfectly acceptable.".  Analogously, the
-considerations discussed in Sections 2.1, 3.1, and 3.2 of RFC 8725 apply to
-the use of UCCS as elaborated on in this document.
+the "none" algorithm can be perfectly acceptable.
+</blockquote>
+
+The security considerations discussed, e.g., in {{Sections 2.1, 3.1,
+and 3.2 of -jwtbcp}} apply in an analogous way to the use of UCCS as
+elaborated on in this document.
 
 Secure Channels are often set up in a handshake protocol that mutually
 derives a session key, where the handshake protocol establishes the
-authenticity of one of both ends of the communication.  The session key can
+(identity and thus) authenticity of one or both ends of the communication.
+The session key can
 then be used to provide confidentiality and integrity of the transfer of
 information inside the Secure Channel.  A well-known example of a such a
 Secure Channel setup protocol is the TLS {{-tls}} handshake; the
@@ -186,7 +214,7 @@ authenticate the Attester as part of the establishment of the Secure Channel.
 Furthermore, the channel MUST provide integrity of the communication from the
 Attester to the Verifier.
 If confidentiality is also required, the receiving side needs to be
-be authenticated as well, i.e., the Verifier and the Attester SHOULD
+authenticated as well; this can be achieved if the Verifier and the Attester
 mutually authenticate when establishing the Secure Channel.
 
 The extent to which a Secure Channel can provide assurances that UCCS
@@ -217,7 +245,7 @@ properties of the Secure Channel no longer apply and UCCS have the same properti
 as any other unprotected data in the Verifier environment.
 If the Verifier subsequently forwards UCCS, they are treated as though they originated within the Verifier.
 
-As with EATs nested in other EATs (Section 3.12.1.2 of {{-eat}}), the Secure
+As with EATs nested in other EATs ({{Section 3.20.1.2 of -eat}}), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT shields the CWT Claims Set from the
 endorsement of the Secure Channel.  (Note that EAT might add a nested UCCS
@@ -248,17 +276,21 @@ In the registry {{-tags}},
 IANA is requested to allocate the tag in {{tab-tag-values}} from the
 FCFS space, with the present document as the specification reference.
 
-| Tag    | Data Item | Semantics                            |
-| TBD601 | map       | Unprotected CWT Claims Set [RFCthis] |
+| Tag    | Data Item | Semantics                             |
+| TBD601 | map       | Unprotected CWT Claims Set \[RFCthis] |
 {: #tab-tag-values cols='r l l' title="Values for Tags"}
 
 
 # Security Considerations
 
-The security considerations of {{-cbor}} and {{-cwt}} apply.
+The security considerations of {{-cbor}} apply.
+The security considerations of {{-cwt}} need to be applied analogously,
+replacing the role of COSE with that of the Secured Channel.
 
 {{secchan}} discusses security considerations for Secure Channels, in which
-UCCS might be used.  This documents provides the CBOR tag definition for UCCS and a discussion on security consideration for the use of UCCS in
+UCCS might be used.
+This document provides the CBOR tag definition for UCCS and a discussion
+on security consideration for the use of UCCS in
 Remote ATtestation procedureS (RATS).  Uses of UCCS outside the scope of
 RATS are not covered by this document.  The UCCS specification - and the
 use of the UCCS CBOR tag, correspondingly - is not intended for use in a
@@ -298,14 +330,14 @@ factors such as:
 * Different keys should be used for authentication and encryption operations.
 * A mechanism to ensure that IV cannot be modified is required.
 
-{{-cose-new-algs}}, Section 3.2.1 contains a detailed explanation of these considerations.
+{{Section 3.2.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
 
 ## AES-GCM
 
 * The key and nonce pair are unique for every encrypted message.
 * The maximum number of messages to be encrypted for a given key is not exceeded.
 
-{{-cose-new-algs}}, Section 4.1.1 contains a detailed explanation of these considerations.
+{{Section 4.1.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
 
 ## AES-CCM
 
@@ -314,7 +346,7 @@ factors such as:
 * The number of messages both successfully and unsuccessfully decrypted is used to
   determine when rekeying is required.
 
-{{-cose-new-algs}}, Section 4.2.1 contains a detailed explanation of these considerations.
+{{Section 4.2.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
 
 ## ChaCha20 and Poly1305
 
@@ -322,13 +354,13 @@ factors such as:
 * The number of messages both successfully and unsuccessfully decrypted is used to
   determine when rekeying is required.
 
-{{-cose-new-algs}}, Section 4.3.1 contains a detailed explanation of these considerations.
+{{Section 4.3.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
 
 --- back
 
 # Example
 
-The example CWT Claims Set from Appendix A.1 of {{-cwt}} can be turned into
+The example CWT Claims Set from {{Appendix A.1 of -cwt}} can be turned into
 an UCCS by enclosing it with a tag number TBD601:
 
 ~~~~
