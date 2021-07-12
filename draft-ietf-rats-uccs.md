@@ -8,6 +8,7 @@ area: Security
 wg: RATS Working Group
 kw: Internet-Draft
 cat: std
+consensus: true
 pi:
   toc: yes
   sortrefs: yes
@@ -22,7 +23,7 @@ author:
   street: Rheinstrasse 75
   code: '64295'
   city: Darmstadt
-  country: Geramy
+  country: Germany
 - ins: J. O'Donoghue
   name: Jeremy O'Donoghue
   org: Qualcomm Technologies Inc.
@@ -41,33 +42,32 @@ author:
   city: San Jose
   region: CA
   country: USA
-- ins: C. Bormann
+-
   name: Carsten Bormann
-  org: Universitaet Bremen TZI
-  abbrev: Universitaet Bremen TZI
-  email: cabo@tzi.de
-  street: Bibliothekstrasse 1
-  code: '28369'
+  org: Universität Bremen TZI
+  street: Postfach 330440
   city: Bremen
+  code: D-28359
   country: Germany
-  phone: '+49-421-218-63921'
+  phone: +49-421-218-63921
+  email: cabo@tzi.org
 
 normative:
-  RFC7049: cbor
+  RFC8949: cbor
   RFC8152: cose
   RFC8725: jwt
   RFC8392: cwt
-  RFC8446: tls
   IANA.cbor-tags: tags
+
+informative:
+  RFC8446: tls
+  I-D.ietf-rats-architecture: rats
+  I-D.ietf-teep-architecture: teep
   TPM2:
     title: >
       Trusted Platform Module Library Specification, Family “2.0”, Level 00, Revision 01.59 ed.,
       Trusted Computing Group
     date: 2019
-
-informative:
-  I-D.ietf-rats-architecture: rats
-  I-D.ietf-teep-architecture: teep
   I-D.ietf-rats-eat: eat
   I-D.ietf-cose-rfc8152bis-struct: cose-new-struct
   I-D.ietf-cose-rfc8152bis-algs: cose-new-algs
@@ -129,7 +129,7 @@ associated for UCCS conveyance as CWT conveyance without any additional protecti
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
 
-{::boilerplate bcp14}
+{::boilerplate bcp14-tagged}
 
 # Motivation and Requirements
 
@@ -314,7 +314,7 @@ factors such as:
 * The number of messages both successfully and unsuccessfully decrypted is used to
   determine when rekeying is required.
 
-{{-cose-new-algs}}, Section 4.2.1 constains a detailed explanation of these considerations.
+{{-cose-new-algs}}, Section 4.2.1 contains a detailed explanation of these considerations.
 
 ## ChaCha20 and Poly1305
 
@@ -344,3 +344,8 @@ an UCCS by enclosing it with a tag number TBD601:
    }
  )
 ~~~~
+
+<!--  LocalWords:  Attester Verifier UCCS decrypted rekeying JWT EATs
+ -->
+<!--  LocalWords:  Verifier's CWTs attester verifier FCFS
+ -->
