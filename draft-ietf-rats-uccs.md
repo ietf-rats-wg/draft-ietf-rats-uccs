@@ -358,6 +358,70 @@ factors such as:
 
 --- back
 
+# CDDL
+
+{{-cwt}} does not define CDDL for CWT Claims sets.
+
+This specification proposes using the following definitions for the
+claims defined in {{-cwt}}:
+
+~~~ cddl
+CWT-Claims-Set = {
+ * $$CWT-Claims,
+ * label .feature "extended-label" => any
+}
+label = int / text
+
+$$CWT-Claims //= ( 1: text  ) ; iss
+$$CWT-Claims //= ( 2: text  ) ; sub
+$$CWT-Claims //= ( 3: text  ) ; aud
+$$CWT-Claims //= ( 4: ~time ) ; exp
+$$CWT-Claims //= ( 5: ~time ) ; nbf
+$$CWT-Claims //= ( 6: ~time ) ; iat
+$$CWT-Claims //= ( 7: bytes ) ; cti
+~~~
+
+Specifications that define additional claims should also supply
+additions to the $$CWT-Claims socket, e.g.:
+
+~~~ cddl
+; [RFC8747]
+$$CWT-Claims //= ( 8: CWT-cnf ) ; cnf
+CWT-cnf = {
+  (1: CWT-COSE-Key) //
+  (2: CWT-Encrypted_COSE_Key) //
+  (3: CWT-kid)
+}
+
+CWT-COSE-Key = COSE_Key
+CWT-Encrypted_COSE_Key = COSE_Encrypt / COSE_Encrypt0
+CWT-kid = bytes
+
+; [RFC8693]
+$$CWT-Claims //= ( 9: CWT-scope ) ; scope
+; TO DO: understand what this means:
+; scope The scope of an access token as defined in [RFC6749].
+; scope 9 byte string or text string [IESG] [RFC8693, Section 4.2]
+CWT-scope = bytes / text
+
+; [RFC-ietf-ace-oauth-authz-45, Section 5.10]
+$$CWT-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
+CWT-ace-profile = $CWT-ACE-Profiles / int .feature "ace_profile-extend"
+; fill from https://www.iana.org/assignments/ace/ace.xhtml#ace-profiles:
+$CWT-ACE-Profiles /= 1 ; coap_dtls
+
+$$CWT-Claims //= ( 39: CWT-cnonce ) ; cnonce
+CWT-cnonce = bytes
+
+$$CWT-Claims //= ( 40: CWT-exi ) ; exi
+CWT-exi = uint ; in seconds (5.10.3)
+
+;;; insert CDDL from 9052-to-be to complete these CDDL definitions.
+
+~~~
+
+
+
 # Example
 
 The example CWT Claims Set from {{Appendix A.1 of -cwt}} can be turned into
