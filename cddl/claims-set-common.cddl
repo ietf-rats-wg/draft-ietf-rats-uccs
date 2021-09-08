@@ -1,0 +1,52 @@
+UCCS-message = UCCS-tagged-message / UCCS-untagged-message
+
+; All extensions in $$claims-set-extenstion must comply to this CDDL:
+;    label = int / text
+;    * label => any
+;
+; That is, they must have a map key/label that is either an int or a text string.
+ 
+claims-set = {
+    ? iss-claim,
+    ? sub-claim,
+    ? aud-claim,
+    ? exp-claim,
+    ? nbf-claim,
+    ? iat-claim,
+    ? cti-claim,
+    * $$claims-set-extension,
+}
+
+UCCS-tagged-message = #6.601(claims-set)
+
+UCCS-untagged-message = claims-set
+
+
+iss-claim = (
+    iss => tstr
+)
+
+sub-claim = (
+    sub => tstr,
+)
+
+aud-claim = (
+    aud => tstr,
+)
+
+exp-claim = (
+    exp => ~time,
+)
+
+nbf-claim = (
+    nbf => ~time,
+)
+
+iat-claim = (
+    iat => ~time,
+)
+
+cti-claim = (
+    cti => bytes,
+)
+
