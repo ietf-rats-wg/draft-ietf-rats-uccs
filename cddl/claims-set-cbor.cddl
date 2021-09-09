@@ -1,0 +1,12 @@
+; 
+; Use this with claims-set-common.cddl. All this does is define
+; the Claim Key values.
+iss = 1
+sub = 2
+aud = 3
+exp = 4
+nbf = 5
+iat = 6
+cti = 7
+
+

@@ -1,0 +1,10 @@
+; Use this with claim-set-common.cddl. All it does is define the
+; Claim Names for JSON encoding
+iss = "iss"
+sub = "sub"
+aud = "aud"
+exp = "exp"
+nbf = "nbf"
+iat = "iat"
+cti = "cti"
+ 
