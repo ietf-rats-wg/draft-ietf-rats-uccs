@@ -1,4 +1,4 @@
-UCCS-message = UCCS-tagged-message / UCCS-untagged-message
+UCCS-Message = UCCS-Tagged-Message / UCCS-Untagged-Message
 
 ; All extensions in $$claims-set-extenstion must comply to this CDDL:
 ;    label = int / text
@@ -19,7 +19,7 @@ claims-set = {
 
 UCCS-tagged-message = #6.601(claims-set)
 
-UCCS-untagged-message = claims-set
+UCCS-Untagged-Message = claims-set
 
 
 iss-claim = (
@@ -27,26 +27,27 @@ iss-claim = (
 )
 
 sub-claim = (
-    sub => tstr,
+    sub => tstr
 )
 
 aud-claim = (
-    aud => tstr,
+    aud => tstr
 )
 
 exp-claim = (
-    exp => ~time,
+    exp => ~time
 )
 
 nbf-claim = (
-    nbf => ~time,
+    nbf => ~time
 )
 
 iat-claim = (
-    iat => ~time,
+    iat => ~time
 )
 
 cti-claim = (
-    cti => bytes,
+    cti => bytes
 )
+
 
