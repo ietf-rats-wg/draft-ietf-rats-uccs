@@ -77,6 +77,9 @@ informative:
   I-D.ietf-rats-eat: eat
   I-D.ietf-cose-rfc8152bis-struct: cose-new-struct
   I-D.ietf-cose-rfc8152bis-algs: cose-new-algs
+  RFC8747: cnf
+  RFC8693: tokex
+  RFC6749: scope
 
 --- abstract
 
