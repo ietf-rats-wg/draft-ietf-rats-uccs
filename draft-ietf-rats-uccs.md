@@ -14,6 +14,11 @@ pi:
   sortrefs: yes
   symrefs: yes
 
+venue:
+  group: Remote ATtestation ProcedureS (rats)
+  mail: rats@ietf.org
+  github: ietf-rats-wg/draft-ietf-rats-uccs
+
 author:
 - ins: H. Birkholz
   name: Henk Birkholz
