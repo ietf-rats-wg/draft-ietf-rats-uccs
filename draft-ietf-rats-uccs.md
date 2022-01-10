@@ -414,8 +414,10 @@ CWT-scope = bytes / text
 
 ; [RFC-ietf-ace-oauth-authz-45, Section 5.10]
 $$CWT-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
-CWT-ace-profile = $CWT-ACE-Profiles / int .feature "ace_profile-extend"
-; fill from https://www.iana.org/assignments/ace/ace.xhtml#ace-profiles:
+CWT-ace-profile = $CWT-ACE-Profiles /
+  int .feature "ace_profile-extend"
+; fill in from IANA registry
+;   https://www.iana.org/assignments/ace/ace.xhtml#ace-profiles :
 $CWT-ACE-Profiles /= 1 ; coap_dtls
 
 $$CWT-Claims //= ( 39: CWT-cnonce ) ; cnonce
