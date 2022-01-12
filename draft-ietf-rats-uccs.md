@@ -370,32 +370,48 @@ factors such as:
 
 {{-cwt}} does not define CDDL for CWT Claims sets.
 
-This specification proposes using the following definitions for the
-claims defined in {{-cwt}}:
+This specification proposes using the definitions in {{fig-claims-set}}
+for the claims set defined in {{-cwt}}.  Note that these definitions
+have been built such that they also can describe {{-jwt}} claims sets by
+disabling feature "cbor" and enabling feature "json", but this
+flexibility is not the subject of the present specification.
 
 ~~~ cddl
-CWT-Claims-Set = {
- * $$CWT-Claims,
- * Claim-Label .feature "extended-label" => any
+Claims-Set = {
+ * $$Claims-Set-Claims
+ * Claim-Label .feature "extended-claims-label" => any
 }
 Claim-Label = int / text
 string-or-uri = text
 
-$$CWT-Claims //= ( 1: string-or-uri  ) ; iss
-$$CWT-Claims //= ( 2: string-or-uri  ) ; sub
-$$CWT-Claims //= ( 3: string-or-uri  ) ; aud
-$$CWT-Claims //= ( 4: ~time ) ; exp
-$$CWT-Claims //= ( 5: ~time ) ; nbf
-$$CWT-Claims //= ( 6: ~time ) ; iat
-$$CWT-Claims //= ( 7: bytes ) ; cti
+$$Claims-Set-Claims //= ( iss-claim-label => string-or-uri  )
+$$Claims-Set-Claims //= ( sub-claim-label => string-or-uri  )
+$$Claims-Set-Claims //= ( aud-claim-label => string-or-uri  )
+$$Claims-Set-Claims //= ( exp-claim-label => ~time )
+$$Claims-Set-Claims //= ( nbf-claim-label => ~time )
+$$Claims-Set-Claims //= ( iat-claim-label => ~time )
+$$Claims-Set-Claims //= ( cti-claim-label => bytes )
+
+iss-claim-label = JC<"iss", 1>
+sub-claim-label = JC<"sub", 2>
+aud-claim-label = JC<"aud", 3>
+exp-claim-label = JC<"exp", 4>
+nbf-claim-label = JC<"nbf", 5>
+iat-claim-label = JC<"iat", 6>
+cti-claim-label = CBOR-ONLY<7>  ; jti in JWT: different name and text
+
+JSON-ONLY<J> = J .feature "json"
+CBOR-ONLY<C> = C .feature "cbor"
+JC<J,C> = JSON-ONLY<J> / CBOR-ONLY<C>
 ~~~
+{: #fig-claims-set title="CDDL definition for Claims-Set"}
 
 Specifications that define additional claims should also supply
-additions to the $$CWT-Claims socket, e.g.:
+additions to the $$Claims-Set-Claims socket, e.g.:
 
 ~~~ cddl
 ; [RFC8747]
-$$CWT-Claims //= ( 8: CWT-cnf ) ; cnf
+$$Claims-Set-Claims //= ( 8: CWT-cnf ) ; cnf
 CWT-cnf = {
   (1: CWT-COSE-Key) //
   (2: CWT-Encrypted_COSE_Key) //
@@ -407,24 +423,24 @@ CWT-Encrypted_COSE_Key = COSE_Encrypt / COSE_Encrypt0
 CWT-kid = bytes
 
 ; [RFC8693]
-$$CWT-Claims //= ( 9: CWT-scope ) ; scope
+$$Claims-Set-Claims //= ( 9: CWT-scope ) ; scope
 ; TO DO: understand what this means:
 ; scope The scope of an access token as defined in [RFC6749].
 ; scope 9 byte string or text string [IESG] [RFC8693, Section 4.2]
 CWT-scope = bytes / text
 
 ; [RFC-ietf-ace-oauth-authz-45, Section 5.10]
-$$CWT-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
+$$Claims-Set-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
 CWT-ace-profile = $CWT-ACE-Profiles /
   int .feature "ace_profile-extend"
 ; fill in from IANA registry
 ;   https://www.iana.org/assignments/ace/ace.xhtml#ace-profiles :
 $CWT-ACE-Profiles /= 1 ; coap_dtls
 
-$$CWT-Claims //= ( 39: CWT-cnonce ) ; cnonce
+$$Claims-Set-Claims //= ( 39: CWT-cnonce ) ; cnonce
 CWT-cnonce = bytes
 
-$$CWT-Claims //= ( 40: CWT-exi ) ; exi
+$$Claims-Set-Claims //= ( 40: CWT-exi ) ; exi
 CWT-exi = uint ; in seconds (5.10.3)
 
 ;;; insert CDDL from 9052-to-be to complete these CDDL definitions.
