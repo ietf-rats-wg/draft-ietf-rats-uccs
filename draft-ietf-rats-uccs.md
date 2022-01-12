@@ -376,13 +376,14 @@ claims defined in {{-cwt}}:
 ~~~ cddl
 CWT-Claims-Set = {
  * $$CWT-Claims,
- * label .feature "extended-label" => any
+ * Claim-Label .feature "extended-label" => any
 }
-label = int / text
+Claim-Label = int / text
+string-or-uri = text
 
-$$CWT-Claims //= ( 1: text  ) ; iss
-$$CWT-Claims //= ( 2: text  ) ; sub
-$$CWT-Claims //= ( 3: text  ) ; aud
+$$CWT-Claims //= ( 1: string-or-uri  ) ; iss
+$$CWT-Claims //= ( 2: string-or-uri  ) ; sub
+$$CWT-Claims //= ( 3: string-or-uri  ) ; aud
 $$CWT-Claims //= ( 4: ~time ) ; exp
 $$CWT-Claims //= ( 5: ~time ) ; nbf
 $$CWT-Claims //= ( 6: ~time ) ; iat
@@ -455,3 +456,11 @@ an UCCS by enclosing it with a tag number TBD601:
  -->
 <!--  LocalWords:  Verifier's CWTs attester verifier FCFS
  -->
+
+--- back
+
+Acknowledgements
+================
+{:unnumbered}
+
+Laurence Lundblade suggested some improvements to the CDDL.
