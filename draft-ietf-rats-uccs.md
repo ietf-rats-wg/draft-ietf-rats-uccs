@@ -92,10 +92,7 @@ Claims Sets (UCCS) and discusses conditions for its proper use.
 [^status]
 
 [^status]:
-    The present version (-01) has a few editorial improvements over
-    -00 and attempts to address points from Thomas Fossati's
-    2021-03-16 review, for further discussion at IETF 111.
-
+    The present version (-02) has a new appendix with CDDL.
 
 --- middle
 
@@ -479,4 +476,4 @@ Acknowledgements
 ================
 {:unnumbered}
 
-Laurence Lundblade suggested some improvements to the CDDL.
+{{{Laurence Lundblade}}} suggested some improvements to the CDDL.
