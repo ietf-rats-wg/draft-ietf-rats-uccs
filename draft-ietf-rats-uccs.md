@@ -1,18 +1,15 @@
 ---
+v: 3
+
 title: A CBOR Tag for Unprotected CWT Claims Sets
 abbrev: Unprotected CWT Claims Sets
 docname: draft-ietf-rats-uccs-latest
-stand_alone: true
-ipr: trust200902
 area: Security
 wg: RATS Working Group
 kw: Internet-Draft
 cat: std
 consensus: true
-pi:
-  toc: yes
-  sortrefs: yes
-  symrefs: yes
+stream: IETF
 
 venue:
   group: Remote ATtestation ProcedureS (rats)
@@ -178,13 +175,12 @@ properties that would otherwise be provided by COSE for a CWT.
 In this regard, UCCS is similar in security considerations to JWTs {{-jwtbcp}}
 using the algorithm "none".  RFC 8725 states:
 
-<blockquote markdown="1">
-\[...] if a JWT is cryptographically
+{:quote}
+> \[...] if a JWT is cryptographically
 protected end-to-end by a transport layer, such as TLS using
 cryptographically current algorithms, there may be no need to apply another
 layer of cryptographic protections to the JWT.  In such cases, the use of
 the "none" algorithm can be perfectly acceptable.
-</blockquote>
 
 The security considerations discussed, e.g., in {{Sections 2.1, 3.1,
 and 3.2 of -jwtbcp}} apply in an analogous way to the use of UCCS as
