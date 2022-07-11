@@ -5,12 +5,12 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                           J. O'Donoghue
-Expires: 11 January 2023                      Qualcomm Technologies Inc.
+Expires: 12 January 2023                      Qualcomm Technologies Inc.
                                                            N. Cam-Winget
                                                            Cisco Systems
                                                               C. Bormann
                                                   Universität Bremen TZI
-                                                            10 July 2022
+                                                            11 July 2022
 
 
                A CBOR Tag for Unprotected CWT Claims Sets
@@ -22,9 +22,6 @@ Abstract
    protection afforded by wrapping them into COSE, as is required for a
    true CWT.  This specification defines a CBOR tag for such unprotected
    CWT Claims Sets (UCCS) and discusses conditions for its proper use.
-
-
-   // The present version (-02) has a new appendix with CDDL.
 
 About This Document
 
@@ -55,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 January 2023.
+   This Internet-Draft will expire on 12 January 2023.
 
 Copyright Notice
 
@@ -259,8 +256,8 @@ Table of Contents
    Verifier environment.  If the Verifier subsequently forwards UCCS,
    they are treated as though they originated within the Verifier.
 
-   As with EATs nested in other EATs (Section 3.20.1.2 of
-   [I-D.ietf-rats-eat]), the Secure Channel does not endorse fully
+   As with EATs nested in other EATs (Section 4.2.19.1.2 (Nested Token)
+   of [I-D.ietf-rats-eat]), the Secure Channel does not endorse fully
    formed CWTs transferred through it.  Effectively, the COSE envelope
    of a CWT shields the CWT Claims Set from the endorsement of the
    Secure Channel.  (Note that EAT might add a nested UCCS Claim, and
@@ -462,9 +459,9 @@ Table of Contents
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., and J. O'Donoghue, "The Entity
               Attestation Token (EAT)", Work in Progress, Internet-
-              Draft, draft-ietf-rats-eat-13, 20 May 2022,
+              Draft, draft-ietf-rats-eat-14, 10 July 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
-              eat-13>.
+              eat-14>.
 
    [I-D.ietf-teep-architecture]
               Pei, M., Tschofenig, H., Thaler, D., and D. Wheeler,

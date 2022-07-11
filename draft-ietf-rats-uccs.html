@@ -14,7 +14,10 @@
 protection afforded by wrapping them into COSE, as is required for a true
 CWT.  This specification defines a CBOR tag for such unprotected CWT
 Claims Sets (UCCS) and discusses conditions for its proper use. 
-       The present version (-02) has a new appendix with CDDL. 
+       
+
+
+
     " name="description">
 <meta content="xml2rfc 3.13.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
@@ -1037,7 +1040,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 11 January 2023</td>
+<td class="center">Expires 12 January 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1053,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-uccs-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-07-10" class="published">10 July 2022</time>
+<time datetime="2022-07-11" class="published">11 July 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-01-11">11 January 2023</time></dd>
+<dd class="expires"><time datetime="2023-01-12">12 January 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1084,7 +1087,6 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 protection afforded by wrapping them into COSE, as is required for a true
 CWT.  This specification defines a CBOR tag for such unprotected CWT
 Claims Sets (UCCS) and discusses conditions for its proper use.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
-<p id="section-abstract-2"><span class="cref" id="status">The present version (-02) has a new appendix with CDDL.</span><a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1119,7 +1121,7 @@ Claims Sets (UCCS) and discusses conditions for its proper use.<a href="#section
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 11 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 12 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1381,7 +1383,7 @@ TEE <span>[<a href="#I-D.ietf-teep-architecture" class="xref">I-D.ietf-teep-arch
 properties of the Secure Channel no longer apply and UCCS have the same properties
 as any other unprotected data in the Verifier environment.
 If the Verifier subsequently forwards UCCS, they are treated as though they originated within the Verifier.<a href="#section-3.1-8" class="pilcrow">¶</a></p>
-<p id="section-3.1-9">As with EATs nested in other EATs (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-13#section-3.20.1.2" class="relref">Section 3.20.1.2</a> of [<a href="#I-D.ietf-rats-eat" class="xref">I-D.ietf-rats-eat</a>]</span>), the Secure
+<p id="section-3.1-9">As with EATs nested in other EATs (Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-14#section-4.2.19.1.2" class="relref">4.2.19.1.2</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-14#section-4.2.19.1.2" class="relref">Nested Token</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="xref">I-D.ietf-rats-eat</a>]</span>), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT shields the CWT Claims Set from the
 endorsement of the Secure Channel.  (Note that EAT might add a nested UCCS
@@ -1626,7 +1628,7 @@ determine when rekeying is required.<a href="#section-5.5-1.2" class="pilcrow">�
 <dd class="break"></dd>
 <dt id="I-D.ietf-rats-eat">[I-D.ietf-rats-eat]</dt>
         <dd>
-<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, and <span class="refAuthor">J. O'Donoghue</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-13</span>, <time datetime="2022-05-20" class="refDate">20 May 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-13">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-13</a>&gt;</span>. </dd>
+<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, and <span class="refAuthor">J. O'Donoghue</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-14</span>, <time datetime="2022-07-10" class="refDate">10 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-14">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-14</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teep-architecture">[I-D.ietf-teep-architecture]</dt>
         <dd>
