@@ -246,7 +246,7 @@ properties of the Secure Channel no longer apply and UCCS have the same properti
 as any other unprotected data in the Verifier environment.
 If the Verifier subsequently forwards UCCS, they are treated as though they originated within the Verifier.
 
-As with EATs nested in other EATs ({{Section 3.20.1.2 of -eat}}), the Secure
+As with EATs nested in other EATs ({{Section 4.2.19.1.2 (Nested Token) of -eat}}), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT shields the CWT Claims Set from the
 endorsement of the Secure Channel.  (Note that EAT might add a nested UCCS
