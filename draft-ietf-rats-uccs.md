@@ -85,13 +85,13 @@ protection afforded by wrapping them into COSE, as is required for a true
 CWT.  This specification defines a CBOR tag for such unprotected CWT
 Claims Sets (UCCS) and discusses conditions for its proper use.
 
-<!-- 
+<!--
 [^status]
 
 [^status]:
-    The present version (-03) 
+    The present version (-03)
  -->
- 
+
 --- middle
 
 # Introduction
