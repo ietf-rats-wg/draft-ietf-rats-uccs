@@ -212,6 +212,10 @@ UCCS can be used.
 
 ## UCCS and Remote ATtestation procedureS (RATS)
 
+This section discusses use cases for UCCS in the context of RATS.
+
+### Secure Channels in RATS
+
 For the purposes of this section, the Verifier is the receiver of the UCCS
 and the Attester is the provider of the UCCS.
 
