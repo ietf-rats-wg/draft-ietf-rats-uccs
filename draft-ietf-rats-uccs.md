@@ -237,7 +237,7 @@ characteristics of both the cryptographic mechanisms used to establish the
 channel and the characteristics of the Attesting Environment itself.
 
 A Secure Channel established or maintained using weak cryptography
-may not provide the assurance required by a relying party of the authenticity
+may not provide the assurance required by a Relying Party of the authenticity
 and integrity of the UCCS.
 
 Ultimately, it is up to the Verifier's policy to determine whether to accept
@@ -248,7 +248,7 @@ configured at each of the Attester and the Verifier.  However, the policy contro
 and definitions are out of scope for this document.
 
 Where the security assurance required of an Attesting Environment by a
-relying party requires it, the Attesting Environment may be implemented
+Relying Party requires it, the Attesting Environment may be implemented
 using techniques designed to provide enhanced protection from an attacker
 wishing to tamper with or forge UCCS.  A possible approach might be to
 implement the Attesting Environment in a hardened environment such as a
