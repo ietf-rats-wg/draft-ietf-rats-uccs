@@ -72,8 +72,8 @@ informative:
       Trusted Computing Group
     date: 2019
   I-D.ietf-rats-eat: eat
-  I-D.ietf-cose-rfc8152bis-struct: cose-new-struct
-  I-D.ietf-cose-rfc8152bis-algs: cose-new-algs
+  RFC9052: cose-new-struct
+  RFC9053: cose-new-algs
   RFC8747: cnf
   RFC8693: tokex
   RFC6749: scope
@@ -312,8 +312,8 @@ UCCS might be used.
 This document provides the CBOR tag definition for UCCS and a discussion
 on security consideration for the use of UCCS in
 Remote Attestation Procedures (RATS).  Uses of UCCS outside the scope of
-RATS are not covered by this document.  The UCCS specification - and the
-use of the UCCS CBOR tag, correspondingly - is not intended for use in a
+RATS are not covered by this document.  The UCCS specification -- and the
+use of the UCCS CBOR tag, correspondingly -- is not intended for use in a
 scope where a scope-specific security consideration discussion has not
 been conducted, vetted and approved for that use.
 
