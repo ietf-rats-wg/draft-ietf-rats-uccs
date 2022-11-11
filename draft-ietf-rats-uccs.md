@@ -77,6 +77,7 @@ informative:
   RFC8747: cnf
   RFC8693: tokex
   RFC6749: scope
+  NIST-SP800-90Ar1: DOI.10.6028/NIST.SP.800-90Ar1
 
 --- abstract
 
@@ -148,8 +149,15 @@ UCCS:
 Claims Registry that are composed of pairs of Claim Keys and Claim Values.
 
 Secure Channel:
-: A protected communication channel between two peers that can ensure the same qualities
-associated for UCCS conveyance as CWT conveyance without any additional protection.
+: A path for transferring data between two entities or components that
+  ensures confidentiality, integrity and replay protection, as well as
+  mutual authentication between the entities or components. The secure
+  channel may be provided using approved cryptographic, physical or
+  procedural methods, or a combination thereof {{NIST-SP800-90Ar1}}.
+  For the purposes of the present document, a protected communication
+  channel between two peers that can ensure the same qualities
+  associated for UCCS conveyance as CWT conveyance without any
+  additional protection.
 
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
