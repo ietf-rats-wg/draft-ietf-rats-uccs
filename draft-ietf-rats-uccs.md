@@ -262,6 +262,11 @@ endorsement of the Secure Channel.  (Note that EAT might add a nested UCCS
 Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs)
 
+### Delegated Attestation
+
+Another use case is that of an attesting environment that has no signing keys (for example, to keep the implementation complexity to a minimum) and has a secure channel - typically, a local IPC - with a "parent" attesting environment.
+The "child" attesting environment creates a UCCS with the required claims-set and sends it through the secure channel to the parent attester which, in turn, computes a cryptographic hash and protects it using its signing key, for example using a Detached EAT Bundle ({{Section 5 of -eat}}).
+
 ## Privacy Preserving Channels
 
 A Secure Channel which preserves the privacy of the Attester may provide
