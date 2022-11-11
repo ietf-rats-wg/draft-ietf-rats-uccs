@@ -122,7 +122,7 @@ other party.
 
 This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 (UCCS) as such and discusses conditions for its proper use in the scope of
-Remote ATtestation procedureS (RATS) and the conveyance of Evidence from an
+Remote Attestation Procedures (RATS) and the conveyance of Evidence from an
 Attester to a Verifier.
 
 This specification does not change {{-cwt}}: A true CWT does not make use of
@@ -166,7 +166,7 @@ this document.
 
 # Example Use Cases
 
-Use cases involving the conveyance of Claims, in particular, remote attestation procedures (RATS, see
+Use cases involving the conveyance of Claims, in particular, Remote Attestation Procedures (RATS, see
 {{-rats}}) require a standardized data definition and encoding format that can be transferred
 and transported using different communication channels.  As these are Claims, {{-cwt}} is
 a suitable format. However, the way these Claims are secured depends on the deployment, the security
@@ -204,13 +204,13 @@ information inside the Secure Channel.  A well-known example of a such a
 Secure Channel setup protocol is the TLS {{-tls}} handshake; the
 TLS record protocol can then be used for secure conveyance.
 
-As UCCS were initially created for use in Remote ATtestation procedureS
+As UCCS were initially created for use in Remote Attestation Procedures
 (RATS) Secure Channels, the following subsection provides a discussion of
 their use in these channels.  Where other environments are intended to be
 used to convey UCCS, similar considerations need to be documented before
 UCCS can be used.
 
-## UCCS and Remote ATtestation procedureS (RATS)
+## UCCS and Remote Attestation Procedures (RATS)
 
 This section discusses use cases for UCCS in the context of RATS.
 
@@ -311,7 +311,7 @@ replacing the function of COSE with that of the Secured Channel.
 UCCS might be used.
 This document provides the CBOR tag definition for UCCS and a discussion
 on security consideration for the use of UCCS in
-Remote ATtestation procedureS (RATS).  Uses of UCCS outside the scope of
+Remote Attestation Procedures (RATS).  Uses of UCCS outside the scope of
 RATS are not covered by this document.  The UCCS specification - and the
 use of the UCCS CBOR tag, correspondingly - is not intended for use in a
 scope where a scope-specific security consideration discussion has not
