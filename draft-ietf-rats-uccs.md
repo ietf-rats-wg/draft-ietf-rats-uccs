@@ -212,6 +212,10 @@ UCCS can be used.
 
 ## UCCS and Remote ATtestation procedureS (RATS)
 
+This section discusses use cases for UCCS in the context of RATS.
+
+### Secure Channels in RATS
+
 For the purposes of this section, the Verifier is the receiver of the UCCS
 and the Attester is the provider of the UCCS.
 
@@ -261,6 +265,12 @@ Effectively, the COSE envelope of a CWT shields the CWT Claims Set from the
 endorsement of the Secure Channel.  (Note that EAT might add a nested UCCS
 Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs)
+
+### Delegated Attestation
+
+Another use case is that of a sub-Attester that has no signing keys (for example, to keep the implementation complexity to a minimum) and has a secure channel, such as a local IPC, to interact with a lead Attester (see Composite Device, {{Section 3.3 of -rats}}).
+The sub-Attester produces a UCCS with the required set of claims and sends the UCCS through the secure channel to the lead Attester.
+The lead Attester then computes a cryptographic hash of the UCCS and protects that hash using its signing key for Evidence, for example, using a Detached EAT Bundle ({{Section 5 of -eat}}).
 
 ## Privacy Preserving Channels
 
