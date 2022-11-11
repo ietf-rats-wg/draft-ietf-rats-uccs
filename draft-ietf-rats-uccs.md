@@ -255,7 +255,7 @@ implement the Attesting Environment in a hardened environment such as a
 TEE {{-teep}} or a TPM {{TPM2}}.
 
 When UCCS emerge from the Secure Channel and into the Verifier, the security
-properties of the Secure Channel no longer apply and UCCS have the same properties
+properties of the Secure Channel no longer protect the UCCS, which now are subject to the same security properties
 as any other unprotected data in the Verifier environment.
 If the Verifier subsequently forwards UCCS, they are treated as though they originated within the Verifier.
 
