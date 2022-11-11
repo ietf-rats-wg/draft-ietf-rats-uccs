@@ -331,6 +331,9 @@ required levels of assurance include:
 * An algorithm used to establish or protect the secure channel may have
   limits on the number of times that a key can be used without leaking
   information about the key.
+* Evidence in a UCCS conveyed in a secure channel generally cannot be
+  used to support trust in the credentials that were used to establish
+  that secure channel, as this would create a circular dependency.
 
 The Verifier needs to ensure that the management of key material used
 establish or protect the secure channel is acceptable. This may include
