@@ -305,7 +305,7 @@ FCFS space, with the present document as the specification reference.
 
 The security considerations of {{-cbor}} apply.
 The security considerations of {{-cwt}} need to be applied analogously,
-replacing the role of COSE with that of the Secured Channel.
+replacing the function of COSE with that of the Secured Channel.
 
 {{secchan}} discusses security considerations for Secure Channels, in which
 UCCS might be used.
