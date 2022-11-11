@@ -232,9 +232,9 @@ authenticated as well; this can be achieved if the Verifier and the Attester
 mutually authenticate when establishing the Secure Channel.
 
 The extent to which a Secure Channel can provide assurances that UCCS
-originate from a trustworthy attesting environment depends on the
+originate from a trustworthy Attesting Environment depends on the
 characteristics of both the cryptographic mechanisms used to establish the
-channel and the characteristics of the attesting environment itself.
+channel and the characteristics of the Attesting Environment itself.
 
 A Secure Channel established or maintained using weak cryptography
 may not provide the assurance required by a relying party of the authenticity
@@ -247,11 +247,11 @@ to COSE, the considerations of the secure channel should also adhere to the poli
 configured at each of the Attester and the Verifier.  However, the policy controls
 and definitions are out of scope for this document.
 
-Where the security assurance required of an attesting environment by a
-relying party requires it, the attesting environment may be implemented
+Where the security assurance required of an Attesting Environment by a
+relying party requires it, the Attesting Environment may be implemented
 using techniques designed to provide enhanced protection from an attacker
 wishing to tamper with or forge UCCS.  A possible approach might be to
-implement the attesting environment in a hardened environment such as a
+implement the Attesting Environment in a hardened environment such as a
 TEE {{-teep}} or a TPM {{TPM2}}.
 
 When UCCS emerge from the Secure Channel and into the Verifier, the security
@@ -277,7 +277,7 @@ The lead Attester then computes a cryptographic hash of the UCCS and protects th
 A Secure Channel which preserves the privacy of the Attester may provide
 security properties equivalent to COSE, but only inside the life-span of the
 session established.  In general, a Verifier cannot correlate UCCS received
-in different sessions from the same attesting environment based on the
+in different sessions from the same Attesting Environment based on the
 cryptographic mechanisms used when a privacy preserving Secure Channel is
 employed.
 
@@ -285,10 +285,10 @@ In the case of a Remote Attestation, the attester must consider whether any UCCS
 preserving Secure Channel compromises the privacy in unacceptable ways.  As
 an example, the use of the EAT UEID {{-eat}} Claim in UCCS over a privacy
 preserving Secure Channel allows a verifier to correlate UCCS from a single
-attesting environment across many Secure Channel sessions. This may be
-acceptable in some use-cases (e.g. if the attesting environment is a
+Attesting Environment across many Secure Channel sessions. This may be
+acceptable in some use-cases (e.g. if the Attesting Environment is a
 physical sensor in a factory) and unacceptable in others (e.g. if the
-attesting environment is a device belonging to a child).
+Attesting Environment is a device belonging to a child).
 
 # IANA Considerations
 
