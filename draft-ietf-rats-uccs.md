@@ -72,8 +72,8 @@ informative:
       Trusted Computing Group
     date: 2019
   I-D.ietf-rats-eat: eat
-  I-D.ietf-cose-rfc8152bis-struct: cose-new-struct
-  I-D.ietf-cose-rfc8152bis-algs: cose-new-algs
+  RFC9052: cose-new-struct
+  RFC9053: cose-new-algs
   RFC8747: cnf
   RFC8693: tokex
   RFC6749: scope
@@ -111,8 +111,8 @@ In other words, if communicating parties have a pre-existing security
 association they can reuse it to provide authenticity and integrity
 for their messages, enabling the basic principle of using resources
 parsimoniously.
-Specifically, if a mutually Secured Channel is established between two
-remote peers, and if that Secure Channel provides the required
+Specifically, if a mutually secured channel is established between two
+remote peers, and if that secure channel provides the required
 properties (as discussed below), it is possible to omit the protection
 provided by COSE, creating a use case for unprotected CWT Claims Sets.
 Similarly, if there is one-way authentication, the party that did not
@@ -122,7 +122,7 @@ other party.
 
 This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 (UCCS) as such and discusses conditions for its proper use in the scope of
-Remote ATtestation procedureS (RATS) and the conveyance of Evidence from an
+Remote Attestation Procedures (RATS) and the conveyance of Evidence from an
 Attester to a Verifier.
 
 This specification does not change {{-cwt}}: A true CWT does not make use of
@@ -148,14 +148,14 @@ UCCS:
 : Unprotected CWT Claims Set(s); CBOR map(s) of Claims as defined by the CWT
 Claims Registry that are composed of pairs of Claim Keys and Claim Values.
 
-Secure Channel:
+secure channel:
 : A path for transferring data between two entities or components that
   ensures confidentiality, integrity and replay protection, as well as
   mutual authentication between the entities or components. The secure
   channel may be provided using approved cryptographic, physical or
   procedural methods, or a combination thereof {{NIST-SP800-90Ar1}}.
-  For the purposes of the present document, a protected communication
-  channel between two peers that can ensure the same qualities
+  For the purposes of the present document, we focus on a protected communication
+  channel used for conveyance that can ensure the same qualities
   associated for UCCS conveyance as CWT conveyance without any
   additional protection.
 
@@ -166,7 +166,7 @@ this document.
 
 # Example Use Cases
 
-Use cases involving the conveyance of Claims, in particular, remote attestation procedures (RATS, see
+Use cases involving the conveyance of Claims, in particular, Remote Attestation Procedures (RATS, see
 {{-rats}}) require a standardized data definition and encoding format that can be transferred
 and transported using different communication channels.  As these are Claims, {{-cwt}} is
 a suitable format. However, the way these Claims are secured depends on the deployment, the security
@@ -174,12 +174,12 @@ capabilities of the device, as well as their software stack.  For example, a Cla
 stored and conveyed using a device's Trusted Execution Environment (TEE, see {{-teep}}) or especially in some
 resource constrained environments, the same process that provides the secure communication
 transport is also the delegate to compose the Claim to be conveyed.  Whether it is a transfer
-or transport, a Secure Channel is presumed to be used for conveying such UCCS.  The following sections
+or transport, a secure channel is presumed to be used for conveying such UCCS.  The following sections
 further describe the RATS usage scenario and corresponding requirements for UCCS deployment.
 
 # Characteristics of a Secure Channel {#secchan}
 
-A Secure Channel for the conveyance of UCCS needs to provide the security
+A secure channel for the conveyance of UCCS needs to provide the security
 properties that would otherwise be provided by COSE for a CWT.
 In this regard, UCCS is similar in security considerations to JWTs {{-jwtbcp}}
 using the algorithm "none".  RFC 8725 states:
@@ -195,22 +195,22 @@ The security considerations discussed, e.g., in {{Sections 2.1, 3.1,
 and 3.2 of -jwtbcp}} apply in an analogous way to the use of UCCS as
 elaborated on in this document.
 
-Secure Channels are often set up in a handshake protocol that mutually
+Secure channels are often set up in a handshake protocol that mutually
 derives a session key, where the handshake protocol establishes the
 (identity and thus) authenticity of one or both ends of the communication.
 The session key can
 then be used to provide confidentiality and integrity of the transfer of
-information inside the Secure Channel.  A well-known example of a such a
-Secure Channel setup protocol is the TLS {{-tls}} handshake; the
+information inside the secure channel.  A well-known example of a such a
+secure channel setup protocol is the TLS {{-tls}} handshake; the
 TLS record protocol can then be used for secure conveyance.
 
-As UCCS were initially created for use in Remote ATtestation procedureS
-(RATS) Secure Channels, the following subsection provides a discussion of
+As UCCS were initially created for use in Remote Attestation Procedures
+(RATS) secure channels, the following subsection provides a discussion of
 their use in these channels.  Where other environments are intended to be
 used to convey UCCS, similar considerations need to be documented before
 UCCS can be used.
 
-## UCCS and Remote ATtestation procedureS (RATS)
+## UCCS and Remote Attestation Procedures (RATS)
 
 This section discusses use cases for UCCS in the context of RATS.
 
@@ -219,50 +219,50 @@ This section discusses use cases for UCCS in the context of RATS.
 For the purposes of this section, the Verifier is the receiver of the UCCS
 and the Attester is the provider of the UCCS.
 
-Secure Channels can be transient in nature. For the purposes of this
-specification, the mechanisms used to establish a Secure Channel are out of
+Secure channels can be transient in nature. For the purposes of this
+specification, the mechanisms used to establish a secure channel are out of
 scope.
 
 As a minimum requirement in the scope of RATS Claims, the Verifier MUST
-authenticate the Attester as part of the establishment of the Secure Channel.
+authenticate the Attester as part of the establishment of the secure channel.
 Furthermore, the channel MUST provide integrity of the communication from the
 Attester to the Verifier.
 If confidentiality is also required, the receiving side needs to be
 authenticated as well; this can be achieved if the Verifier and the Attester
-mutually authenticate when establishing the Secure Channel.
+mutually authenticate when establishing the secure channel.
 
-The extent to which a Secure Channel can provide assurances that UCCS
-originate from a trustworthy attesting environment depends on the
+The extent to which a secure channel can provide assurances that UCCS
+originate from a trustworthy Attesting Environment depends on the
 characteristics of both the cryptographic mechanisms used to establish the
-channel and the characteristics of the attesting environment itself.
+channel and the characteristics of the Attesting Environment itself.
 
-A Secure Channel established or maintained using weak cryptography
-may not provide the assurance required by a relying party of the authenticity
+A secure channel established or maintained using weak cryptography
+may not provide the assurance required by a Relying Party of the authenticity
 and integrity of the UCCS.
 
 Ultimately, it is up to the Verifier's policy to determine whether to accept
-a UCCS from the Attester and to the type of Secure Channel it must negotiate.
+a UCCS from the Attester and to the type of secure channel it must negotiate.
 While the security considerations of the cryptographic algorithms used are similar
 to COSE, the considerations of the secure channel should also adhere to the policy
 configured at each of the Attester and the Verifier.  However, the policy controls
 and definitions are out of scope for this document.
 
-Where the security assurance required of an attesting environment by a
-relying party requires it, the attesting environment may be implemented
+Where the security assurance required of an Attesting Environment by a
+Relying Party requires it, the Attesting Environment may be implemented
 using techniques designed to provide enhanced protection from an attacker
 wishing to tamper with or forge UCCS.  A possible approach might be to
-implement the attesting environment in a hardened environment such as a
+implement the Attesting Environment in a hardened environment such as a
 TEE {{-teep}} or a TPM {{TPM2}}.
 
-When UCCS emerge from the Secure Channel and into the Verifier, the security
-properties of the Secure Channel no longer apply and UCCS have the same properties
+When UCCS emerge from the secure channel and into the Verifier, the security
+properties of the secure channel no longer protect the UCCS, which now are subject to the same security properties
 as any other unprotected data in the Verifier environment.
 If the Verifier subsequently forwards UCCS, they are treated as though they originated within the Verifier.
 
-As with EATs nested in other EATs ({{Section 4.2.19.1.2 (Nested Token) of -eat}}), the Secure
-Channel does not endorse fully formed CWTs transferred through it.
+As with EATs nested in other EATs ({{Section 4.2.19.1.2 (Nested Token) of -eat}}), the secure
+channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT shields the CWT Claims Set from the
-endorsement of the Secure Channel.  (Note that EAT might add a nested UCCS
+endorsement of the secure channel.  (Note that EAT might add a nested UCCS
 Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs)
 
@@ -274,21 +274,21 @@ The lead Attester then computes a cryptographic hash of the UCCS and protects th
 
 ## Privacy Preserving Channels
 
-A Secure Channel which preserves the privacy of the Attester may provide
+A secure channel which preserves the privacy of the Attester may provide
 security properties equivalent to COSE, but only inside the life-span of the
 session established.  In general, a Verifier cannot correlate UCCS received
-in different sessions from the same attesting environment based on the
-cryptographic mechanisms used when a privacy preserving Secure Channel is
+in different sessions from the same Attesting Environment based on the
+cryptographic mechanisms used when a privacy preserving secure channel is
 employed.
 
 In the case of a Remote Attestation, the attester must consider whether any UCCS it returns over a privacy
-preserving Secure Channel compromises the privacy in unacceptable ways.  As
+preserving secure channel compromises the privacy in unacceptable ways.  As
 an example, the use of the EAT UEID {{-eat}} Claim in UCCS over a privacy
-preserving Secure Channel allows a verifier to correlate UCCS from a single
-attesting environment across many Secure Channel sessions. This may be
-acceptable in some use-cases (e.g. if the attesting environment is a
+preserving secure channel allows a verifier to correlate UCCS from a single
+Attesting Environment across many secure channel sessions. This may be
+acceptable in some use-cases (e.g. if the Attesting Environment is a
 physical sensor in a factory) and unacceptable in others (e.g. if the
-attesting environment is a device belonging to a child).
+Attesting Environment is a device belonging to a child).
 
 # IANA Considerations
 
@@ -305,39 +305,42 @@ FCFS space, with the present document as the specification reference.
 
 The security considerations of {{-cbor}} apply.
 The security considerations of {{-cwt}} need to be applied analogously,
-replacing the role of COSE with that of the Secured Channel.
+replacing the function of COSE with that of the secured channel.
 
-{{secchan}} discusses security considerations for Secure Channels, in which
+{{secchan}} discusses security considerations for secure channels, in which
 UCCS might be used.
 This document provides the CBOR tag definition for UCCS and a discussion
 on security consideration for the use of UCCS in
-Remote ATtestation procedureS (RATS).  Uses of UCCS outside the scope of
-RATS are not covered by this document.  The UCCS specification - and the
-use of the UCCS CBOR tag, correspondingly - is not intended for use in a
+Remote Attestation Procedures (RATS).  Uses of UCCS outside the scope of
+RATS are not covered by this document.  The UCCS specification -- and the
+use of the UCCS CBOR tag, correspondingly -- is not intended for use in a
 scope where a scope-specific security consideration discussion has not
 been conducted, vetted and approved for that use.
 
 ## General Considerations
 
-Implementations of Secure Channels are often separate from the application
+Implementations of secure channels are often separate from the application
 logic that has security requirements on them.  Similar security
 considerations to those described in {{-cose-new-struct}} for obtaining the
 required levels of assurance include:
 
 * Implementations need to provide sufficient protection for private or
-  secret key material used to establish or protect the Secure Channel.
+  secret key material used to establish or protect the secure channel.
 * Using a key for more than one algorithm can leak information about the
   key and is not recommended.
-* An algorithm used to establish or protect the Secure Channel may have
+* An algorithm used to establish or protect the secure channel may have
   limits on the number of times that a key can be used without leaking
   information about the key.
+* Evidence in a UCCS conveyed in a secure channel generally cannot be
+  used to support trust in the credentials that were used to establish
+  that secure channel, as this would create a circular dependency.
 
 The Verifier needs to ensure that the management of key material used
-establish or protect the Secure Channel is acceptable. This may include
+establish or protect the secure channel is acceptable. This may include
 factors such as:
 
 * Ensuring that any permissions associated with key ownership are respected
-  in the establishment of the Secure Channel.
+  in the establishment of the secure channel.
 * Cryptographic algorithms are used appropriately.
 * Key material is used in accordance with any usage restrictions such as
   freshness or algorithm restrictions.
