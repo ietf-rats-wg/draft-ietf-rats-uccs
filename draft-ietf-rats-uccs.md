@@ -396,7 +396,7 @@ Claims-Set = {
  * $$Claims-Set-Claims
  * Claim-Label .feature "extended-claims-label" => any
 }
-Claim-Label = int / text
+Claim-Label = CBOR-ONLY<int> / text
 string-or-uri = text
 
 $$Claims-Set-Claims //= ( iss-claim-label => string-or-uri  )
