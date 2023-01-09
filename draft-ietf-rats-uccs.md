@@ -485,7 +485,7 @@ an UCCS by enclosing it with a tag number TBD601:
 
 <!--  LocalWords:  Attester Verifier UCCS decrypted rekeying JWT EATs
  -->
-<!--  LocalWords:  Verifier's CWTs attester verifier FCFS
+<!--  LocalWords:  Verifier's CWTs Attester Verifier FCFS
  -->
 
 --- back
