@@ -74,9 +74,9 @@ informative:
   I-D.ietf-rats-eat: eat
   RFC9052: cose-new-struct
   RFC9053: cose-new-algs
-  RFC8747: cnf
-  RFC8693: tokex
-  RFC6749: scope
+#  RFC8747: cnf
+#  RFC8693: tokex
+#  RFC6749: scope
   NIST-SP800-90Ar1: DOI.10.6028/NIST.SP.800-90Ar1
 
 --- abstract
