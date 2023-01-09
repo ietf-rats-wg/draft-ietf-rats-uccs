@@ -281,7 +281,7 @@ in different sessions from the same Attesting Environment based on the
 cryptographic mechanisms used when a privacy preserving secure channel is
 employed.
 
-In the case of a Remote Attestation, the attester must consider whether any UCCS it returns over a privacy
+In the case of a Remote Attestation, the Attester must consider whether any UCCS it returns over a privacy
 preserving secure channel compromises the privacy in unacceptable ways.  As
 an example, the use of the EAT UEID {{-eat}} Claim in UCCS over a privacy
 preserving secure channel allows a verifier to correlate UCCS from a single
