@@ -269,7 +269,7 @@ fully formed CWTs)
 ### Delegated Attestation
 
 Another use case is that of a sub-Attester that has no signing keys (for example, to keep the implementation complexity to a minimum) and has a secure channel, such as a local IPC, to interact with a lead Attester (see Composite Device, {{Section 3.3 of -rats}}).
-The sub-Attester produces a UCCS with the required set of Claims and sends the UCCS through the secure channel to the lead Attester.
+The sub-Attester produces a UCCS with the required CWT Claims Set and sends the UCCS through the secure channel to the lead Attester.
 The lead Attester then computes a cryptographic hash of the UCCS and protects that hash using its signing key for Evidence, for example, using a Detached EAT Bundle ({{Section 5 of -eat}}).
 
 ## Privacy Preserving Channels
@@ -383,10 +383,10 @@ factors such as:
 
 # CDDL
 
-{{-cwt}} does not define CDDL for CWT Claims sets.
+{{-cwt}} does not define CDDL for CWT Claims Sets.
 
 This specification proposes using the definitions in {{fig-claims-set}}
-for the Claims set defined in {{-cwt}}.  Note that these definitions
+for the CWT Claims Set defined in {{-cwt}}.  Note that these definitions
 have been built such that they also can describe {{-jwt}} Claims sets by
 disabling feature "cbor" and enabling feature "json", but this
 flexibility is not the subject of the present specification.
