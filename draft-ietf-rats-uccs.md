@@ -142,7 +142,7 @@ The term Claim is used as in {{-jwt}}.
 The terms Claim Key, Claim Value, and CWT Claims Set are used as in
 {{-cwt}}.
 
-The terms Attester, Attesting Environment, Relying Party and Verifier are used as in {{-rats}}.
+The terms Attester, Attesting Environment, Evidence, Relying Party and Verifier are used as in {{-rats}}.
 
 UCCS:
 : Unprotected CWT Claims Set(s); CBOR map(s) of Claims as defined by the CWT
@@ -164,7 +164,7 @@ this document.
 
 {::boilerplate bcp14-tagged}
 
-# Example Usage Scenario
+# Deployment and Usage of UCCS
 
 Usage scenarios involving the conveyance of Claims, in particular, Remote Attestation Procedures (RATS, see
 {{-rats}}) require a standardized data definition and encoding format that can be transferred
@@ -176,7 +176,8 @@ a Trusted Platform Module (TPM, see {{TPM2}}).
 Especially in some resource constrained environments, the same process that provides the secure communication
 transport is also the delegate to compose the Claim to be conveyed.  Whether it is a transfer
 or transport, a Secure Channel is presumed to be used for conveying such UCCS.  The following sections
-further describe the RATS usage scenario and corresponding requirements for UCCS deployment.
+elaborate on Secure Channel characteristics in general and further describe RATS usage scenarios and
+corresponding requirements for UCCS deployment.
 
 # Characteristics of a Secure Channel {#secchan}
 
@@ -206,16 +207,16 @@ Secure Channel setup protocol is the TLS {{-tls}} handshake; the
 TLS record protocol can then be used for secure conveyance.
 
 As UCCS were initially created for use in RATS Secure Channels, the following
-subsection provides a discussion of
+section provides a discussion of
 their use in these channels.  Where other environments are intended to be
 used to convey UCCS, similar considerations need to be documented before
 UCCS can be used.
 
-## UCCS and Remote Attestation Procedures (RATS)
+# UCCS and Remote Attestation Procedures (RATS)
 
 This section describes three detailed usage scenarios for UCCS in the context of RATS.
 
-### Evidence Conveyance
+## Evidence Conveyance
 
 For the purposes of this section, the Verifier is the receiver of the UCCS
 and the Attester is the provider of the UCCS.
@@ -267,13 +268,13 @@ endorsement of the secure channel.  (Note that EAT might add a nested UCCS
 Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs)
 
-### Delegated Attestation
+## Delegated Attestation
 
 Another usage scenario is that of a sub-Attester that has no signing keys (for example, to keep the implementation complexity to a minimum) and has a Secure Channel, such as a local IPC, to interact with a lead Attester (see Composite Device, {{Section 3.3 of -rats}}).
 The sub-Attester produces a UCCS with the required CWT Claims Set and sends the UCCS through the Secure Channel to the lead Attester.
 The lead Attester then computes a cryptographic hash of the UCCS and protects that hash using its signing key for Evidence, for example, using a Detached EAT Bundle ({{Section 5 of -eat}}).
 
-### Privacy Preservation
+## Privacy Preservation
 
 A Secure Channel which preserves the privacy of the Attester may provide
 security properties equivalent to COSE, but only inside the life-span of the
