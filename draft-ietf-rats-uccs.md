@@ -294,9 +294,10 @@ Attesting Environment is a user device belonging to a child).
 
 # IANA Considerations
 
-In the registry {{-tags}},
-IANA is requested to allocate the tag in {{tab-tag-values}} from the
-FCFS space, with the present document as the specification reference.
+In the CBOR Tags registry {{-tags}} as defined in {{Section 9.2 of
+-cbor}}, IANA is requested to allocate the tag in {{tab-tag-values}} from
+the Specification Required space (1+2 size), with the present document
+as the specification reference.
 
 | Tag    | Data Item | Semantics                             |
 | TBD601 | map       | Unprotected CWT Claims Set \[RFCthis] |
