@@ -73,10 +73,10 @@ informative:
   I-D.ietf-rats-eat: eat
   RFC9052: cose
   RFC9053: cose-new-algs
-#  RFC8747: cnf
-#  RFC8693: tokex
-#  RFC6749: scope
-  RFC9200: ace-oauth
+  RFC8747: cnf        # used in CDDL only
+  RFC8693: tokex      # used in CDDL only
+  RFC6749: scope      # used in CDDL only
+  RFC9200: ace-oauth  # used in CDDL only
   NIST-SP800-90Ar1: DOI.10.6028/NIST.SP.800-90Ar1
 
 --- abstract
@@ -447,7 +447,7 @@ $$Claims-Set-Claims //= ( 9: CWT-scope ) ; scope
 ; scope 9 byte string or text string [IESG] [RFC8693, Section 4.2]
 CWT-scope = bytes / text
 
-; [RFC9200, Section 5.10]
+; [RFC9200] Section 5.10
 $$Claims-Set-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
 CWT-ace-profile = $CWT-ACE-Profiles /
   int .feature "ace_profile-extend"
