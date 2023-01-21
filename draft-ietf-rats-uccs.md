@@ -99,7 +99,7 @@ Claims Sets (UCCS) and discusses conditions for its proper use.
 A CBOR Web Token (CWT) as specified by {{-cwt}} is always wrapped in a
 CBOR Object Signing and Encryption (COSE, {{-cose}}) envelope.
 COSE provides -- amongst other things -- end-to-end data origin
-authentication and integrity protection employed by RFC 8392 and
+authentication and integrity protection employed by RFC 8392 as well as
 optional encryption for CWTs.
 Under the right circumstances ({{secchan}}),
 though, a signature providing proof for authenticity and integrity can be
@@ -148,11 +148,11 @@ UCCS:
 Claims Registry that are composed of pairs of Claim Keys and Claim Values.
 
 Secure Channel:
-: A path for transferring data between two entities or components that
+: "A path for transferring data between two entities or components that
   ensures confidentiality, integrity and replay protection, as well as
   mutual authentication between the entities or components. The secure
   channel may be provided using approved cryptographic, physical or
-  procedural methods, or a combination thereof {{NIST-SP800-90Ar1}}.
+  procedural methods, or a combination thereof" {{NIST-SP800-90Ar1}}.
   For the purposes of the present document, we focus on a protected communication
   channel used for conveyance that can ensure the same qualities
   associated for UCCS conveyance as CWT conveyance without any
@@ -265,7 +265,7 @@ Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT (or a nested EAT) shields the CWT Claims Set from the
 endorsement of the secure channel.  (Note that EAT might add a nested UCCS
 Claim, and this statement does not apply to UCCS nested into UCCS, only to
-fully formed CWTs)
+fully formed CWTs.)
 
 ## Delegated Attestation
 
@@ -342,8 +342,8 @@ factors such as:
 
 * Ensuring that any permissions associated with key ownership are respected
   in the establishment of the Secure Channel.
-* Cryptographic algorithms are used appropriately.
-* Key material is used in accordance with any usage restrictions such as
+* Using cryptographic algorithms appropriately.
+* Using key material in accordance with any usage restrictions such as
   freshness or algorithm restrictions.
 * Ensuring that appropriate protections are in place to address potential
   traffic analysis attacks.
@@ -358,14 +358,14 @@ factors such as:
 
 ## AES-GCM
 
-* The key and nonce pair are unique for every encrypted message.
+* The key and nonce pair is unique for every encrypted message.
 * The maximum number of messages to be encrypted for a given key is not exceeded.
 
 {{Section 4.1.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
 
 ## AES-CCM
 
-* The key and nonce pair are unique for every encrypted message.
+* The key and nonce pair is unique for every encrypted message.
 * The maximum number of messages to be encrypted for a given block cipher is not exceeded.
 * The number of messages both successfully and unsuccessfully decrypted is used to
   determine when rekeying is required.
