@@ -56,7 +56,6 @@ author:
 
 normative:
   RFC8949: cbor
-  RFC8152: cose
   RFC7519: jwt
   RFC8725: jwtbcp
   RFC8392: cwt
@@ -64,7 +63,7 @@ normative:
 
 informative:
   RFC8446: tls
-  I-D.ietf-rats-architecture: rats
+  RFC9334: rats
   I-D.ietf-teep-architecture: teep
   TPM2:
     title: >
@@ -72,7 +71,7 @@ informative:
       Trusted Computing Group
     date: 2019
   I-D.ietf-rats-eat: eat
-  RFC9052: cose-new-struct
+  RFC9052: cose
   RFC9053: cose-new-algs
 #  RFC8747: cnf
 #  RFC8693: tokex
@@ -323,7 +322,7 @@ been conducted, vetted and approved for that use.
 
 Implementations of Secure Channels are often separate from the application
 logic that has security requirements on them.  Similar security
-considerations to those described in {{-cose-new-struct}} for obtaining the
+considerations to those described in {{-cose}} for obtaining the
 required levels of assurance include:
 
 * Implementations need to provide sufficient protection for private or
