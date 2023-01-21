@@ -470,7 +470,7 @@ CWT-exi = uint ; in seconds (5.10.3)
 The example CWT Claims Set from {{Appendix A.1 of -cwt}} can be turned into
 an UCCS by enclosing it with a tag number TBD601:
 
-~~~~
+~~~~ cbor-diag
  <TBD601>(
    {
      / iss / 1: "coap://as.example.com",
