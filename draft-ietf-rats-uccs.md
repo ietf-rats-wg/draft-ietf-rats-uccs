@@ -76,6 +76,7 @@ informative:
 #  RFC8747: cnf
 #  RFC8693: tokex
 #  RFC6749: scope
+  RFC9200: ace-oauth
   NIST-SP800-90Ar1: DOI.10.6028/NIST.SP.800-90Ar1
 
 --- abstract
@@ -445,7 +446,7 @@ $$Claims-Set-Claims //= ( 9: CWT-scope ) ; scope
 ; scope 9 byte string or text string [IESG] [RFC8693, Section 4.2]
 CWT-scope = bytes / text
 
-; [RFC-ietf-ace-oauth-authz-45, Section 5.10]
+; [RFC9200, Section 5.10]
 $$Claims-Set-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
 CWT-ace-profile = $CWT-ACE-Profiles /
   int .feature "ace_profile-extend"
