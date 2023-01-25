@@ -461,7 +461,7 @@ CWT-cnonce = bytes
 $$Claims-Set-Claims //= ( 40: CWT-exi ) ; exi
 CWT-exi = uint ; in seconds (5.10.3)
 
-;;; insert CDDL from 9052-to-be to complete these CDDL definitions.
+;;; insert CDDL from RFC9052 to complete these CDDL definitions.
 
 ~~~
 
