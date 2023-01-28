@@ -402,9 +402,9 @@ Claims-Set = {
 Claim-Label = CBOR-ONLY<int> / text
 string-or-uri = text
 
-$$Claims-Set-Claims //= ( iss-claim-label => string-or-uri  )
-$$Claims-Set-Claims //= ( sub-claim-label => string-or-uri  )
-$$Claims-Set-Claims //= ( aud-claim-label => string-or-uri  )
+$$Claims-Set-Claims //= ( iss-claim-label => string-or-uri )
+$$Claims-Set-Claims //= ( sub-claim-label => string-or-uri )
+$$Claims-Set-Claims //= ( aud-claim-label => string-or-uri )
 $$Claims-Set-Claims //= ( exp-claim-label => ~time )
 $$Claims-Set-Claims //= ( nbf-claim-label => ~time )
 $$Claims-Set-Claims //= ( iat-claim-label => ~time )
@@ -447,7 +447,7 @@ $$Claims-Set-Claims //= ( 9: CWT-scope ) ; scope
 ; scope 9 byte string or text string [IESG] [RFC8693, Section 4.2]
 CWT-scope = bytes / text
 
-; [RFC9200] Section 5.10
+; [RFC9200] Section 5.10, 8.11
 $$Claims-Set-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
 CWT-ace-profile = $CWT-ACE-Profiles /
   int .feature "ace_profile-extend"
