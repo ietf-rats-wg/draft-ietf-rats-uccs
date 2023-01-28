@@ -149,15 +149,22 @@ UCCS:
 Claims Registry that are composed of pairs of Claim Keys and Claim Values.
 
 Secure Channel:
-: "A path for transferring data between two entities or components that
+: {{NIST-SP800-90Ar1}} defines a Secure Channel as follows:
+
+  {:aside}
+  > <!-- This really is a block quote, but RFCXMLv3 doesn't allow that -->
+  "A path for transferring data between two entities or components that
   ensures confidentiality, integrity and replay protection, as well as
   mutual authentication between the entities or components. The secure
   channel may be provided using approved cryptographic, physical or
-  procedural methods, or a combination thereof" {{NIST-SP800-90Ar1}}.
+  procedural methods, or a combination thereof"
+
   For the purposes of the present document, we focus on a protected communication
   channel used for conveyance that can ensure the same qualities
   associated for UCCS conveyance as CWT conveyance without any
   additional protection.
+  Note that this means that, in specific cases, the Secure Channel as defined here
+  does not itself provide mutual authentication.  See {{secchan}}.
 
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
