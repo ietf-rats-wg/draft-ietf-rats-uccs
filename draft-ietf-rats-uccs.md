@@ -404,6 +404,8 @@ disabling feature "cbor" and enabling feature "json", but this
 flexibility is not the subject of the present specification.
 
 ~~~ cddl
+UCCS = #6.601(Claims-Set)
+
 Claims-Set = {
  * $$Claims-Set-Claims
  * Claim-Label .feature "extended-claims-label" => any
@@ -449,30 +451,10 @@ CWT-COSE-Key = COSE_Key
 CWT-Encrypted_COSE_Key = COSE_Encrypt / COSE_Encrypt0
 CWT-kid = bytes
 
-; [RFC8693]
-$$Claims-Set-Claims //= ( 9: CWT-scope ) ; scope
-; TO DO: understand what this means:
-; scope The scope of an access token as defined in [RFC6749].
-; scope 9 byte string or text string [IESG] [RFC8693, Section 4.2]
-CWT-scope = bytes / text
-
-; [RFC9200] Section 5.10, 8.11
-$$Claims-Set-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
-CWT-ace-profile = $CWT-ACE-Profiles /
-  int .feature "ace_profile-extend"
-; fill in from IANA registry
-;   https://www.iana.org/assignments/ace/ace.xhtml#ace-profiles :
-$CWT-ACE-Profiles /= 1 ; coap_dtls
-
-$$Claims-Set-Claims //= ( 39: CWT-cnonce ) ; cnonce
-CWT-cnonce = bytes
-
-$$Claims-Set-Claims //= ( 40: CWT-exi ) ; exi
-CWT-exi = uint ; in seconds (5.10.3)
-
 ;;; insert CDDL from RFC9052 to complete these CDDL definitions.
-
+;# include RFC9052
 ~~~
+{: name="uccs-additional-examples.cddl"}
 
 # Example
 
