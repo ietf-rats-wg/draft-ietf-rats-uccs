@@ -309,7 +309,7 @@ the Specification Required space (1+2 size), with the present document
 as the specification reference.
 
 | Tag    | Data Item | Semantics                             |
-| TBD601 | map       | Unprotected CWT Claims Set \[RFCthis] |
+| TBD601 | map (Claims-Set as per {{cddl}} of \[RFCthis]) | Unprotected CWT Claims Set \[RFCthis] |
 {: #tab-tag-values cols='r l l' title="Values for Tags"}
 
 
