@@ -122,7 +122,7 @@ other party.
 
 This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 (UCCS) as such and discusses conditions for its proper use in the scope of
-Remote Attestation Procedures (RATS) in the usage scenario that is the
+Remote Attestation Procedures (RATS {{-rats}}) in the usage scenario that is the
 conveyance of Evidence from an Attester to a Verifier.
 
 This specification does not change {{-cwt}}: A true CWT does not make use of
@@ -149,15 +149,22 @@ UCCS:
 Claims Registry that are composed of pairs of Claim Keys and Claim Values.
 
 Secure Channel:
-: "A path for transferring data between two entities or components that
+: {{NIST-SP800-90Ar1}} defines a Secure Channel as follows:
+
+  {:aside}
+  > <!-- This really is a block quote, but RFCXMLv3 doesn't allow that -->
+  "A path for transferring data between two entities or components that
   ensures confidentiality, integrity and replay protection, as well as
   mutual authentication between the entities or components. The secure
   channel may be provided using approved cryptographic, physical or
-  procedural methods, or a combination thereof" {{NIST-SP800-90Ar1}}.
+  procedural methods, or a combination thereof"
+
   For the purposes of the present document, we focus on a protected communication
   channel used for conveyance that can ensure the same qualities
   associated for UCCS conveyance as CWT conveyance without any
   additional protection.
+  Note that this means that, in specific cases, the Secure Channel as defined here
+  does not itself provide mutual authentication.  See {{secchan}}.
 
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
@@ -166,8 +173,9 @@ this document.
 
 # Deployment and Usage of UCCS
 
-Usage scenarios involving the conveyance of Claims, in particular, Remote Attestation Procedures (RATS, see
-{{-rats}}) require a standardized data definition and encoding format that can be transferred
+Usage scenarios involving the conveyance of Claims, in particular
+RATS, require a standardized data definition and encoding format that
+can be transferred
 and transported using different communication channels.  As these are Claims, {{-cwt}} is
 a suitable format.  However, the way these Claims are secured depends on the deployment, the security
 capabilities of the device, as well as their software stack.  For example, a Claim may be securely
@@ -272,7 +280,9 @@ fully formed CWTs.)
 
 Another usage scenario is that of a sub-Attester that has no signing keys (for example, to keep the implementation complexity to a minimum) and has a Secure Channel, such as a local IPC, to interact with a lead Attester (see Composite Device, {{Section 3.3 of -rats}}).
 The sub-Attester produces a UCCS with the required CWT Claims Set and sends the UCCS through the Secure Channel to the lead Attester.
-The lead Attester then computes a cryptographic hash of the UCCS and protects that hash using its signing key for Evidence, for example, using a Detached EAT Bundle ({{Section 5 of -eat}}).
+The lead Attester then computes a cryptographic hash of the UCCS and
+protects that hash using its signing key for Evidence, for example,
+using a Detached-Submodule-Digest or Detached EAT Bundle ({{Section 5 of -eat}}).
 
 ## Privacy Preservation
 
@@ -300,7 +310,7 @@ the Specification Required space (1+2 size), with the present document
 as the specification reference.
 
 | Tag    | Data Item | Semantics                             |
-| TBD601 | map       | Unprotected CWT Claims Set \[RFCthis] |
+| TBD601 | map (Claims-Set as per {{cddl}} of \[RFCthis]) | Unprotected CWT Claims Set \[RFCthis] |
 {: #tab-tag-values cols='r l l' title="Values for Tags"}
 
 
@@ -313,8 +323,7 @@ replacing the function of COSE with that of the Secure Channel.
 {{secchan}} discusses security considerations for Secure Channels, in which
 UCCS might be used.
 This document provides the CBOR tag definition for UCCS and a discussion
-on security consideration for the use of UCCS in
-Remote Attestation Procedures (RATS).  Uses of UCCS outside the scope of
+on security consideration for the use of UCCS in RATS.  Uses of UCCS outside the scope of
 RATS are not covered by this document.  The UCCS specification -- and the
 use of the UCCS CBOR tag, correspondingly -- is not intended for use in a
 scope where a scope-specific security consideration discussion has not
@@ -395,6 +404,8 @@ disabling feature "cbor" and enabling feature "json", but this
 flexibility is not the subject of the present specification.
 
 ~~~ cddl
+UCCS = #6.601(Claims-Set)
+
 Claims-Set = {
  * $$Claims-Set-Claims
  * Claim-Label .feature "extended-claims-label" => any
@@ -402,9 +413,9 @@ Claims-Set = {
 Claim-Label = CBOR-ONLY<int> / text
 string-or-uri = text
 
-$$Claims-Set-Claims //= ( iss-claim-label => string-or-uri  )
-$$Claims-Set-Claims //= ( sub-claim-label => string-or-uri  )
-$$Claims-Set-Claims //= ( aud-claim-label => string-or-uri  )
+$$Claims-Set-Claims //= ( iss-claim-label => string-or-uri )
+$$Claims-Set-Claims //= ( sub-claim-label => string-or-uri )
+$$Claims-Set-Claims //= ( aud-claim-label => string-or-uri )
 $$Claims-Set-Claims //= ( exp-claim-label => ~time )
 $$Claims-Set-Claims //= ( nbf-claim-label => ~time )
 $$Claims-Set-Claims //= ( iat-claim-label => ~time )
@@ -440,30 +451,10 @@ CWT-COSE-Key = COSE_Key
 CWT-Encrypted_COSE_Key = COSE_Encrypt / COSE_Encrypt0
 CWT-kid = bytes
 
-; [RFC8693]
-$$Claims-Set-Claims //= ( 9: CWT-scope ) ; scope
-; TO DO: understand what this means:
-; scope The scope of an access token as defined in [RFC6749].
-; scope 9 byte string or text string [IESG] [RFC8693, Section 4.2]
-CWT-scope = bytes / text
-
-; [RFC9200] Section 5.10
-$$Claims-Set-Claims //= ( 38: CWT-ace-profile ) ; ace_profile
-CWT-ace-profile = $CWT-ACE-Profiles /
-  int .feature "ace_profile-extend"
-; fill in from IANA registry
-;   https://www.iana.org/assignments/ace/ace.xhtml#ace-profiles :
-$CWT-ACE-Profiles /= 1 ; coap_dtls
-
-$$Claims-Set-Claims //= ( 39: CWT-cnonce ) ; cnonce
-CWT-cnonce = bytes
-
-$$Claims-Set-Claims //= ( 40: CWT-exi ) ; exi
-CWT-exi = uint ; in seconds (5.10.3)
-
 ;;; insert CDDL from RFC9052 to complete these CDDL definitions.
-
+;# include RFC9052
 ~~~
+{: sourcecode-name="uccs-additional-examples.cddl"}
 
 # Example
 
@@ -471,7 +462,7 @@ The example CWT Claims Set from {{Appendix A.1 of -cwt}} can be turned into
 an UCCS by enclosing it with a tag number TBD601:
 
 ~~~~ cbor-diag
- <TBD601>(
+ 601(
    {
      / iss / 1: "coap://as.example.com",
      / sub / 2: "erikw",
@@ -496,3 +487,4 @@ Acknowledgements
 {:unnumbered}
 
 {{{Laurence Lundblade}}} suggested some improvements to the CDDL.
+{{{Carl Wallace}}} provided a very useful review.
