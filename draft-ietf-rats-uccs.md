@@ -122,7 +122,7 @@ other party.
 
 This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 (UCCS) as such and discusses conditions for its proper use in the scope of
-Remote Attestation Procedures (RATS) in the usage scenario that is the
+Remote Attestation Procedures (RATS {{-rats}}) in the usage scenario that is the
 conveyance of Evidence from an Attester to a Verifier.
 
 This specification does not change {{-cwt}}: A true CWT does not make use of
@@ -173,8 +173,9 @@ this document.
 
 # Deployment and Usage of UCCS
 
-Usage scenarios involving the conveyance of Claims, in particular, Remote Attestation Procedures (RATS, see
-{{-rats}}) require a standardized data definition and encoding format that can be transferred
+Usage scenarios involving the conveyance of Claims, in particular
+RATS, require a standardized data definition and encoding format that
+can be transferred
 and transported using different communication channels.  As these are Claims, {{-cwt}} is
 a suitable format.  However, the way these Claims are secured depends on the deployment, the security
 capabilities of the device, as well as their software stack.  For example, a Claim may be securely
@@ -322,8 +323,7 @@ replacing the function of COSE with that of the Secure Channel.
 {{secchan}} discusses security considerations for Secure Channels, in which
 UCCS might be used.
 This document provides the CBOR tag definition for UCCS and a discussion
-on security consideration for the use of UCCS in
-Remote Attestation Procedures (RATS).  Uses of UCCS outside the scope of
+on security consideration for the use of UCCS in RATS.  Uses of UCCS outside the scope of
 RATS are not covered by this document.  The UCCS specification -- and the
 use of the UCCS CBOR tag, correspondingly -- is not intended for use in a
 scope where a scope-specific security consideration discussion has not
