@@ -64,7 +64,7 @@ normative:
 informative:
   RFC8446: tls
   RFC9334: rats
-  I-D.ietf-teep-architecture: teep
+  RFC9397: teep
   TPM2:
     title: >
       Trusted Platform Module Library Specification, Family “2.0”, Level 00, Revision 01.59 ed.,
@@ -74,9 +74,9 @@ informative:
   RFC9052: cose
   RFC9053: cose-new-algs
   RFC8747: cnf        # used in CDDL only
-  RFC8693: tokex      # used in CDDL only
-  RFC6749: scope      # used in CDDL only
-  RFC9200: ace-oauth  # used in CDDL only
+#  RFC8693: tokex      # used in CDDL only
+#  RFC6749: scope      # used in CDDL only
+#  RFC9200: ace-oauth  # used in CDDL only
   NIST-SP800-90Ar1: DOI.10.6028/NIST.SP.800-90Ar1
 
 --- abstract
