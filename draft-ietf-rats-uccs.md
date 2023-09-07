@@ -456,6 +456,15 @@ CWT-kid = bytes
 ~~~
 {: sourcecode-name="uccs-additional-examples.cddl"}
 
+Specifications that need to use UCCS in the context of EAT {{-eat}} need the glue CDDL defined in {{fig-uccs-eat-glue}}.
+
+~~~ cddl
+$JSON-Selector-Type /= "UCCS"
+$JSON-Selector-Value /= ~UCCS
+$EAT-CBOR-Tagged-Token = UCCS
+~~~
+{: #fig-uccs-eat-glue title="CDDL definition for EAT" }
+
 # Example
 
 The example CWT Claims Set from {{Appendix A.1 of -cwt}} can be turned into
