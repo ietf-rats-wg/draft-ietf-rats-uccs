@@ -235,7 +235,7 @@ scope.
 
 As a minimum requirement in the scope of RATS Claims, the receiver MUST
 authenticate the sender as part of the establishment of the Secure Channel.
-Furthermore, the channel MUST provide integrity of the communication from the
+Furthermore, the channel MUST provide integrity of the communication between the
 communicating RATS roles.
 If data confidentiality {{-sec-glossary}} is also required, the receiving side MUST be
 authenticated as well; this can be achieved if the sender and receiver
