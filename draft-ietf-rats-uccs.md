@@ -461,7 +461,7 @@ Specifications that use UCCS in the context of EAT {{-eat}} need the glue CDDL d
 ~~~ cddl
 $JSON-Selector-Type /= "UCCS"
 $JSON-Selector-Value /= ~UCCS
-$EAT-CBOR-Tagged-Token = UCCS
+$EAT-CBOR-Tagged-Token /= UCCS
 ~~~
 {: #fig-uccs-eat-glue title="CDDL definition for EAT" }
 
