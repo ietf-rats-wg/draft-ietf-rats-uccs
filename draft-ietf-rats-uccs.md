@@ -1,8 +1,8 @@
 ---
 v: 3
 
-title: A CBOR Tag for Unprotected CWT Claims Sets
-abbrev: Unprotected CWT Claims Sets
+title: CBOR and JSON Unprotected Claims Sets
+abbrev: Unprotected Claims Sets
 docname: draft-ietf-rats-uccs-latest
 area: Security
 wg: RATS Working Group
@@ -72,6 +72,8 @@ informative:
     date: 2019
   I-D.ietf-rats-eat: eat
   RFC9052: cose
+  RFC7515: jws
+  RFC7516: jwe
   RFC9053: cose-new-algs
   RFC8747: cnf        # used in CDDL only
 #  RFC8693: tokex      # used in CDDL only
@@ -81,10 +83,10 @@ informative:
 
 --- abstract
 
-CBOR Web Token (CWT, RFC 8392) Claims Sets sometimes do not need the
-protection afforded by wrapping them into COSE, as is required for a true
-CWT.  This specification defines a CBOR tag for such unprotected CWT
-Claims Sets (UCCS) and discusses conditions for its proper use.
+CBOR Web Token (CWT, RFC 8392) and JSON Web Token (JWT, RFC7519) Claims Sets sometimes do not need the
+protection afforded by wrapping them into COSE or JOSE, as is required for a true
+CWT or JWT.  This specification defines a CBOR and JSON for such unprotected
+Claims Sets (UCS) and discusses conditions for its proper use.
 
 <!--
 [^status]
@@ -97,15 +99,15 @@ Claims Sets (UCCS) and discusses conditions for its proper use.
 
 # Introduction
 
-A CBOR Web Token (CWT) as specified by {{-cwt}} is always wrapped in a
-CBOR Object Signing and Encryption (COSE, {{-cose}}) envelope.
-COSE provides -- amongst other things -- end-to-end data origin
-authentication and integrity protection employed by RFC 8392 as well as
-optional encryption for CWTs.
+A CBOR Web Token (CWT) as specified by {{-cwt}} and a JSON Web Token as specified by {{-jwt}} are always wrapped in a
+CBOR Object Signing and Encryption (COSE, {{-cose}}) envelope or JSON Object Signing and Encryption (JOSE {{-jws}}, {{-jwe}}).
+COSE and JOSE provides -- amongst other things -- end-to-end data origin
+authentication and integrity protection as well as
+optional encryption for claims sets.
 Under the right circumstances ({{secchan}}),
 though, a signature providing proof for authenticity and integrity can be
 provided through the transfer protocol and thus omitted from the
-information in a CWT without compromising the intended goal of authenticity
+information in a CWT/JWT without compromising the intended goal of authenticity
 and integrity.
 In other words, if communicating parties have a pre-existing security
 association, they can reuse it to provide authenticity and integrity
@@ -114,25 +116,26 @@ parsimoniously.
 Specifically, if a mutually secured channel is established between two
 remote peers, and if that secure channel provides the required
 properties (as discussed below), it is possible to omit the protection
-provided by COSE, creating a use case for unprotected CWT Claims Sets.
+provided by COSE/JOSE, creating a use case for unprotected CWT/JWT Claims Sets.
 Similarly, if there is one-way authentication, the party that did not
 authenticate may be in a position to send authentication information through
 this channel that allows the already authenticated party to authenticate the
 other party.
 
 This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
-(UCCS) as such and discusses conditions for its proper use in the scope of
+(UCCS).
+
+This specification discusses conditions for proper use of unsigned claims sets in the scope of
 Remote Attestation Procedures (RATS {{-rats}}) in the usage scenario that is the
-conveyance of Evidence from an Attester to a Verifier.
+conveyance of Evidence from an Attester to a Verifier and also conveyance from the Verifer to the Relying Party.
 
 This specification does not change {{-cwt}}: A true CWT does not make use of
-the tag allocated here; the UCCS tag is an alternative to using COSE
-protection and a CWT tag.
+the CBOR tag allocated here; the UCCS tag is an alternative to using COSE
+protection and a CWT tag. Similarly this specifiation does not change {{-jwt}}.
 Consequently, within the well-defined scope of a secure channel, it
-can be acceptable and economic to use the contents of a CWT without
-its COSE container and tag it with a UCCS CBOR tag for further
-processing within that scope -- or to use the contents of a UCCS CBOR
-tag for building a CWT to be signed by some entity that can vouch for
+can be acceptable and economic to use the contents of a CWT or JWT without
+its COSE or JOSE container -- or to use the contents of a UCS
+for building a CWT or JWT to be signed by some entity that can vouch for
 those contents.
 
 ## Terminology
@@ -147,6 +150,13 @@ The terms Attester, Attesting Environment, Evidence, Relying Party and Verifier 
 UCCS:
 : Unprotected CWT Claims Set(s); CBOR map(s) of Claims as defined by the CWT
 Claims Registry that are composed of pairs of Claim Keys and Claim Values.
+
+UJCS:
+: Unprotected JWT Claims Set(s); JSON object of Claims as defined by the JWT
+Claims Registry that are composed of pairs of Claim Keys and Claim Values.
+
+UCS: Either a UCCS or a UJCS
+
 
 Secure Channel:
 : {{NIST-SP800-90Ar1}} defines a Secure Channel as follows:
@@ -171,27 +181,27 @@ this document.
 
 {::boilerplate bcp14-tagged}
 
-# Deployment and Usage of UCCS
+# Deployment and Usage of UCS
 
 Usage scenarios involving the conveyance of Claims, in particular
 RATS, require a standardized data definition and encoding format that
 can be transferred
-and transported using different communication channels.  As these are Claims, {{-cwt}} is
+and transported using different communication channels.  As these are Claims, {{-cwt}}, {{-jwt}} is
 a suitable format.  However, the way these Claims are secured depends on the deployment, the security
 capabilities of the device, as well as their software stack.  For example, a Claim may be securely
 stored and conveyed using a device's Trusted Execution Environment (TEE, see {{-teep}}) or
 a Trusted Platform Module (TPM, see {{TPM2}}).
 Especially in some resource constrained environments, the same process that provides the secure communication
 transport is also the delegate to compose the Claim to be conveyed.  Whether it is a transfer
-or transport, a Secure Channel is presumed to be used for conveying such UCCS.  The following sections
+or transport, a Secure Channel is presumed to be used for conveying such UCS.  The following sections
 elaborate on Secure Channel characteristics in general and further describe RATS usage scenarios and
 corresponding requirements for UCCS deployment.
 
 # Characteristics of a Secure Channel {#secchan}
 
-A Secure Channel for the conveyance of UCCS needs to provide the security
-properties that would otherwise be provided by COSE for a CWT.
-In this regard, UCCS is similar in security considerations to JWTs {{-jwtbcp}}
+A Secure Channel for the conveyance of UCS needs to provide the security
+properties that would otherwise be provided by COSE/JOSE for a CWT/JWT.
+In this regard, UCS is similar in security considerations to JWTs {{-jwtbcp}}
 using the algorithm "none".  RFC 8725 states:
 
 {:quote}
@@ -214,20 +224,20 @@ information inside the Secure Channel.  A well-known example of a such a
 Secure Channel setup protocol is the TLS {{-tls}} handshake; the
 TLS record protocol can then be used for secure conveyance.
 
-As UCCS were initially created for use in RATS Secure Channels, the following
+As UCS were initially created for use in RATS Secure Channels, the following
 section provides a discussion of
 their use in these channels.  Where other environments are intended to be
-used to convey UCCS, similar considerations need to be documented before
-UCCS can be used.
+used to convey UCS, similar considerations need to be documented before
+UCS can be used.
 
-# UCCS and Remote Attestation Procedures (RATS)
+# UCS and Remote Attestation Procedures (RATS)
 
-This section describes three detailed usage scenarios for UCCS in the context of RATS.
+This section describes three detailed usage scenarios for UCS in the context of RATS.
 
 ## Evidence Conveyance
 
-For the purposes of this section, the Verifier is the receiver of the UCCS
-and the Attester is the provider of the UCCS.
+For the purposes of this section, the Verifier is the receiver of the UCS
+and the Attester is the provider of the UCS.
 
 Secure Channels can be transient in nature.  For the purposes of this
 specification, the mechanisms used to establish a Secure Channel are out of
@@ -241,17 +251,17 @@ If confidentiality is also required, the receiving side MUST be
 authenticated as well; this can be achieved if the Verifier and the Attester
 mutually authenticate when establishing the Secure Channel.
 
-The extent to which a Secure Channel can provide assurances that UCCS
+The extent to which a Secure Channel can provide assurances that UCS
 originate from a trustworthy Attesting Environment depends on the
 characteristics of both the cryptographic mechanisms used to establish the
 channel and the characteristics of the Attesting Environment itself.
 
 A Secure Channel established or maintained using weak cryptography
 may not provide the assurance required by a Relying Party of the authenticity
-and integrity of the UCCS.
+and integrity of the UCS.
 
 Ultimately, it is up to the Verifier's policy to determine whether to accept
-a UCCS from the Attester and to the type of Secure Channel it must negotiate.
+a UCS from the Attester and to the type of Secure Channel it must negotiate.
 While the security considerations of the cryptographic algorithms used are similar
 to COSE, the considerations of the Secure Channel should also adhere to the policy
 configured at each of the Attester and the Verifier.  However, the policy controls
@@ -260,43 +270,43 @@ and definitions are out of scope for this document.
 Where the security assurance required of an Attesting Environment by a
 Relying Party requires it, the Attesting Environment SHOULD be implemented
 using techniques designed to provide enhanced protection from an attacker
-wishing to tamper with or forge UCCS.  A possible approach might be to
+wishing to tamper with or forge UCS.  A possible approach might be to
 implement the Attesting Environment in a hardened environment such as a
 TEE {{-teep}} or a TPM {{TPM2}}.
 
-When UCCS emerge from the Secure Channel and into the Verifier, the security
-properties of the secure channel no longer protect the UCCS, which now are subject to the same security properties
+When UCS emerge from the Secure Channel and into the Verifier, the security
+properties of the secure channel no longer protect the UCS, which now are subject to the same security properties
 as any other unprotected data in the Verifier environment.
 If the Verifier subsequently forwards UCCS, they are treated as though they originated within the Verifier.
 
 As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens) of -eat}}), the Secure
-Channel does not endorse fully formed CWTs transferred through it.
-Effectively, the COSE envelope of a CWT (or a nested EAT) shields the CWT Claims Set from the
-endorsement of the secure channel.  (Note that EAT might add a nested UCCS
-Claim, and this statement does not apply to UCCS nested into UCCS, only to
-fully formed CWTs.)
+Channel does not endorse fully formed CWTs or JWTs transferred through it.
+Effectively, the COSE/JOSE envelope of a CWT/JWT (or a nested EAT) shields the CWT/JWT Claims Set from the
+endorsement of the secure channel.  (Note that EAT might add a nested UCS
+Claim, and this statement does not apply to UCS nested into UCS, only to
+fully formed CWTs and JWTs.)
 
 ## Delegated Attestation
 
 Another usage scenario is that of a sub-Attester that has no signing keys (for example, to keep the implementation complexity to a minimum) and has a Secure Channel, such as a local IPC, to interact with a lead Attester (see Composite Device, {{Section 3.3 of -rats}}).
-The sub-Attester produces a UCCS with the required CWT Claims Set and sends the UCCS through the Secure Channel to the lead Attester.
-The lead Attester then computes a cryptographic hash of the UCCS and
+The sub-Attester produces a UCS with the required Claims Set and sends the UCS through the Secure Channel to the lead Attester.
+The lead Attester then computes a cryptographic hash of the UCS and
 protects that hash using its signing key for Evidence, for example,
 using a Detached-Submodule-Digest or Detached EAT Bundle ({{Section 5 of -eat}}).
 
 ## Privacy Preservation
 
 A Secure Channel which preserves the privacy of the Attester may provide
-security properties equivalent to COSE, but only inside the life-span of the
-session established.  In general, a Verifier cannot correlate UCCS received
+security properties equivalent to COSE or JOSE, but only inside the life-span of the
+session established.  In general, a Verifier cannot correlate UCS received
 in different sessions from the same Attesting Environment based on the
 cryptographic mechanisms used when a privacy preserving Secure Channel is
 employed.
 
-In the case of Remote Attestation, the Attester must consider whether any UCCS it returns over a privacy
+In the case of Remote Attestation, the Attester must consider whether any UCS it returns over a privacy
 preserving Secure Channel compromises the privacy in unacceptable ways.  As
-an example, the use of the EAT UEID Claim {{Section 4.2.1 of -eat}} in UCCS over a privacy
-preserving secure channel allows a verifier to correlate UCCS from a single
+an example, the use of the EAT UEID Claim {{Section 4.2.1 of -eat}} in UCS over a privacy
+preserving secure channel allows a verifier to correlate UCS from a single
 Attesting Environment across many Secure Channel sessions. This may be
 acceptable in some use-cases (e.g., if the Attesting Environment is a
 physical sensor in a factory) and unacceptable in others (e.g., if the
@@ -317,14 +327,14 @@ as the specification reference.
 # Security Considerations
 
 The security considerations of {{-cbor}} apply.
-The security considerations of {{-cwt}} need to be applied analogously,
-replacing the function of COSE with that of the Secure Channel.
+The security considerations of {{-cwt}} and {{-jwt}} need to be applied analogously,
+replacing the function of COSE/JOSE with that of the Secure Channel.
 
 {{secchan}} discusses security considerations for Secure Channels, in which
-UCCS might be used.
-This document provides the CBOR tag definition for UCCS and a discussion
-on security consideration for the use of UCCS in RATS.  Uses of UCCS outside the scope of
-RATS are not covered by this document.  The UCCS specification -- and the
+UCS might be used.
+This document provides the CBOR tag definition for UCS and a discussion
+on security consideration for the use of UCS in RATS.  Uses of UCS outside the scope of
+RATS are not covered by this document.  The UCS specification -- and the
 use of the UCCS CBOR tag, correspondingly -- is not intended for use in a
 scope where a scope-specific security consideration discussion has not
 been conducted, vetted and approved for that use.
@@ -395,16 +405,17 @@ factors such as:
 
 # CDDL
 
-{{-cwt}} does not define CDDL for CWT Claims Sets.
+{{-cwt}} nor {{-jwt}} define CDDL for CWT Claims Sets.
 
 This specification proposes using the definitions in {{fig-claims-set}}
-for the CWT Claims Set defined in {{-cwt}}.  Note that these definitions
-have been built such that they also can describe {{-jwt}} Claims sets by
-disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present specification.
+for the Claims Set defined in {{-cwt}} and {{-jwt}}.  Note that these definitions
+work for CBOR claims sets with the CDDL "cbor" feature defined and JSON claims sets with the CDDL "json" feature defined.
 
 ~~~ cddl
-UCCS = #6.601(Claims-Set)
+UCCS-Token = UCCS-Tagged-Token / UCCS-Untagged-Token
+UCCS-Tagged-Token = #6.601(Claims-Set)
+UCCS-Untagged-Token = Claims-Set
+UJCS-Token = Claims-Set
 
 Claims-Set = {
  * $$Claims-Set-Claims
@@ -455,6 +466,18 @@ CWT-kid = bytes
 ;# include RFC9052
 ~~~
 {: sourcecode-name="uccs-additional-examples.cddl"}
+
+The following CDDL connects UCS tokens into EAT via CDDL sockets in EAT for this purpose.
+
+~~~ cddl
+$EAT-CBOR-Tagged-Token /= UCCS-Tagged-Token
+$EAT-CBOR-Untagged-Token /= UCCS-Untagged-Token
+
+$EAT-JSON-Token-Formats /= UJCS
+
+$JSON-Selector-Type /= "UJCS"
+$JSON-Selector-Value /= UJCS
+~~~
 
 # Example
 
