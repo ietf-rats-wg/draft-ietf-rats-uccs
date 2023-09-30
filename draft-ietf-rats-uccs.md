@@ -85,8 +85,8 @@ informative:
 
 CBOR Web Token (CWT, RFC 8392) and JSON Web Token (JWT, RFC7519) Claims Sets sometimes do not need the
 protection afforded by wrapping them into COSE or JOSE, as is required for a true
-CWT or JWT.  This specification defines a CBOR and JSON for such unprotected
-Claims Sets (UCS) and discusses conditions for its proper use.
+CWT or JWT.  This specification defines CBOR and JSON for such unprotected
+Claims Sets (UCS) and discusses conditions for their proper use.
 
 <!--
 [^status]
