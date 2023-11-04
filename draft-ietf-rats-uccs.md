@@ -81,10 +81,8 @@ informative:
 
 --- abstract
 
-CBOR Web Token (CWT, RFC 8392) Claims Sets sometimes do not need the
-protection afforded by wrapping them into COSE, as is required for a true
-CWT.  This specification defines a CBOR tag for such unprotected CWT
-Claims Sets (UCCS) and discusses conditions for its proper use.
+When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for a true CWT.
+This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS) and discusses conditions for its proper use.
 
 <!--
 [^status]
