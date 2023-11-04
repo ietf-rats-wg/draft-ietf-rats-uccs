@@ -160,9 +160,9 @@ Secure Channel:
   procedural methods, or a combination thereof"
 
   For the purposes of the present document, we focus on a protected communication
-  channel used for conveyance that can ensure the same qualities
-  associated for UCCS conveyance as CWT conveyance without any
-  additional protection.
+  channel used for conveyance that can ensure the same qualities as CWT without
+  the COSE protection. Examples include encrypted conveyance via PCIe, a TLS tunnel,
+  or other object security than COSE, such as CMS or X.509 v3 certificates.
   Note that this means that, in specific cases, the Secure Channel as defined here
   does not itself provide mutual authentication.  See {{secchan}}.
 
