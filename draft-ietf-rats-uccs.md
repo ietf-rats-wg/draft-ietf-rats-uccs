@@ -62,6 +62,7 @@ normative:
   IANA.cbor-tags: tags
 
 informative:
+  RFC4949: sec-glossary
   RFC8446: tls
   RFC9334: rats
   RFC9397: teep
@@ -83,10 +84,10 @@ informative:
 
 --- abstract
 
-CBOR Web Token (CWT, RFC 8392) and JSON Web Token (JWT, RFC7519) Claims Sets sometimes do not need the
-protection afforded by wrapping them into COSE or JOSE, as is required for a true
-CWT or JWT.  This specification defines CBOR and JSON for such unprotected
-Claims Sets (UCS) and discusses conditions for their proper use.
+
+When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for a true CWT.
+This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS) and discusses conditions for its proper use.
+Similar considerations apply to JSON Web Token (JWT, RFC7519) and JOSE.
 
 <!--
 [^status]
@@ -123,11 +124,9 @@ this channel that allows the already authenticated party to authenticate the
 other party.
 
 This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
-(UCCS).
-
-This specification discusses conditions for proper use of unsigned claims sets in the scope of
-Remote Attestation Procedures (RATS {{-rats}}) in the usage scenario that is the
-conveyance of Evidence from an Attester to a Verifier and also conveyance from the Verifer to the Relying Party.
+(UCCS) as such and discusses conditions for its proper use in the scope of
+Remote Attestation Procedures (RATS {{-rats}}) for the
+conveyance of RATS Conceptual Messages.
 
 This specification does not change {{-cwt}}: A true CWT does not make use of
 the CBOR tag allocated here; the UCCS tag is an alternative to using COSE
@@ -170,9 +169,9 @@ Secure Channel:
   procedural methods, or a combination thereof"
 
   For the purposes of the present document, we focus on a protected communication
-  channel used for conveyance that can ensure the same qualities
-  associated for UCCS conveyance as CWT conveyance without any
-  additional protection.
+  channel used for conveyance that can ensure the same qualities as CWT without
+  the COSE protection. Examples include encrypted conveyance via PCIe, a TLS tunnel,
+  or other object security than COSE, such as CMS or X.509 v3 certificates.
   Note that this means that, in specific cases, the Secure Channel as defined here
   does not itself provide mutual authentication.  See {{secchan}}.
 
@@ -234,21 +233,20 @@ UCS can be used.
 
 This section describes three detailed usage scenarios for UCS in the context of RATS.
 
-## Evidence Conveyance
+## Conceptual Messages Conveyance
 
-For the purposes of this section, the Verifier is the receiver of the UCS
-and the Attester is the provider of the UCS.
+For the purposes of this section, any RATS role can be the sender or the receiver of the UCS.
 
 Secure Channels can be transient in nature.  For the purposes of this
 specification, the mechanisms used to establish a Secure Channel are out of
 scope.
 
-As a minimum requirement in the scope of RATS Claims, the Verifier MUST
-authenticate the Attester as part of the establishment of the Secure Channel.
-Furthermore, the channel MUST provide integrity of the communication from the
-Attester to the Verifier.
-If confidentiality is also required, the receiving side MUST be
-authenticated as well; this can be achieved if the Verifier and the Attester
+As a minimum requirement in the scope of RATS Claims, the receiver MUST
+authenticate the sender as part of the establishment of the Secure Channel.
+Furthermore, the channel MUST provide integrity of the communication between the
+communicating RATS roles.
+If data confidentiality {{-sec-glossary}} is also required, the receiving side MUST be
+authenticated as well; this can be achieved if the sender and receiver
 mutually authenticate when establishing the Secure Channel.
 
 The extent to which a Secure Channel can provide assurances that UCS
@@ -260,11 +258,12 @@ A Secure Channel established or maintained using weak cryptography
 may not provide the assurance required by a Relying Party of the authenticity
 and integrity of the UCS.
 
-Ultimately, it is up to the Verifier's policy to determine whether to accept
-a UCS from the Attester and to the type of Secure Channel it must negotiate.
+
+Ultimately, it is up to the receiver's policy to determine whether to accept
+a UCS from the sender and to the type of Secure Channel it must negotiate.
 While the security considerations of the cryptographic algorithms used are similar
 to COSE, the considerations of the Secure Channel should also adhere to the policy
-configured at each of the Attester and the Verifier.  However, the policy controls
+configured at each of end of the Secure Channel.  However, the policy controls
 and definitions are out of scope for this document.
 
 Where the security assurance required of an Attesting Environment by a
@@ -274,10 +273,10 @@ wishing to tamper with or forge UCS.  A possible approach might be to
 implement the Attesting Environment in a hardened environment such as a
 TEE {{-teep}} or a TPM {{TPM2}}.
 
-When UCS emerge from the Secure Channel and into the Verifier, the security
+When UCS emerge from the Secure Channel and into the receiver, the security
 properties of the secure channel no longer protect the UCS, which now are subject to the same security properties
 as any other unprotected data in the Verifier environment.
-If the Verifier subsequently forwards UCCS, they are treated as though they originated within the Verifier.
+If the receiver subsequently forwards UCCS, they are treated as though they originated within the receiver.
 
 As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens) of -eat}}), the Secure
 Channel does not endorse fully formed CWTs or JWTs transferred through it.
@@ -298,15 +297,13 @@ using a Detached-Submodule-Digest or Detached EAT Bundle ({{Section 5 of -eat}})
 
 A Secure Channel which preserves the privacy of the Attester may provide
 security properties equivalent to COSE or JOSE, but only inside the life-span of the
-session established.  In general, a Verifier cannot correlate UCS received
-in different sessions from the same Attesting Environment based on the
-cryptographic mechanisms used when a privacy preserving Secure Channel is
-employed.
+session established.  In general, when a privacy preserving Secure Channel is employed 
+for conveying a conceptual message the receiver cannot correlate the message with the senders of other received UCCS messages.
 
-In the case of Remote Attestation, the Attester must consider whether any UCS it returns over a privacy
+An Attester must consider whether any UCS it returns over a privacy
 preserving Secure Channel compromises the privacy in unacceptable ways.  As
 an example, the use of the EAT UEID Claim {{Section 4.2.1 of -eat}} in UCS over a privacy
-preserving secure channel allows a verifier to correlate UCS from a single
+preserving Secure Channel allows a Verifier to correlate UCS from a single
 Attesting Environment across many Secure Channel sessions. This may be
 acceptable in some use-cases (e.g., if the Attesting Environment is a
 physical sensor in a factory) and unacceptable in others (e.g., if the
