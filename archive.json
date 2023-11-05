@@ -1,0 +1,305 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2021-09-12T00:43:59.434403+00:00",
+  "repo": "ietf-rats-wg/draft-ietf-rats-uccs",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "MDU6SXNzdWU4OTY0ODYyNTA=",
+      "title": "Thomas F's review",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/issues/1",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Lest we forget: https://mailarchive.ietf.org/arch/msg/rats/sxmbwzg5nfyP8m7epGVk8dTUI7M/\r\n\r\nNote: although this was a review for birkholz-02, I don't think the points raised have been addressed in birkholz-03 (which I guess it's equivalent to rats-00).\r\n\r\n",
+      "createdAt": "2021-05-20T08:39:23Z",
+      "updatedAt": "2021-05-20T08:39:44Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "MDU6SXNzdWU5ODc5MTU2ODQ=",
+      "title": "Add CDDL",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/issues/4",
+      "state": "OPEN",
+      "author": "laurencelundblade",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "UCCS-message = UCCS-tagged-message / UCCS-untagged-message\r\n\r\nUCCS-tagged-message = #6.601(cwt-claims-set)\r\n\r\nUCCS-untagged-message = cwt-claims-set\r\n\r\nThen where is cwt-claims-set defined? Seems like it would be OK to define it in the UCCS draft. Right now I define eat-claims-set in EAT and that includes some of the CWT claims. However, I'm OK for all that to move to UCCS. EAT needs a normative reference to UCCS anyway and it would be better to avoid a circular reference between EAT and UCCS.\r\n\r\n\r\nhttps://github.com/ietf-rats-wg/eat/issues/130",
+      "createdAt": "2021-09-03T16:02:46Z",
+      "updatedAt": "2021-09-08T06:39:51Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "nedmsmith",
+          "authorAssociation": "NONE",
+          "body": "Is there something equivalent to cwt-claims-set defined for the payload of a CWT? Logically, a CWT is a 'signed-cwt-payload'. The unsigned part has to be recognizable as CBOR, so wouldn't that be the same as UCCS-untagged-message? ",
+          "createdAt": "2021-09-03T22:11:48Z",
+          "updatedAt": "2021-09-03T22:11:48Z"
+        },
+        {
+          "author": "laurencelundblade",
+          "authorAssociation": "NONE",
+          "body": "There is no CDDL definition of the payload of a CWT anywhere, no definition of cwt-claims-set anywhere.  It would be the same as UCCS-untagged-message which is why I thought it might be good to put it here.\r\n\r\nIt should also have a $$ CDDL socket that additional claims can be defined. EAT, for example woulds use the $$ CDDL socket for all it's claims.",
+          "createdAt": "2021-09-06T20:23:18Z",
+          "updatedAt": "2021-09-06T20:23:18Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "[edited] Claims Sets are defined in RFC7519 and inherited by RFC8392. These Claims Sets are the basis for CWT and thereby are the \"payload of a CWT\". This might be just me, but I am drawing a blank here. Could you please provide a (preliminary) change proposal so that we can look at a potential solution to a problem statement that is hard for me to follow? At the moment, I am inclined to assume that this is an obvious non-issue - but again that might be me, not getting the problem.",
+          "createdAt": "2021-09-06T20:48:37Z",
+          "updatedAt": "2021-09-06T20:53:40Z"
+        },
+        {
+          "author": "laurencelundblade",
+          "authorAssociation": "NONE",
+          "body": "Henk, they are defined in *prose*, but there is no accompanying CDDL as is becoming the convention for CBOR-based protocols.  There is no desire to redefine any semantics, just to add some CDDL that parallels what the prose says.\r\n\r\nMy immediate problem in EAT is that there's no CDDL to reference when a claim-set is to be used, not can I produce the top-level CDDL for EAT. To address this, I've constructed my own CDDL for a CWT and it is in EAT. That is tolerable, but it seems like it would be more general to have this in the more general UCCS.\r\n\r\nAnother problem is that there's no $$ socket to add claims to a CWT. All new CWT claims should probably be defined in CDDL. While a $$ socket is not required to define new claims in CDDL, it is helpful, particularly with the next.\r\n\r\nA third problem is that EAT and other protocols (some of which are probably yours) are doing automated verification of the CDDL definition in the RFC against the examples in the RFC and more. If there's no CDDL, that can't be done.\r\n\r\nMy plan is to write up the cleanest CDDL I can that I think should go into UCCS. There's a less-clean version of it in EAT right now.  Then we can decide if it goes in EAT or more generally goes into UCCS.",
+          "createdAt": "2021-09-07T16:51:52Z",
+          "updatedAt": "2021-09-07T16:51:52Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "Then let us define a CDDL specification in EAT instead of trying to use CDDL fragments as an information model, I'd say. I am rather certain that I brought this up before, but a few years ago that did not seem to be a viable route. If that has changed, we can create a feasible way forward - in the scope of EAT. Touching JWT and CWT to that seems a bit blown out of proportions, I think.\r\n\r\nJWT and CWT are anchored in independent RFCs. If there would be enough support for reopening that work.. well I'd not be blocking that, but I'd also not be an advocate for that. I think I understand now, where you are coming from. But what you illustrate here as your target goes way beyond EAT. Maybe finishing EAT first should be the priority and then we can take the lessons learned and bring other folks in to talk about \"Serialization Agnostics Claims Sets\" and how these can be reused in JSON and/or CBOR?",
+          "createdAt": "2021-09-07T20:26:51Z",
+          "updatedAt": "2021-09-07T20:26:51Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm having a hard time following this discussion.\r\n\r\nI think it is good to have CDDL for CWT (don't care about JWT).\r\n\r\nI think it would be good to do this in a way that the act of registering new claims can be accompanied by adding simple CDDL for these claims.  So a including a socket seems like the right way to do this.\r\n\r\nI don't think defining this CDDL warrants a CWTbis.  Writing a document specifically for this sounds a bit thin, but could be done (and would clearly be in the COSE WG). Attaching this to the UCCS document also works, certainly better than attaching it to some random CWT-using document (UCCS is \"infrastructure\" for CWT, EAT is not).\r\n\r\nI'm not a big fan for doing everything with a ton of representation variants, so doing anything of this for JWT as well needs some good motivation (and maybe even resurrection of JOSE).\r\n",
+          "createdAt": "2021-09-08T05:58:38Z",
+          "updatedAt": "2021-09-08T05:58:38Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "If we leave JWT out of the picture, this could boil down to provide \"CWT CDDL\" in the UCCS I-D? I can follow that thought. I never really had a problem with the English text definition in CWT, but admittedly most people seem to create \"their own\" CWT CDDL based on that English text anyways.",
+          "createdAt": "2021-09-08T06:27:30Z",
+          "updatedAt": "2021-09-08T06:27:30Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "COLLABORATOR",
+          "body": "... yes, and having some easy-to-copy CDDL is preferable.\r\n\r\nAlso a common way to fill the socket.\r\n\r\nI'll propose something later today.",
+          "createdAt": "2021-09-08T06:39:51Z",
+          "updatedAt": "2021-09-08T06:39:51Z"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "MDU6SXNzdWU5ODc5MjE4Mzg=",
+      "title": "Unsigned JSON format claims?",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/issues/5",
+      "state": "OPEN",
+      "author": "laurencelundblade",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "JWT has this null cipher construct for unsigned JSON claims-sets. It seems wasteful and ill conceived to me especially in light of UCCS.\r\n\r\nEAT is successfully defining claims in both JSON and CBOR.\r\n\r\nWhy not make UCCS in to a CDDL definition of the basic claims in CWT and JWT and define simpler way to do unsigned claims in JSON format?  You already have all the security considerations.\r\n",
+      "createdAt": "2021-09-03T16:10:53Z",
+      "updatedAt": "2021-09-03T16:10:53Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 2,
+      "id": "MDExOlB1bGxSZXF1ZXN0Njg3MzgzODY5",
+      "title": "Cleanup for 111",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/2",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-07-11T19:24:54Z",
+      "updatedAt": "2021-07-12T15:31:39Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "e38bb7a4703b0817491b924eb6abc940cc806e71",
+      "headRepository": "cabo/draft-ietf-rats-uccs",
+      "headRefName": "cleanup111",
+      "headRefOid": "81e3603617a1e42dcf666e94927a2597d1e71615",
+      "closedAt": "2021-07-12T15:31:39Z",
+      "mergedAt": "2021-07-12T15:31:39Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "13fd78a19b2ee795d490b5684c8ef325b37cc791"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzA0MjMyODMx",
+          "commit": {
+            "abbreviatedOid": "81e3603"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-07-12T15:11:37Z",
+          "updatedAt": "2021-07-12T15:11:37Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "MDExOlB1bGxSZXF1ZXN0Njg4MDA3MTc1",
+      "title": "First attempt at addressing Thomas' review",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/3",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-07-12T16:55:46Z",
+      "updatedAt": "2021-07-12T22:43:10Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "13fd78a19b2ee795d490b5684c8ef325b37cc791",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "headRefName": "tf-review",
+      "headRefOid": "fcdc8a82abefd34ffae03a45769cc0b30e23ed19",
+      "closedAt": "2021-07-12T22:43:10Z",
+      "mergedAt": "2021-07-12T22:43:10Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "a360090ecc1fe21b1ed6cca0ccdf50dc4d050b18"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NzA0NjAwNjQ2",
+          "commit": {
+            "abbreviatedOid": "fcdc8a8"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-07-12T22:42:09Z",
+          "updatedAt": "2021-07-12T22:42:09Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "MDExOlB1bGxSZXF1ZXN0NzMwMDg1MjYx",
+      "title": "CDDL for UCCS (and UJCS) and examples in diag",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/6",
+      "state": "OPEN",
+      "author": "laurencelundblade",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I'm sure there'll be lots of comments...\r\n\r\nThe examples validate against the CDDL using the cddl command line tool.\r\n\r\nI can't ignore JSON in EAT, so a claims-set that doesn't work for JSON is mostly useless to me, so this covers JSON.\r\n\r\nI didn't include CWT, though EAT needs that too. I looked at the way CoSWID did CWT, but am not sure that would work for EAT.",
+      "createdAt": "2021-09-09T00:59:12Z",
+      "updatedAt": "2021-09-09T00:59:12Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "a360090ecc1fe21b1ed6cca0ccdf50dc4d050b18",
+      "headRepository": "laurencelundblade/draft-ietf-rats-uccs",
+      "headRefName": "main",
+      "headRefOid": "e0665d64fc5fcaf2be979231c8b3adf235d36938",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "MDExOlB1bGxSZXF1ZXN0NzMwMzMwNzUz",
+      "title": "Start work on a CDDL appendix",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/7",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This appendix collects CDDL for CWT and the RFCs defining further claims for that.",
+      "createdAt": "2021-09-09T08:11:59Z",
+      "updatedAt": "2021-09-10T19:11:39Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "a360090ecc1fe21b1ed6cca0ccdf50dc4d050b18",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "headRefName": "ccs-cddl",
+      "headRefOid": "8ffd47d95ef34fea1d482564bddda721f02bf559",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "laurencelundblade",
+          "authorAssociation": "NONE",
+          "body": "I can't see a way to use this in EAT. EAT firmly uses CDDL to specify both CBOR and JSON encodings. The claims-set is the fundamental structure in EAT, so the claims-set has to be CDDL that works for CBOR and JSON. The main problem with this PR is it is hard-coded to integer labels. \r\n\r\nI'm open to lots of suggestions and ideas here, but if this PR is what goes into UCCS, then EAT would have to say \"ignore the CDDL in UCCS and use the CDDL for CWT/JWT here in EAT instead\".\r\n\r\nI also understand that this is probably way beyond what work you expected to do on UCCS. \r\n\r\nI'm really open to a variety of solutions, just can't think of anything else yet.\r\n\r\n\r\n\r\n",
+          "createdAt": "2021-09-10T19:10:42Z",
+          "updatedAt": "2021-09-10T19:11:39Z"
+        }
+      ],
+      "reviews": []
+    }
+  ]
+}
