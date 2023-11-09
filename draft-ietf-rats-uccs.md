@@ -1,5 +1,4 @@
----
-v: 3
+--- v: 3
 
 title: A CBOR Tag for Unprotected CWT Claims Sets
 abbrev: Unprotected CWT Claims Sets
@@ -474,6 +473,30 @@ an UCCS by enclosing it with a tag number TBD601:
  -->
 <!--  LocalWords:  Verifier's CWTs Attester Verifier FCFS
  -->
+
+# JSON Support
+
+The above definitions, concepts and security considerations all may be applied to define a JSON-encoded unsigned token.
+This may be referred to as a "UJSC", an Unprotected JWT Claims Set".
+The CDDL in the appendix above works for JSON as well as CBOR through the use of the JC<> CDDL generic.
+The CDDL definition for a UJCS token is identical with a Claims-Set.
+
+~~~ cddl
+UJCS-Token = Claims-Set
+~~~
+
+# EAT
+
+The following CDDL connects CBOR and JSON tokens into EAT via CDDL sockets in EAT for this purpose.
+
+~~~ cddl
+
+$EAT-CBOR-Tagged-Token /= UCCS-Tagged-Token
+$EAT-CBOR-Untagged-Token /= UCCS-Untagged-Token
+
+$JSON-Selector /= [type: "UJCS", nested-token: UJCS-Token]
+
+~~~ cddl
 
 --- back
 
