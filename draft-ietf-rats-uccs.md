@@ -1,4 +1,5 @@
---- v: 3
+---
+v: 3
 
 title: A CBOR Tag for Unprotected CWT Claims Sets
 abbrev: Unprotected CWT Claims Sets
