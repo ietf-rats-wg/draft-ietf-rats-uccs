@@ -488,7 +488,7 @@ UJCS-Token = Claims-Set
 
 # EAT
 
-The following CDDL connects CBOR and JSON tokens into EAT via CDDL sockets in EAT for this purpose.
+The following CDDL adds UCCS and UJCS tokens to EAT using the predefined extension points.
 
 ~~~ cddl
 
