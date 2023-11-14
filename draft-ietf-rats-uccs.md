@@ -478,7 +478,7 @@ an UCCS by enclosing it with a tag number TBD601:
 # JSON Support
 
 The above definitions, concepts and security considerations all may be applied to define a JSON-encoded unsigned token.
-This may be referred to as a "UJSC", an Unprotected JWT Claims Set".
+This can be referred to as a "UJCS", an Unprotected JWT Claims Set".
 The CDDL in the appendix above works for JSON as well as CBOR through the use of the JC<> CDDL generic.
 The definition for a UJCS token in CDDL is identical to that of a Claims-Set.
 
