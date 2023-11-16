@@ -5,12 +5,12 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                           J. O'Donoghue
-Expires: 7 May 2024                           Qualcomm Technologies Inc.
+Expires: 19 May 2024                          Qualcomm Technologies Inc.
                                                            N. Cam-Winget
                                                            Cisco Systems
                                                               C. Bormann
                                                   Universität Bremen TZI
-                                                         4 November 2023
+                                                        16 November 2023
 
 
                A CBOR Tag for Unprotected CWT Claims Sets
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Birkholz, et al.           Expires 7 May 2024                   [Page 1]
+Birkholz, et al.           Expires 19 May 2024                  [Page 1]
 
 Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
@@ -63,7 +63,7 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 May 2024.
+   This Internet-Draft will expire on 19 May 2024.
 
 Copyright Notice
 
@@ -95,11 +95,11 @@ Table of Contents
      6.2.  AES-CBC_MAC . . . . . . . . . . . . . . . . . . . . . . .   9
      6.3.  AES-GCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
      6.4.  AES-CCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .   9
+     6.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .  10
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  10
-   Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  11
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  11
+   Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  12
    Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  13
    Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  13
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Birkholz, et al.           Expires 7 May 2024                   [Page 2]
+Birkholz, et al.           Expires 19 May 2024                  [Page 2]
 
 Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
@@ -165,7 +165,7 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 7 May 2024                   [Page 3]
+Birkholz, et al.           Expires 19 May 2024                  [Page 3]
 
 Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
@@ -187,7 +187,8 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
       For the purposes of the present document, we focus on a protected
       communication channel used for conveyance that can ensure the same
       qualities as CWT without the COSE protection.  Examples include
-      encrypted conveyance via PCIe, a TLS tunnel, or other object
+      conveyance via PCIe (Peripheral Component Interconnect Express)
+      IDE (Integrity and Data Encryption), a TLS tunnel, or other object
       security than COSE, such as CMS or X.509 v3 certificates.  Note
       that this means that, in specific cases, the Secure Channel as
       defined here does not itself provide mutual authentication.  See
@@ -217,15 +218,15 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
    secure communication transport is also the delegate to compose the
    Claim to be conveyed.  Whether it is a transfer or transport, a
    Secure Channel is presumed to be used for conveying such UCCS.  The
-   following sections elaborate on Secure Channel characteristics in
 
 
 
-Birkholz, et al.           Expires 7 May 2024                   [Page 4]
+Birkholz, et al.           Expires 19 May 2024                  [Page 4]
 
 Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
+   following sections elaborate on Secure Channel characteristics in
    general and further describe RATS usage scenarios and corresponding
    requirements for UCCS deployment.
 
@@ -271,16 +272,19 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
    For the purposes of this section, any RATS role can be the sender or
    the receiver of the UCCS.
 
-   Secure Channels can be transient in nature.  For the purposes of this
-   specification, the mechanisms used to establish a Secure Channel are
-   out of scope.
 
 
 
-Birkholz, et al.           Expires 7 May 2024                   [Page 5]
+
+
+Birkholz, et al.           Expires 19 May 2024                  [Page 5]
 
 Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
+
+   Secure Channels can be transient in nature.  For the purposes of this
+   specification, the mechanisms used to establish a Secure Channel are
+   out of scope.
 
    As a minimum requirement in the scope of RATS Claims, the receiver
    MUST authenticate the sender as part of the establishment of the
@@ -326,17 +330,17 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
    of [I-D.ietf-rats-eat]), the Secure Channel does not endorse fully
    formed CWTs transferred through it.  Effectively, the COSE envelope
    of a CWT (or a nested EAT) shields the CWT Claims Set from the
-   endorsement of the secure channel.  (Note that EAT might add a nested
-   UCCS Claim, and this statement does not apply to UCCS nested into
-   UCCS, only to fully formed CWTs.)
 
 
 
-
-Birkholz, et al.           Expires 7 May 2024                   [Page 6]
+Birkholz, et al.           Expires 19 May 2024                  [Page 6]
 
 Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
+
+   endorsement of the secure channel.  (Note that EAT might add a nested
+   UCCS Claim, and this statement does not apply to UCCS nested into
+   UCCS, only to fully formed CWTs.)
 
 4.2.  Delegated Attestation
 
@@ -377,6 +381,19 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
    the Specification Required space (1+2 size), with the present
    document as the specification reference.
 
+
+
+
+
+
+
+
+
+Birkholz, et al.           Expires 19 May 2024                  [Page 7]
+
+Internet-Draft         Unprotected CWT Claims Sets         November 2023
+
+
        +========+==========================+======================+
        |    Tag | Data Item                | Semantics            |
        +========+==========================+======================+
@@ -385,14 +402,6 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
        +--------+--------------------------+----------------------+
 
                          Table 1: Values for Tags
-
-
-
-
-Birkholz, et al.           Expires 7 May 2024                   [Page 7]
-
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
-
 
 6.  Security Considerations
 
@@ -432,6 +441,15 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
       establish that secure channel, as this would create a circular
       dependency.
 
+
+
+
+
+Birkholz, et al.           Expires 19 May 2024                  [Page 8]
+
+Internet-Draft         Unprotected CWT Claims Sets         November 2023
+
+
    The Verifier needs to ensure that the management of key material used
    to establish or protect the Secure Channel is acceptable.  This may
    include factors such as:
@@ -440,15 +458,6 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
       respected in the establishment of the Secure Channel.
 
    *  Using cryptographic algorithms appropriately.
-
-
-
-
-
-Birkholz, et al.           Expires 7 May 2024                   [Page 8]
-
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
-
 
    *  Using key material in accordance with any usage restrictions such
       as freshness or algorithm restrictions.
@@ -489,6 +498,14 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
    *  The number of messages both successfully and unsuccessfully
       decrypted is used to determine when rekeying is required.
 
+
+
+
+Birkholz, et al.           Expires 19 May 2024                  [Page 9]
+
+Internet-Draft         Unprotected CWT Claims Sets         November 2023
+
+
    Section 4.2.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
@@ -498,13 +515,6 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
    *  The number of messages both successfully and unsuccessfully
       decrypted is used to determine when rekeying is required.
-
-
-
-Birkholz, et al.           Expires 7 May 2024                   [Page 9]
-
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
-
 
    Section 4.3.1 of [RFC9053] contains a detailed explanation of these
    considerations.
@@ -544,6 +554,14 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/rfc/rfc8949>.
 
+
+
+
+Birkholz, et al.           Expires 19 May 2024                 [Page 10]
+
+Internet-Draft         Unprotected CWT Claims Sets         November 2023
+
+
 7.2.  Informative References
 
    [I-D.ietf-rats-eat]
@@ -552,15 +570,6 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
               Progress, Internet-Draft, draft-ietf-rats-eat-22, 14
               October 2023, <https://datatracker.ietf.org/doc/html/
               draft-ietf-rats-eat-22>.
-
-
-
-
-
-Birkholz, et al.           Expires 7 May 2024                  [Page 10]
-
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
-
 
    [NIST-SP800-90Ar1]
               Barker, E. and J. Kelsey, "Recommendation for Random
@@ -601,6 +610,14 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
               Architecture", RFC 9397, DOI 10.17487/RFC9397, July 2023,
               <https://www.rfc-editor.org/rfc/rfc9397>.
 
+
+
+
+Birkholz, et al.           Expires 19 May 2024                 [Page 11]
+
+Internet-Draft         Unprotected CWT Claims Sets         November 2023
+
+
    [TPM2]     "Trusted Platform Module Library Specification, Family
               “2.0”, Level 00, Revision 01.59 ed., Trusted Computing
               Group", 2019.
@@ -608,15 +625,6 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 Appendix A.  CDDL
 
    [RFC8392] does not define CDDL for CWT Claims Sets.
-
-
-
-
-
-Birkholz, et al.           Expires 7 May 2024                  [Page 11]
-
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
-
 
    This specification proposes using the definitions in Figure 1 for the
    CWT Claims Set defined in [RFC8392].  Note that these definitions
@@ -661,15 +669,7 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-
-
-
-
-
-
-
-
-Birkholz, et al.           Expires 7 May 2024                  [Page 12]
+Birkholz, et al.           Expires 19 May 2024                 [Page 12]
 
 Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
@@ -725,7 +725,7 @@ Authors' Addresses
 
 
 
-Birkholz, et al.           Expires 7 May 2024                  [Page 13]
+Birkholz, et al.           Expires 19 May 2024                 [Page 13]
 
 Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
@@ -781,4 +781,4 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 7 May 2024                  [Page 14]
+Birkholz, et al.           Expires 19 May 2024                 [Page 14]
