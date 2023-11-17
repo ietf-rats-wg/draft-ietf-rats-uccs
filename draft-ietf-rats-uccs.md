@@ -488,7 +488,7 @@ UJCS = Claims-Set
 
 # EAT
 
-The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points.
+The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see {{Section 4.2.18 (submods) of -eat}}).
 
 ~~~ cddl
 $EAT-CBOR-Tagged-Token /= UCCS-Tagged
