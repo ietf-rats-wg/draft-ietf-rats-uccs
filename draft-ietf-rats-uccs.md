@@ -399,7 +399,8 @@ disabling feature "cbor" and enabling feature "json", but this
 flexibility is not the subject of the present specification.
 
 ~~~ cddl
-UCCS = #6.601(Claims-Set)
+UCCS-Untagged = Claims-Set
+UCCS-Tagged = #6.601(UCCS-Untagged)
 
 Claims-Set = {
  * $$Claims-Set-Claims
@@ -474,6 +475,27 @@ an UCCS by enclosing it with a tag number TBD601:
  -->
 <!--  LocalWords:  Verifier's CWTs Attester Verifier FCFS
  -->
+
+# JSON Support
+
+The above definitions, concepts and security considerations all may be applied to define a JSON-encoded Claims-Set.
+Such an unsigned Claims-Set can be referred to as a "UJCS", an "Unprotected JWT Claims Set".
+The CDDL definition in {{fig-claims-set}} can be used for a "UJCS".
+
+~~~ cddl
+UJCS = Claims-Set
+~~~
+
+# EAT
+
+The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see {{Section 4.2.18 (submods) of -eat}}).
+
+~~~ cddl
+$EAT-CBOR-Tagged-Token /= UCCS-Tagged
+$EAT-CBOR-Untagged-Token /= UCCS-Untagged
+
+$JSON-Selector /= [type: "UJCS", nested-token: UJCS]
+~~~
 
 --- back
 
