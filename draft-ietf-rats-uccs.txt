@@ -5,12 +5,12 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                           J. O'Donoghue
-Expires: 30 May 2024                          Qualcomm Technologies Inc.
+Expires: 11 June 2024                         Qualcomm Technologies Inc.
                                                            N. Cam-Winget
                                                            Cisco Systems
                                                               C. Bormann
                                                   Universität Bremen TZI
-                                                        27 November 2023
+                                                         9 December 2023
 
 
                A CBOR Tag for Unprotected CWT Claims Sets
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 1]
+Birkholz, et al.          Expires 11 June 2024                  [Page 1]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    Internet-Drafts are draft documents valid for a maximum of six months
@@ -63,7 +63,7 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 May 2024.
+   This Internet-Draft will expire on 11 June 2024.
 
 Copyright Notice
 
@@ -100,18 +100,18 @@ Table of Contents
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  11
    Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  12
-   Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  13
-   Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  13
-   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  13
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  14
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
+   Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  14
+   Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  14
+   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  14
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 2]
+Birkholz, et al.          Expires 11 June 2024                  [Page 2]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 3]
+Birkholz, et al.          Expires 11 June 2024                  [Page 3]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    UCCS:  Unprotected CWT Claims Set(s); CBOR map(s) of Claims as
@@ -221,9 +221,9 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 4]
+Birkholz, et al.          Expires 11 June 2024                  [Page 4]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    following sections elaborate on Secure Channel characteristics in
@@ -277,9 +277,9 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 5]
+Birkholz, et al.          Expires 11 June 2024                  [Page 5]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    Secure Channels can be transient in nature.  For the purposes of this
@@ -333,9 +333,9 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 6]
+Birkholz, et al.          Expires 11 June 2024                  [Page 6]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    endorsement of the secure channel.  (Note that EAT might add a nested
@@ -389,9 +389,9 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 7]
+Birkholz, et al.          Expires 11 June 2024                  [Page 7]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
        +========+==========================+======================+
@@ -445,9 +445,9 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 8]
+Birkholz, et al.          Expires 11 June 2024                  [Page 8]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    The Verifier needs to ensure that the management of key material used
@@ -501,9 +501,9 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
 
 
 
-Birkholz, et al.           Expires 30 May 2024                  [Page 9]
+Birkholz, et al.          Expires 11 June 2024                  [Page 9]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    Section 4.2.1 of [RFC9053] contains a detailed explanation of these
@@ -544,23 +544,33 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
               "CBOR Web Token (CWT)", RFC 8392, DOI 10.17487/RFC8392,
               May 2018, <https://www.rfc-editor.org/rfc/rfc8392>.
 
+   [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
+              Definition Language (CDDL): A Notational Convention to
+              Express Concise Binary Object Representation (CBOR) and
+              JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
+              June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
+
    [RFC8725]  Sheffer, Y., Hardt, D., and M. Jones, "JSON Web Token Best
               Current Practices", BCP 225, RFC 8725,
               DOI 10.17487/RFC8725, February 2020,
               <https://www.rfc-editor.org/rfc/rfc8725>.
+
+
+
+Birkholz, et al.          Expires 11 June 2024                 [Page 10]
+
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
+
 
    [RFC8949]  Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", STD 94, RFC 8949,
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/rfc/rfc8949>.
 
-
-
-
-Birkholz, et al.           Expires 30 May 2024                 [Page 10]
-
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
-
+   [RFC9165]  Bormann, C., "Additional Control Operators for the Concise
+              Data Definition Language (CDDL)", RFC 9165,
+              DOI 10.17487/RFC9165, December 2021,
+              <https://www.rfc-editor.org/rfc/rfc9165>.
 
 7.2.  Informative References
 
@@ -600,6 +610,14 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
               Initial Algorithms", RFC 9053, DOI 10.17487/RFC9053,
               August 2022, <https://www.rfc-editor.org/rfc/rfc9053>.
 
+
+
+
+Birkholz, et al.          Expires 11 June 2024                 [Page 11]
+
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
+
+
    [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
               W. Pan, "Remote ATtestation procedureS (RATS)
               Architecture", RFC 9334, DOI 10.17487/RFC9334, January
@@ -610,19 +628,16 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2023
               Architecture", RFC 9397, DOI 10.17487/RFC9397, July 2023,
               <https://www.rfc-editor.org/rfc/rfc9397>.
 
-
-
-
-Birkholz, et al.           Expires 30 May 2024                 [Page 11]
-
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
-
-
    [TPM2]     "Trusted Platform Module Library Specification, Family
               “2.0”, Level 00, Revision 01.59 ed., Trusted Computing
               Group", 2019.
 
 Appendix A.  CDDL
+
+   The Concise Data Definition Language (CDDL), as defined in [RFC8610]
+   and [RFC9165], provides an easy and unambiguous way to express
+   structures for protocol messages and data formats that use CBOR or
+   JSON.
 
    [RFC8392] does not define CDDL for CWT Claims Sets.
 
@@ -631,6 +646,33 @@ Appendix A.  CDDL
    have been built such that they also can describe [RFC7519] Claims
    sets by disabling feature "cbor" and enabling feature "json", but
    this flexibility is not the subject of the present specification.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.          Expires 11 June 2024                 [Page 12]
+
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
+
 
    UCCS-Untagged = Claims-Set
    UCCS-Tagged = #6.601(UCCS-Untagged)
@@ -669,9 +711,23 @@ Appendix A.  CDDL
 
 
 
-Birkholz, et al.           Expires 30 May 2024                 [Page 12]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.          Expires 11 June 2024                 [Page 13]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    ; [RFC8747]
@@ -725,9 +781,9 @@ Appendix D.  EAT
 
 
 
-Birkholz, et al.           Expires 30 May 2024                 [Page 13]
+Birkholz, et al.          Expires 11 June 2024                 [Page 14]
 
-Internet-Draft         Unprotected CWT Claims Sets         November 2023
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
    $EAT-CBOR-Tagged-Token /= UCCS-Tagged
@@ -781,4 +837,4 @@ Authors' Addresses
 
 
 
-Birkholz, et al.           Expires 30 May 2024                 [Page 14]
+Birkholz, et al.          Expires 11 June 2024                 [Page 15]
