@@ -60,6 +60,8 @@ normative:
   RFC8725: jwtbcp
   RFC8392: cwt
   IANA.cbor-tags: tags
+  RFC8610: cddl
+  RFC9165: control1
 
 informative:
   RFC4949: sec-glossary
@@ -389,6 +391,11 @@ factors such as:
 --- back
 
 # CDDL
+
+The Concise Data Definition Language (CDDL), as defined in {{-cddl}} and
+{{-control1}}, provides an easy and unambiguous way to express
+structures for protocol messages and data formats that use CBOR or
+JSON.
 
 {{-cwt}} does not define CDDL for CWT Claims Sets.
 
