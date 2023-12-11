@@ -102,7 +102,7 @@ Table of Contents
    Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  12
    Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  14
    Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  14
-   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  14
+   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  15
    Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
@@ -742,8 +742,11 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
    CWT-Encrypted_COSE_Key = COSE_Encrypt / COSE_Encrypt0
    CWT-kid = bytes
 
-   ;;; insert CDDL from RFC9052 to complete these CDDL definitions.
-   ;# include RFC9052
+   ;;; insert CDDL needed from RFC 9052 to complete these CDDL
+   ;;; definitions, which are not restated here.  This can be done
+   ;;; manually or automated by a tool that implements a directive such
+   ;;; as:
+   ;# import rfc9052
 
 Appendix B.  Example
 
@@ -771,11 +774,8 @@ Appendix C.  JSON Support
 
    UJCS = Claims-Set
 
-Appendix D.  EAT
 
-   The following CDDL adds UCCS-format and UJCS-format tokens to EAT
-   using its predefined extension points (see Section 4.2.18 (submods)
-   of [I-D.ietf-rats-eat]).
+
 
 
 
@@ -785,6 +785,12 @@ Birkholz, et al.          Expires 13 June 2024                 [Page 14]
 
 Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
+
+Appendix D.  EAT
+
+   The following CDDL adds UCCS-format and UJCS-format tokens to EAT
+   using its predefined extension points (see Section 4.2.18 (submods)
+   of [I-D.ietf-rats-eat]).
 
    $EAT-CBOR-Tagged-Token /= UCCS-Tagged
    $EAT-CBOR-Untagged-Token /= UCCS-Untagged
@@ -828,6 +834,14 @@ Authors' Addresses
    Postfach 330440
    D-28359 Bremen
    Germany
+
+
+
+Birkholz, et al.          Expires 13 June 2024                 [Page 15]
+
+Internet-Draft         Unprotected CWT Claims Sets         December 2023
+
+
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
 
@@ -837,4 +851,46 @@ Authors' Addresses
 
 
 
-Birkholz, et al.          Expires 13 June 2024                 [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.          Expires 13 June 2024                 [Page 16]
