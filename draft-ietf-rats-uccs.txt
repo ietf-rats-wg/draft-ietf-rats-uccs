@@ -5,12 +5,12 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                           J. O'Donoghue
-Expires: 11 June 2024                         Qualcomm Technologies Inc.
+Expires: 19 July 2024                         Qualcomm Technologies Inc.
                                                            N. Cam-Winget
                                                            Cisco Systems
                                                               C. Bormann
                                                   Universität Bremen TZI
-                                                         9 December 2023
+                                                         16 January 2024
 
 
                A CBOR Tag for Unprotected CWT Claims Sets
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 1]
+Birkholz, et al.          Expires 19 July 2024                  [Page 1]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    Internet-Drafts are draft documents valid for a maximum of six months
@@ -63,11 +63,11 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 June 2024.
+   This Internet-Draft will expire on 19 July 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 2]
+Birkholz, et al.          Expires 19 July 2024                  [Page 2]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 3]
+Birkholz, et al.          Expires 19 July 2024                  [Page 3]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    UCCS:  Unprotected CWT Claims Set(s); CBOR map(s) of Claims as
@@ -221,9 +221,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 4]
+Birkholz, et al.          Expires 19 July 2024                  [Page 4]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    following sections elaborate on Secure Channel characteristics in
@@ -277,9 +277,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 5]
+Birkholz, et al.          Expires 19 July 2024                  [Page 5]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    Secure Channels can be transient in nature.  For the purposes of this
@@ -333,9 +333,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 6]
+Birkholz, et al.          Expires 19 July 2024                  [Page 6]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    endorsement of the secure channel.  (Note that EAT might add a nested
@@ -389,9 +389,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 7]
+Birkholz, et al.          Expires 19 July 2024                  [Page 7]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
        +========+==========================+======================+
@@ -445,9 +445,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 8]
+Birkholz, et al.          Expires 19 July 2024                  [Page 8]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    The Verifier needs to ensure that the management of key material used
@@ -501,9 +501,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                  [Page 9]
+Birkholz, et al.          Expires 19 July 2024                  [Page 9]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    Section 4.2.1 of [RFC9053] contains a detailed explanation of these
@@ -557,9 +557,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                 [Page 10]
+Birkholz, et al.          Expires 19 July 2024                 [Page 10]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    [RFC8949]  Bormann, C. and P. Hoffman, "Concise Binary Object
@@ -577,9 +577,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
               Wallace, "The Entity Attestation Token (EAT)", Work in
-              Progress, Internet-Draft, draft-ietf-rats-eat-22, 14
-              October 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-rats-eat-22>.
+              Progress, Internet-Draft, draft-ietf-rats-eat-25, 15
+              January 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-rats-eat-25>.
 
    [NIST-SP800-90Ar1]
               Barker, E. and J. Kelsey, "Recommendation for Random
@@ -613,9 +613,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                 [Page 11]
+Birkholz, et al.          Expires 19 July 2024                 [Page 11]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
@@ -669,9 +669,9 @@ Appendix A.  CDDL
 
 
 
-Birkholz, et al.          Expires 11 June 2024                 [Page 12]
+Birkholz, et al.          Expires 19 July 2024                 [Page 12]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    UCCS-Untagged = Claims-Set
@@ -725,9 +725,9 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
 
 
 
-Birkholz, et al.          Expires 11 June 2024                 [Page 13]
+Birkholz, et al.          Expires 19 July 2024                 [Page 13]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    ; [RFC8747]
@@ -742,8 +742,10 @@ Internet-Draft         Unprotected CWT Claims Sets         December 2023
    CWT-Encrypted_COSE_Key = COSE_Encrypt / COSE_Encrypt0
    CWT-kid = bytes
 
-   ;;; insert CDDL from RFC9052 to complete these CDDL definitions.
-   ;# include RFC9052
+   ;;; Insert the required CDDL from RFC 9052 to complete these
+   ;;; definitions.  This can be done manually or automated by a
+   ;;; tool that implements an import directive such as:
+   ;# import rfc9052
 
 Appendix B.  Example
 
@@ -779,11 +781,9 @@ Appendix D.  EAT
 
 
 
-
-
-Birkholz, et al.          Expires 11 June 2024                 [Page 14]
+Birkholz, et al.          Expires 19 July 2024                 [Page 14]
 
-Internet-Draft         Unprotected CWT Claims Sets         December 2023
+Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
    $EAT-CBOR-Tagged-Token /= UCCS-Tagged
@@ -837,4 +837,4 @@ Authors' Addresses
 
 
 
-Birkholz, et al.          Expires 11 June 2024                 [Page 15]
+Birkholz, et al.          Expires 19 July 2024                 [Page 15]
