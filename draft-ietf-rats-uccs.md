@@ -454,8 +454,10 @@ CWT-COSE-Key = COSE_Key
 CWT-Encrypted_COSE_Key = COSE_Encrypt / COSE_Encrypt0
 CWT-kid = bytes
 
-;;; insert CDDL from RFC9052 to complete these CDDL definitions.
-;# include RFC9052
+;;; Insert the required CDDL from RFC 9052 to complete these
+;;; definitions.  This can be done manually or automated by a
+;;; tool that implements an import directive such as:
+;# import rfc9052
 ~~~
 {: sourcecode-name="uccs-additional-examples.cddl"}
 
