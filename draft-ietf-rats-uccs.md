@@ -231,11 +231,12 @@ their use in these channels.  Where other environments are intended to be
 used to convey UCCS, similar considerations need to be documented before
 UCCS can be used.
 
-# UCCS and Remote Attestation Procedures (RATS)
+# UCCS in RATS Conceptual Message Conveyance
 
-This section describes three detailed usage scenarios for UCCS in the context of RATS.
-
-## Conceptual Messages Conveyance
+This section describes a detailed usage scenario for UCCS in the
+context of RATS in conjunction with its attendant security
+requirements.
+The use of UCCS tag TBD601 outside of the RATS context MUST come with additional instruction leaflets and security considerations.
 
 For the purposes of this section, any RATS role can be the sender or the receiver of the UCCS.
 
@@ -285,6 +286,12 @@ Effectively, the COSE envelope of a CWT (or a nested EAT) shields the CWT Claims
 endorsement of the secure channel.  (Note that EAT might add a nested UCCS
 Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs.)
+
+
+# Considerations for using UCCS in other RATS contexts
+
+This section discusses two additional usage scenarios for UCCS in the
+context of RATS.
 
 ## Delegated Attestation
 
