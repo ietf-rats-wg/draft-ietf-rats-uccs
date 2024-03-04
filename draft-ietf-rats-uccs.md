@@ -302,7 +302,11 @@ context of RATS.
 
 ## Delegated Attestation
 
-Another usage scenario is that of a sub-Attester that has no signing keys (for example, to keep the implementation complexity to a minimum) and has a Secure Channel, such as a local IPC, to interact with a lead Attester (see Composite Device, {{Section 3.3 of -rats}}).
+Another usage scenario is that of a sub-Attester that has no signing
+keys (for example, to keep the implementation complexity to a minimum)
+and has a Secure Channel, such as local inter-process communication,
+to interact with a lead Attester (see Composite Device, {{Section 3.3
+of -rats}}).
 The sub-Attester produces a UCCS with the required CWT Claims Set and sends the UCCS through the Secure Channel to the lead Attester.
 The lead Attester then computes a cryptographic hash of the UCCS and
 protects that hash using its signing key for Evidence, for example,
