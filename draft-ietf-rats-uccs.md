@@ -398,6 +398,9 @@ factors such as:
 * Ensuring that appropriate protections are in place to address potential
   traffic analysis attacks.
 
+
+The remaining subsections of this section highlight some aspects of specific cryptography choices that are detailed further in {{-cose-new-algs}}.
+
 ## AES-CBC_MAC
 
 * A given key should only be used for messages of fixed or known length.
