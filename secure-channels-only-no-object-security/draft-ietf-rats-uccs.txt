@@ -95,16 +95,16 @@ Table of Contents
      6.2.  AES-CBC_MAC . . . . . . . . . . . . . . . . . . . . . . .   9
      6.3.  AES-GCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
      6.4.  AES-CCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .   9
+     6.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .  10
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  11
    Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  12
-   Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  13
-   Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  13
+   Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  14
+   Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  14
    Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  14
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  14
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
 
 
@@ -186,9 +186,12 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
       For the purposes of the present document, we focus on a protected
       communication channel used for conveyance that can ensure the same
-      qualities as CWT without the COSE protection.  Examples include
-      conveyance via PCIe (Peripheral Component Interconnect Express)
-      IDE (Integrity and Data Encryption), or a TLS tunnel.
+      qualities as CWT without having the COSE protection available:
+      mutual authentication, integrity protection, confidentiality.
+      (Replay protection can be added by including a nonce claim such as
+      Nonce (claim 10 [IANA.cwt]).)  Examples include conveyance via
+      PCIe (Peripheral Component Interconnect Express) IDE (Integrity
+      and Data Encryption), or a TLS tunnel.
 
    All terms referenced or defined in this section are capitalized in
    the remainder of this document.
@@ -215,9 +218,6 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    Claim to be conveyed.  Whether it is a transfer or transport, a
    Secure Channel is presumed to be used for conveying such UCCS.  The
    following sections elaborate on Secure Channel characteristics in
-   general and further describe RATS usage scenarios and corresponding
-   requirements for UCCS deployment.
-
 
 
 
@@ -225,6 +225,9 @@ Birkholz, et al.        Expires 5 September 2024                [Page 4]
 
 Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
+
+   general and further describe RATS usage scenarios and corresponding
+   requirements for UCCS deployment.
 
 3.  Characteristics of a Secure Channel
 
@@ -271,9 +274,6 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    For the purposes of this section, any RATS role can be the sender or
    the receiver of the UCCS.
 
-   Secure Channels can be transient in nature.  For the purposes of this
-   specification, the mechanisms used to establish a Secure Channel are
-   out of scope.
 
 
 
@@ -281,6 +281,10 @@ Birkholz, et al.        Expires 5 September 2024                [Page 5]
 
 Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
+
+   Secure Channels can be transient in nature.  For the purposes of this
+   specification, the mechanisms used to establish a Secure Channel are
+   out of scope.
 
    As a minimum requirement in the scope of RATS Claims, the receiver
    MUST authenticate the sender as part of the establishment of the
@@ -326,10 +330,6 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    of [I-D.ietf-rats-eat]), the Secure Channel does not endorse fully
    formed CWTs transferred through it.  Effectively, the COSE envelope
    of a CWT (or a nested EAT) shields the CWT Claims Set from the
-   endorsement of the secure channel.  (Note that EAT might add a nested
-   UCCS Claim, and this statement does not apply to UCCS nested into
-   UCCS, only to fully formed CWTs.)
-
 
 
 
@@ -337,6 +337,10 @@ Birkholz, et al.        Expires 5 September 2024                [Page 6]
 
 Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
+
+   endorsement of the secure channel.  (Note that EAT might add a nested
+   UCCS Claim, and this statement does not apply to UCCS nested into
+   UCCS, only to fully formed CWTs.)
 
 4.2.  Delegated Attestation
 
@@ -377,14 +381,10 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    the Specification Required space (1+2 size), with the present
    document as the specification reference.
 
-       +========+==========================+======================+
-       |    Tag | Data Item                | Semantics            |
-       +========+==========================+======================+
-       | TBD601 | map (Claims-Set as per   | Unprotected CWT      |
-       |        | Appendix A of [RFCthis]) | Claims Set [RFCthis] |
-       +--------+--------------------------+----------------------+
 
-                         Table 1: Values for Tags
+
+
+
 
 
 
@@ -393,6 +393,15 @@ Birkholz, et al.        Expires 5 September 2024                [Page 7]
 
 Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
+
+       +========+==========================+======================+
+       |    Tag | Data Item                | Semantics            |
+       +========+==========================+======================+
+       | TBD601 | map (Claims-Set as per   | Unprotected CWT      |
+       |        | Appendix A of [RFCthis]) | Claims Set [RFCthis] |
+       +--------+--------------------------+----------------------+
+
+                         Table 1: Values for Tags
 
 6.  Security Considerations
 
@@ -432,15 +441,6 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
       establish that secure channel, as this would create a circular
       dependency.
 
-   The Verifier needs to ensure that the management of key material used
-   to establish or protect the Secure Channel is acceptable.  This may
-   include factors such as:
-
-   *  Ensuring that any permissions associated with key ownership are
-      respected in the establishment of the Secure Channel.
-
-   *  Using cryptographic algorithms appropriately.
-
 
 
 
@@ -449,6 +449,15 @@ Birkholz, et al.        Expires 5 September 2024                [Page 8]
 
 Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
+
+   The Verifier needs to ensure that the management of key material used
+   to establish or protect the Secure Channel is acceptable.  This may
+   include factors such as:
+
+   *  Ensuring that any permissions associated with key ownership are
+      respected in the establishment of the Secure Channel.
+
+   *  Using cryptographic algorithms appropriately.
 
    *  Using key material in accordance with any usage restrictions such
       as freshness or algorithm restrictions.
@@ -489,6 +498,14 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    *  The number of messages both successfully and unsuccessfully
       decrypted is used to determine when rekeying is required.
 
+
+
+
+Birkholz, et al.        Expires 5 September 2024                [Page 9]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
    Section 4.2.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
@@ -498,13 +515,6 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
    *  The number of messages both successfully and unsuccessfully
       decrypted is used to determine when rekeying is required.
-
-
-
-Birkholz, et al.        Expires 5 September 2024                [Page 9]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
 
    Section 4.3.1 of [RFC9053] contains a detailed explanation of these
    considerations.
@@ -516,6 +526,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    [IANA.cbor-tags]
               IANA, "Concise Binary Object Representation (CBOR) Tags",
               <http://www.iana.org/assignments/cbor-tags>.
+
+   [IANA.cwt] IANA, "CBOR Web Token (CWT) Claims",
+              <http://www.iana.org/assignments/cwt>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -540,6 +553,15 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
               JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
               June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
 
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 10]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
    [RFC8725]  Sheffer, Y., Hardt, D., and M. Jones, "JSON Web Token Best
               Current Practices", BCP 225, RFC 8725,
               DOI 10.17487/RFC8725, February 2020,
@@ -554,13 +576,6 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
               Data Definition Language (CDDL)", RFC 9165,
               DOI 10.17487/RFC9165, December 2021,
               <https://www.rfc-editor.org/rfc/rfc9165>.
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 10]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
 
 7.2.  Informative References
 
@@ -596,6 +611,13 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
               DOI 10.17487/RFC9052, August 2022,
               <https://www.rfc-editor.org/rfc/rfc9052>.
 
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 11]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
    [RFC9053]  Schaad, J., "CBOR Object Signing and Encryption (COSE):
               Initial Algorithms", RFC 9053, DOI 10.17487/RFC9053,
               August 2022, <https://www.rfc-editor.org/rfc/rfc9053>.
@@ -609,14 +631,6 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
               "Trusted Execution Environment Provisioning (TEEP)
               Architecture", RFC 9397, DOI 10.17487/RFC9397, July 2023,
               <https://www.rfc-editor.org/rfc/rfc9397>.
-
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 11]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
 
    [TPM2]     "Trusted Platform Module Library Specification, Family
               “2.0”, Level 00, Revision 01.59 ed., Trusted Computing
@@ -636,6 +650,29 @@ Appendix A.  CDDL
    have been built such that they also can describe [RFC7519] Claims
    sets by disabling feature "cbor" and enabling feature "json", but
    this flexibility is not the subject of the present specification.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 12]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
 
    UCCS-Untagged = Claims-Set
    UCCS-Tagged = #6.601(UCCS-Untagged)
@@ -667,17 +704,31 @@ Appendix A.  CDDL
    CBOR-ONLY<C> = C .feature "cbor"
    JC<J,C> = JSON-ONLY<J> / CBOR-ONLY<C>
 
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 12]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
-
                   Figure 1: CDDL definition for Claims-Set
 
    Specifications that define additional Claims should also supply
    additions to the $$Claims-Set-Claims socket, e.g.:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 13]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
 
    ; [RFC8747]
    $$Claims-Set-Claims //= ( 8: CWT-cnf ) ; cnf
@@ -722,19 +773,18 @@ Appendix C.  JSON Support
 
    UJCS = Claims-Set
 
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 13]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
-
 Appendix D.  EAT
 
    The following CDDL adds UCCS-format and UJCS-format tokens to EAT
    using its predefined extension points (see Section 4.2.18 (submods)
    of [I-D.ietf-rats-eat]).
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 14]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
 
    $EAT-CBOR-Tagged-Token /= UCCS-Tagged
    $EAT-CBOR-Untagged-Token /= UCCS-Untagged
@@ -778,58 +828,8 @@ Authors' Addresses
    Postfach 330440
    D-28359 Bremen
    Germany
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 14]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
-
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

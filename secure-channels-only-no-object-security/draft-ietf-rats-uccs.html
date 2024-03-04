@@ -1299,7 +1299,11 @@ procedural methods, or a combination thereof"<a href="#section-1.1-4.4.2.1" clas
 </aside>
 <p id="section-1.1-4.4.3">For the purposes of the present document, we focus on a protected communication
 channel used for conveyance that can ensure the same qualities as CWT without
-the COSE protection. Examples include conveyance via PCIe
+having the COSE protection available: mutual authentication,
+integrity protection, confidentiality.
+(Replay protection can be added by including a nonce claim such as
+Nonce (claim 10 <span>[<a href="#IANA.cwt" class="cite xref">IANA.cwt</a>]</span>).)
+Examples include conveyance via PCIe
 (Peripheral Component Interconnect Express) IDE (Integrity and Data
 Encryption), or a TLS tunnel.<a href="#section-1.1-4.4.3" class="pilcrow">¶</a></p>
 </dd>
@@ -1643,6 +1647,10 @@ determine when rekeying is required.<a href="#section-6.5-1.2.1" class="pilcrow"
 <dt id="IANA.cbor-tags">[IANA.cbor-tags]</dt>
         <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR) Tags"</span>, <span>&lt;<a href="http://www.iana.org/assignments/cbor-tags">http://www.iana.org/assignments/cbor-tags</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="IANA.cwt">[IANA.cwt]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"CBOR Web Token (CWT) Claims"</span>, <span>&lt;<a href="http://www.iana.org/assignments/cwt">http://www.iana.org/assignments/cwt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
