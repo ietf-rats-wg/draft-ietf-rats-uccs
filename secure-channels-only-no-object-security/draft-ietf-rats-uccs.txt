@@ -488,6 +488,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    *  Ensuring that appropriate protections are in place to address
       potential traffic analysis attacks.
 
+   The remaining subsections of this section highlight some aspects of
+   specific cryptography choices that are detailed further in [RFC9053].
+
 7.2.  AES-CBC_MAC
 
    *  A given key should only be used for messages of fixed or known
@@ -496,15 +499,14 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    *  Different keys should be used for authentication and encryption
       operations.
 
-   *  A mechanism to ensure that IV cannot be modified is required.
-
-
 
 
 Birkholz, et al.        Expires 5 September 2024                [Page 9]
 
 Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
+
+   *  A mechanism to ensure that IV cannot be modified is required.
 
    Section 3.2.1 of [RFC9053] contains a detailed explanation of these
    considerations.
@@ -552,8 +554,6 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
    [IANA.cwt] IANA, "CBOR Web Token (CWT) Claims",
               <http://www.iana.org/assignments/cwt>.
-
-
 
 
 
