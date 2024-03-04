@@ -236,7 +236,7 @@ UCCS can be used.
 This section describes a detailed usage scenario for UCCS in the
 context of RATS in conjunction with its attendant security
 requirements.
-The use of UCCS tag TBD601 outside of the RATS context MUST come with additional instruction leaflets and security considerations.
+The use of UCCS tag CPA601 outside of the RATS context MUST come with additional instruction leaflets and security considerations.
 
 For the purposes of this section, any RATS role can be the sender or the receiver of the UCCS.
 
@@ -288,7 +288,7 @@ Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs.)
 
 
-# Considerations for using UCCS in other RATS contexts
+# Considerations for Using UCCS in Other RATS Contexts
 
 This section discusses two additional usage scenarios for UCCS in the
 context of RATS.
@@ -324,9 +324,18 @@ the Specification Required space (1+2 size), with the present document
 as the specification reference.
 
 | Tag    | Data Item | Semantics                             |
-| TBD601 | map (Claims-Set as per {{cddl}} of \[RFCthis]) | Unprotected CWT Claims Set \[RFCthis] |
+| CPA601 | map (Claims-Set as per {{cddl}} of \[RFCthis]) | Unprotected CWT Claims Set \[RFCthis] |
 {: #tab-tag-values cols='r l l' title="Values for Tags"}
 
+[^cpa]
+
+[^cpa]: RFC-Editor: This document uses the CPA (code point allocation)
+      convention described in [I-D.bormann-cbor-draft-numbers].  For
+      each usage of the term "CPA", please remove the prefix "CPA"
+      from the indicated value and replace the residue with the value
+      assigned by IANA; perform an analogous substitution for all other
+      occurrences of the prefix "CPA" in the document.  Finally,
+      please remove this note.
 
 # Security Considerations
 
@@ -416,6 +425,14 @@ JSON.
 
 {{-cwt}} does not define CDDL for CWT Claims Sets.
 
+
+[^cpa601]
+
+[^cpa601]: RFC-Editor: This document uses the CPA (code point allocation)
+      convention described in [I-D.bormann-cbor-draft-numbers].
+      Please replace the number 601 in the code blocks below by the
+      value that has been assigned for CPA601 and remove this note.
+
 This specification proposes using the definitions in {{fig-claims-set}}
 for the CWT Claims Set defined in {{-cwt}}.  Note that these definitions
 have been built such that they also can describe {{-jwt}} Claims sets by
@@ -481,7 +498,7 @@ CWT-kid = bytes
 # Example
 
 The example CWT Claims Set from {{Appendix A.1 of -cwt}} can be turned into
-an UCCS by enclosing it with a tag number TBD601:
+a UCCS by enclosing it with a tag number CPA601:
 
 ~~~~ cbor-diag
  601(
