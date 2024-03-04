@@ -182,7 +182,8 @@ this document.
 Usage scenarios involving the conveyance of Claims, in particular
 RATS, require a standardized data definition and encoding format that
 can be transferred
-and transported using different communication channels.  As these are Claims, {{-cwt}} is
+and transported using different communication channels.  As these are
+Claims, the Claims sets defined in {{-cwt}} are
 a suitable format.  However, the way these Claims are secured depends on the deployment, the security
 capabilities of the device, as well as their software stack.  For example, a Claim may be securely
 stored and conveyed using a device's Trusted Execution Environment (TEE, see {{-teep}}) or
