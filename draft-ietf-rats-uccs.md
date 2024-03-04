@@ -497,6 +497,8 @@ CWT-kid = bytes
 
 # Example
 
+This appendix is informative.
+
 The example CWT Claims Set from {{Appendix A.1 of -cwt}} can be turned into
 a UCCS by enclosing it with a tag number CPA601:
 
@@ -521,6 +523,8 @@ a UCCS by enclosing it with a tag number CPA601:
 
 # JSON Support
 
+This appendix is informative.
+
 The above definitions, concepts and security considerations all may be applied to define a JSON-encoded Claims-Set.
 Such an unsigned Claims-Set can be referred to as a "UJCS", an "Unprotected JWT Claims Set".
 The CDDL definition in {{fig-claims-set}} can be used for a "UJCS".
@@ -530,6 +534,8 @@ UJCS = Claims-Set
 ~~~
 
 # EAT
+
+This appendix is informative.
 
 The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see {{Section 4.2.18 (submods) of -eat}}).
 
