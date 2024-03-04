@@ -244,22 +244,23 @@ Secure Channels can be transient in nature.  For the purposes of this
 specification, the mechanisms used to establish a Secure Channel are out of
 scope.
 
-As a minimum requirement in the scope of RATS Claims, the receiver MUST
+In the scope of RATS Claims, the receiver MUST
 authenticate the sender as part of the establishment of the Secure Channel.
 Furthermore, the channel MUST provide integrity of the communication between the
 communicating RATS roles.
-If data confidentiality {{-sec-glossary}} is also required, the receiving side MUST be
-authenticated as well; this can be achieved if the sender and receiver
+For data confidentiality {{-sec-glossary}}, the receiving side MUST be
+authenticated as well; this is achieved if the sender and receiver
 mutually authenticate when establishing the Secure Channel.
+The quality of the receiver's authentication and authorization will
+influence whether the sender can disclose the UCCS.
 
 The extent to which a Secure Channel can provide assurances that UCCS
 originate from a trustworthy Attesting Environment depends on the
 characteristics of both the cryptographic mechanisms used to establish the
 channel and the characteristics of the Attesting Environment itself.
-
-A Secure Channel established or maintained using weak cryptography
-may not provide the assurance required by a Relying Party of the authenticity
-and integrity of the UCCS.
+The assurance provided to a Relying Party depends on the authenticity
+and integrity properties of the Secure Channel used for conveying
+the UCCS to it.
 
 Ultimately, it is up to the receiver's policy to determine whether to accept
 a UCCS from the sender and to the type of Secure Channel it must negotiate.
@@ -268,22 +269,28 @@ to COSE, the considerations of the Secure Channel should also adhere to the poli
 configured at each of end of the Secure Channel.  However, the policy controls
 and definitions are out of scope for this document.
 
-Where the security assurance required of an Attesting Environment by a
-Relying Party requires it, the Attesting Environment SHOULD be implemented
-using techniques designed to provide enhanced protection from an attacker
-wishing to tamper with or forge UCCS.  A possible approach might be to
-implement the Attesting Environment in a hardened environment such as a
-TEE {{-teep}} or a TPM {{TPM2}}.
+Where an Attesting Environment serves as an endpoint of a Secure
+Channel used to convey a UCCS, the security assurance required of that
+Attesting Environment by a Relying Party generally calls for the
+Attesting Environment to be implemented using techniques designed to
+provide enhanced protection from an attacker wishing to tamper with or
+forge UCCS originating from that Attesting Environment.
+A possible approach might be to implement the Attesting Environment in
+a hardened environment such as a TEE {{-teep}} or a TPM {{TPM2}}.
 
 When UCCS emerge from the Secure Channel and into the receiver, the security
 properties of the secure channel no longer protect the UCCS, which now are subject to the same security properties
 as any other unprotected data in the Verifier environment.
 If the receiver subsequently forwards UCCS, they are treated as though they originated within the receiver.
 
-As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens) of -eat}}), the Secure
+The Secure Channel context does not govern fully formed CWTs in the
+same way it governs UCCS.
+As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens)
+of -eat}}), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
-Effectively, the COSE envelope of a CWT (or a nested EAT) shields the CWT Claims Set from the
-endorsement of the secure channel.  (Note that EAT might add a nested UCCS
+Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
+CWT Claims Set from the endorsement of the secure channel.
+(Note that EAT might add a nested UCCS
 Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs.)
 
