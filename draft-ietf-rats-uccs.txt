@@ -5,12 +5,12 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                           J. O'Donoghue
-Expires: 19 July 2024                         Qualcomm Technologies Inc.
+Expires: 5 September 2024                     Qualcomm Technologies Inc.
                                                            N. Cam-Winget
                                                            Cisco Systems
                                                               C. Bormann
                                                   Universität Bremen TZI
-                                                         16 January 2024
+                                                            4 March 2024
 
 
                A CBOR Tag for Unprotected CWT Claims Sets
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Birkholz, et al.          Expires 19 July 2024                  [Page 1]
+Birkholz, et al.        Expires 5 September 2024                [Page 1]
 
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
    Internet-Drafts are draft documents valid for a maximum of six months
@@ -63,7 +63,7 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 July 2024.
+   This Internet-Draft will expire on 5 September 2024.
 
 Copyright Notice
 
@@ -85,33 +85,33 @@ Table of Contents
      1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Deployment and Usage of UCCS  . . . . . . . . . . . . . . . .   4
    3.  Characteristics of a Secure Channel . . . . . . . . . . . . .   5
-   4.  UCCS and Remote Attestation Procedures (RATS) . . . . . . . .   5
-     4.1.  Conceptual Messages Conveyance  . . . . . . . . . . . . .   5
-     4.2.  Delegated Attestation . . . . . . . . . . . . . . . . . .   7
-     4.3.  Privacy Preservation  . . . . . . . . . . . . . . . . . .   7
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-     6.1.  General Considerations  . . . . . . . . . . . . . . . . .   8
-     6.2.  AES-CBC_MAC . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.3.  AES-GCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.4.  AES-CCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .  10
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  11
-   Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  12
-   Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  14
-   Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  14
-   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  14
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
+   4.  UCCS in RATS Conceptual Message Conveyance  . . . . . . . . .   5
+   5.  Considerations for Using UCCS in Other RATS Contexts  . . . .   7
+     5.1.  Delegated Attestation . . . . . . . . . . . . . . . . . .   7
+     5.2.  Privacy Preservation  . . . . . . . . . . . . . . . . . .   7
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+     7.1.  General Considerations  . . . . . . . . . . . . . . . . .   9
+     7.2.  AES-CBC_MAC . . . . . . . . . . . . . . . . . . . . . . .   9
+     7.3.  AES-GCM . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     7.4.  AES-CCM . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     7.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .  10
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  11
+   Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  13
+   Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  15
+   Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  15
+   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  16
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  16
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
 
-Birkholz, et al.          Expires 19 July 2024                  [Page 2]
+Birkholz, et al.        Expires 5 September 2024                [Page 2]
 
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 1.  Introduction
@@ -136,7 +136,8 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    authentication, the party that did not authenticate may be in a
    position to send authentication information through this channel that
    allows the already authenticated party to authenticate the other
-   party.
+   party; this effectively turns the channel into a mutually secured
+   channel.
 
    This specification allocates a CBOR tag to mark Unprotected CWT
    Claims Sets (UCCS) as such and discusses conditions for its proper
@@ -164,10 +165,9 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
 
-
-Birkholz, et al.          Expires 19 July 2024                  [Page 3]
+Birkholz, et al.        Expires 5 September 2024                [Page 3]
 
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
    UCCS:  Unprotected CWT Claims Set(s); CBOR map(s) of Claims as
@@ -186,13 +186,12 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
       For the purposes of the present document, we focus on a protected
       communication channel used for conveyance that can ensure the same
-      qualities as CWT without the COSE protection.  Examples include
-      conveyance via PCIe (Peripheral Component Interconnect Express)
-      IDE (Integrity and Data Encryption), a TLS tunnel, or other object
-      security than COSE, such as CMS or X.509 v3 certificates.  Note
-      that this means that, in specific cases, the Secure Channel as
-      defined here does not itself provide mutual authentication.  See
-      Section 3.
+      qualities as CWT without having the COSE protection available:
+      mutual authentication, integrity protection, confidentiality.
+      (Replay protection can be added by including a nonce claim such as
+      Nonce (claim 10 [IANA.cwt]).)  Examples include conveyance via
+      PCIe (Peripheral Component Interconnect Express) IDE (Integrity
+      and Data Encryption), or a TLS tunnel.
 
    All terms referenced or defined in this section are capitalized in
    the remainder of this document.
@@ -208,27 +207,27 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    Usage scenarios involving the conveyance of Claims, in particular
    RATS, require a standardized data definition and encoding format that
    can be transferred and transported using different communication
-   channels.  As these are Claims, [RFC8392] is a suitable format.
-   However, the way these Claims are secured depends on the deployment,
-   the security capabilities of the device, as well as their software
-   stack.  For example, a Claim may be securely stored and conveyed
-   using a device's Trusted Execution Environment (TEE, see [RFC9397])
-   or a Trusted Platform Module (TPM, see [TPM2]).  Especially in some
-   resource constrained environments, the same process that provides the
-   secure communication transport is also the delegate to compose the
-   Claim to be conveyed.  Whether it is a transfer or transport, a
-   Secure Channel is presumed to be used for conveying such UCCS.  The
+   channels.  As these are Claims, the Claims sets defined in [RFC8392]
+   are a suitable format.  However, the way these Claims are secured
+   depends on the deployment, the security capabilities of the device,
+   as well as their software stack.  For example, a Claim may be
+   securely stored and conveyed using a device's Trusted Execution
+   Environment (TEE, see [RFC9397]) or a Trusted Platform Module (TPM,
+   see [TPM2]).  Especially in some resource constrained environments,
+   the same process that provides the secure communication transport is
+   also the delegate to compose the Claim to be conveyed.  Whether it is
+   a transfer or transport, a Secure Channel is presumed to be used for
+   conveying such UCCS.  The following sections elaborate on Secure
 
 
 
-Birkholz, et al.          Expires 19 July 2024                  [Page 4]
+Birkholz, et al.        Expires 5 September 2024                [Page 4]
 
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
-   following sections elaborate on Secure Channel characteristics in
-   general and further describe RATS usage scenarios and corresponding
-   requirements for UCCS deployment.
+   Channel characteristics in general and further describe RATS usage
+   scenarios and corresponding requirements for UCCS deployment.
 
 3.  Characteristics of a Secure Channel
 
@@ -252,9 +251,12 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    establishes the (identity and thus) authenticity of one or both ends
    of the communication.  The session key can then be used to provide
    confidentiality and integrity of the transfer of information inside
-   the Secure Channel.  A well-known example of a such a Secure Channel
-   setup protocol is the TLS [RFC8446] handshake; the TLS record
-   protocol can then be used for secure conveyance.
+   the Secure Channel.  (Where the handshake did not provide a mutually
+   secure channel, further authentication information can be conveyed by
+   the party not yet authenticated, leading to a mutually secured
+   channel.)  A well-known example of a such a Secure Channel setup
+   protocol is the TLS [RFC8446] handshake; the TLS record protocol can
+   then be used for secure conveyance.
 
    As UCCS were initially created for use in RATS Secure Channels, the
    following section provides a discussion of their use in these
@@ -262,47 +264,45 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    UCCS, similar considerations need to be documented before UCCS can be
    used.
 
-4.  UCCS and Remote Attestation Procedures (RATS)
+4.  UCCS in RATS Conceptual Message Conveyance
 
-   This section describes three detailed usage scenarios for UCCS in the
-   context of RATS.
-
-4.1.  Conceptual Messages Conveyance
+   This section describes a detailed usage scenario for UCCS in the
+   context of RATS in conjunction with its attendant security
+   requirements.  The use of UCCS tag CPA601 outside of the RATS context
+   MUST come with additional instruction leaflets and security
+   considerations.
 
    For the purposes of this section, any RATS role can be the sender or
    the receiver of the UCCS.
 
 
 
-
-
-
-Birkholz, et al.          Expires 19 July 2024                  [Page 5]
+Birkholz, et al.        Expires 5 September 2024                [Page 5]
 
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
    Secure Channels can be transient in nature.  For the purposes of this
    specification, the mechanisms used to establish a Secure Channel are
    out of scope.
 
-   As a minimum requirement in the scope of RATS Claims, the receiver
-   MUST authenticate the sender as part of the establishment of the
-   Secure Channel.  Furthermore, the channel MUST provide integrity of
-   the communication between the communicating RATS roles.  If data
-   confidentiality [RFC4949] is also required, the receiving side MUST
-   be authenticated as well; this can be achieved if the sender and
-   receiver mutually authenticate when establishing the Secure Channel.
+   In the scope of RATS Claims, the receiver MUST authenticate the
+   sender as part of the establishment of the Secure Channel.
+   Furthermore, the channel MUST provide integrity of the communication
+   between the communicating RATS roles.  For data confidentiality
+   [RFC4949], the receiving side MUST be authenticated as well; this is
+   achieved if the sender and receiver mutually authenticate when
+   establishing the Secure Channel.  The quality of the receiver's
+   authentication and authorization will influence whether the sender
+   can disclose the UCCS.
 
    The extent to which a Secure Channel can provide assurances that UCCS
    originate from a trustworthy Attesting Environment depends on the
    characteristics of both the cryptographic mechanisms used to
    establish the channel and the characteristics of the Attesting
-   Environment itself.
-
-   A Secure Channel established or maintained using weak cryptography
-   may not provide the assurance required by a Relying Party of the
-   authenticity and integrity of the UCCS.
+   Environment itself.  The assurance provided to a Relying Party
+   depends on the authenticity and integrity properties of the Secure
+   Channel used for conveying the UCCS to it.
 
    Ultimately, it is up to the receiver's policy to determine whether to
    accept a UCCS from the sender and to the type of Secure Channel it
@@ -312,12 +312,14 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    each of end of the Secure Channel.  However, the policy controls and
    definitions are out of scope for this document.
 
-   Where the security assurance required of an Attesting Environment by
-   a Relying Party requires it, the Attesting Environment SHOULD be
-   implemented using techniques designed to provide enhanced protection
-   from an attacker wishing to tamper with or forge UCCS.  A possible
-   approach might be to implement the Attesting Environment in a
-   hardened environment such as a TEE [RFC9397] or a TPM [TPM2].
+   Where an Attesting Environment serves as an endpoint of a Secure
+   Channel used to convey a UCCS, the security assurance required of
+   that Attesting Environment by a Relying Party generally calls for the
+   Attesting Environment to be implemented using techniques designed to
+   provide enhanced protection from an attacker wishing to tamper with
+   or forge UCCS originating from that Attesting Environment.  A
+   possible approach might be to implement the Attesting Environment in
+   a hardened environment such as a TEE [RFC9397] or a TPM [TPM2].
 
    When UCCS emerge from the Secure Channel and into the receiver, the
    security properties of the secure channel no longer protect the UCCS,
@@ -326,36 +328,44 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    subsequently forwards UCCS, they are treated as though they
    originated within the receiver.
 
-   As with EATs nested in other EATs (Section 4.2.18.3 (Nested Tokens)
-   of [I-D.ietf-rats-eat]), the Secure Channel does not endorse fully
-   formed CWTs transferred through it.  Effectively, the COSE envelope
-   of a CWT (or a nested EAT) shields the CWT Claims Set from the
 
 
 
-Birkholz, et al.          Expires 19 July 2024                  [Page 6]
+
+
+Birkholz, et al.        Expires 5 September 2024                [Page 6]
 
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
-   endorsement of the secure channel.  (Note that EAT might add a nested
-   UCCS Claim, and this statement does not apply to UCCS nested into
-   UCCS, only to fully formed CWTs.)
+   The Secure Channel context does not govern fully formed CWTs in the
+   same way it governs UCCS.  As with EATs nested in other EATs
+   (Section 4.2.18.3 (Nested Tokens) of [I-D.ietf-rats-eat]), the Secure
+   Channel does not endorse fully formed CWTs transferred through it.
+   Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
+   CWT Claims Set from the endorsement of the secure channel.  (Note
+   that EAT might add a nested UCCS Claim, and this statement does not
+   apply to UCCS nested into UCCS, only to fully formed CWTs.)
 
-4.2.  Delegated Attestation
+5.  Considerations for Using UCCS in Other RATS Contexts
+
+   This section discusses two additional usage scenarios for UCCS in the
+   context of RATS.
+
+5.1.  Delegated Attestation
 
    Another usage scenario is that of a sub-Attester that has no signing
    keys (for example, to keep the implementation complexity to a
-   minimum) and has a Secure Channel, such as a local IPC, to interact
-   with a lead Attester (see Composite Device, Section 3.3 of
-   [RFC9334]).  The sub-Attester produces a UCCS with the required CWT
-   Claims Set and sends the UCCS through the Secure Channel to the lead
-   Attester.  The lead Attester then computes a cryptographic hash of
-   the UCCS and protects that hash using its signing key for Evidence,
-   for example, using a Detached-Submodule-Digest or Detached EAT Bundle
-   (Section 5 of [I-D.ietf-rats-eat]).
+   minimum) and has a Secure Channel, such as local inter-process
+   communication, to interact with a lead Attester (see Composite
+   Device, Section 3.3 of [RFC9334]).  The sub-Attester produces a UCCS
+   with the required CWT Claims Set and sends the UCCS through the
+   Secure Channel to the lead Attester.  The lead Attester then computes
+   a cryptographic hash of the UCCS and protects that hash using its
+   signing key for Evidence, for example, using a Detached-Submodule-
+   Digest or Detached EAT Bundle (Section 5 of [I-D.ietf-rats-eat]).
 
-4.3.  Privacy Preservation
+5.2.  Privacy Preservation
 
    A Secure Channel which preserves the privacy of the Attester may
    provide security properties equivalent to COSE, but only inside the
@@ -374,36 +384,42 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    physical sensor in a factory) and unacceptable in others (e.g., if
    the Attesting Environment is a user device belonging to a child).
 
-5.  IANA Considerations
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024                [Page 7]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
+6.  IANA Considerations
 
    In the CBOR Tags registry [IANA.cbor-tags] as defined in Section 9.2
    of [RFC8949], IANA is requested to allocate the tag in Table 1 from
    the Specification Required space (1+2 size), with the present
    document as the specification reference.
 
-
-
-
-
-
-
-
-
-Birkholz, et al.          Expires 19 July 2024                  [Page 7]
-
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
-
-
        +========+==========================+======================+
        |    Tag | Data Item                | Semantics            |
        +========+==========================+======================+
-       | TBD601 | map (Claims-Set as per   | Unprotected CWT      |
+       | CPA601 | map (Claims-Set as per   | Unprotected CWT      |
        |        | Appendix A of [RFCthis]) | Claims Set [RFCthis] |
        +--------+--------------------------+----------------------+
 
                          Table 1: Values for Tags
 
-6.  Security Considerations
+
+   // RFC-Editor: This document uses the CPA (code point allocation)
+   // convention described in [I-D.bormann-cbor-draft-numbers].  For
+   // each usage of the term "CPA", please remove the prefix "CPA" from
+   // the indicated value and replace the residue with the value
+   // assigned by IANA; perform an analogous substitution for all other
+   // occurrences of the prefix "CPA" in the document.  Finally, please
+   // remove this note.
+
+7.  Security Considerations
 
    The security considerations of [RFC8949] apply.  The security
    considerations of [RFC8392] need to be applied analogously, replacing
@@ -416,9 +432,25 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    not covered by this document.  The UCCS specification -- and the use
    of the UCCS CBOR tag, correspondingly -- is not intended for use in a
    scope where a scope-specific security consideration discussion has
-   not been conducted, vetted and approved for that use.
+   not been conducted, vetted and approved for that use.  In order to be
+   able to use the UCCS CBOR tag in another such scope, the secure
+   channel and/or the application protocol (e.g., TLS and the protocol
+   identified by ALPN) MUST specify the roles of the endpoints in a
+   fashion that the security properties of conveying UCCS via a Secure
+   Channel between the roles are well-defined.
 
-6.1.  General Considerations
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024                [Page 8]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
+7.1.  General Considerations
 
    Implementations of Secure Channels are often separate from the
    application logic that has security requirements on them.  Similar
@@ -441,15 +473,6 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
       establish that secure channel, as this would create a circular
       dependency.
 
-
-
-
-
-Birkholz, et al.          Expires 19 July 2024                  [Page 8]
-
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
-
-
    The Verifier needs to ensure that the management of key material used
    to establish or protect the Secure Channel is acceptable.  This may
    include factors such as:
@@ -465,7 +488,10 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    *  Ensuring that appropriate protections are in place to address
       potential traffic analysis attacks.
 
-6.2.  AES-CBC_MAC
+   The remaining subsections of this section highlight some aspects of
+   specific cryptography choices that are detailed further in [RFC9053].
+
+7.2.  AES-CBC_MAC
 
    *  A given key should only be used for messages of fixed or known
       length.
@@ -473,12 +499,19 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    *  Different keys should be used for authentication and encryption
       operations.
 
+
+
+Birkholz, et al.        Expires 5 September 2024                [Page 9]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
    *  A mechanism to ensure that IV cannot be modified is required.
 
    Section 3.2.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-6.3.  AES-GCM
+7.3.  AES-GCM
 
    *  The key and nonce pair is unique for every encrypted message.
 
@@ -488,7 +521,7 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    Section 4.1.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-6.4.  AES-CCM
+7.4.  AES-CCM
 
    *  The key and nonce pair is unique for every encrypted message.
 
@@ -498,18 +531,10 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    *  The number of messages both successfully and unsuccessfully
       decrypted is used to determine when rekeying is required.
 
-
-
-
-Birkholz, et al.          Expires 19 July 2024                  [Page 9]
-
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
-
-
    Section 4.2.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-6.5.  ChaCha20 and Poly1305
+7.5.  ChaCha20 and Poly1305
 
    *  The nonce is unique for every encrypted message.
 
@@ -519,13 +544,23 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
    Section 4.3.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [IANA.cbor-tags]
               IANA, "Concise Binary Object Representation (CBOR) Tags",
               <http://www.iana.org/assignments/cbor-tags>.
+
+   [IANA.cwt] IANA, "CBOR Web Token (CWT) Claims",
+              <http://www.iana.org/assignments/cwt>.
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 10]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -555,13 +590,6 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
               DOI 10.17487/RFC8725, February 2020,
               <https://www.rfc-editor.org/rfc/rfc8725>.
 
-
-
-Birkholz, et al.          Expires 19 July 2024                 [Page 10]
-
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
-
-
    [RFC8949]  Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", STD 94, RFC 8949,
               DOI 10.17487/RFC8949, December 2020,
@@ -572,7 +600,7 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
               DOI 10.17487/RFC9165, December 2021,
               <https://www.rfc-editor.org/rfc/rfc9165>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
@@ -580,6 +608,15 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
               Progress, Internet-Draft, draft-ietf-rats-eat-25, 15
               January 2024, <https://datatracker.ietf.org/doc/html/
               draft-ietf-rats-eat-25>.
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 11]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
 
    [NIST-SP800-90Ar1]
               Barker, E. and J. Kelsey, "Recommendation for Random
@@ -610,14 +647,6 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
               Initial Algorithms", RFC 9053, DOI 10.17487/RFC9053,
               August 2022, <https://www.rfc-editor.org/rfc/rfc9053>.
 
-
-
-
-Birkholz, et al.          Expires 19 July 2024                 [Page 11]
-
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
-
-
    [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
               W. Pan, "Remote ATtestation procedureS (RATS)
               Architecture", RFC 9334, DOI 10.17487/RFC9334, January
@@ -632,6 +661,19 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
               “2.0”, Level 00, Revision 01.59 ed., Trusted Computing
               Group", 2019.
 
+
+
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 12]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
 Appendix A.  CDDL
 
    The Concise Data Definition Language (CDDL), as defined in [RFC8610]
@@ -640,6 +682,12 @@ Appendix A.  CDDL
    JSON.
 
    [RFC8392] does not define CDDL for CWT Claims Sets.
+
+
+   // RFC-Editor: This document uses the CPA (code point allocation)
+   // convention described in [I-D.bormann-cbor-draft-numbers].  Please
+   // replace the number 601 in the code blocks below by the value that
+   // has been assigned for CPA601 and remove this note.
 
    This specification proposes using the definitions in Figure 1 for the
    CWT Claims Set defined in [RFC8392].  Note that these definitions
@@ -669,9 +717,17 @@ Appendix A.  CDDL
 
 
 
-Birkholz, et al.          Expires 19 July 2024                 [Page 12]
+
+
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 13]
 
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
    UCCS-Untagged = Claims-Set
@@ -725,9 +781,9 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 
 
-Birkholz, et al.          Expires 19 July 2024                 [Page 13]
+Birkholz, et al.        Expires 5 September 2024               [Page 14]
 
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
    ; [RFC8747]
@@ -749,8 +805,10 @@ Internet-Draft         Unprotected CWT Claims Sets          January 2024
 
 Appendix B.  Example
 
+   This appendix is informative.
+
    The example CWT Claims Set from Appendix A.1 of [RFC8392] can be
-   turned into an UCCS by enclosing it with a tag number TBD601:
+   turned into a UCCS by enclosing it with a tag number CPA601:
 
     601(
       {
@@ -766,6 +824,8 @@ Appendix B.  Example
 
 Appendix C.  JSON Support
 
+   This appendix is informative.
+
    The above definitions, concepts and security considerations all may
    be applied to define a JSON-encoded Claims-Set. Such an unsigned
    Claims-Set can be referred to as a "UJCS", an "Unprotected JWT Claims
@@ -773,18 +833,22 @@ Appendix C.  JSON Support
 
    UJCS = Claims-Set
 
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 15]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
 Appendix D.  EAT
+
+   This appendix is informative.
 
    The following CDDL adds UCCS-format and UJCS-format tokens to EAT
    using its predefined extension points (see Section 4.2.18 (submods)
    of [I-D.ietf-rats-eat]).
-
-
-
-Birkholz, et al.          Expires 19 July 2024                 [Page 14]
-
-Internet-Draft         Unprotected CWT Claims Sets          January 2024
-
 
    $EAT-CBOR-Tagged-Token /= UCCS-Tagged
    $EAT-CBOR-Untagged-Token /= UCCS-Untagged
@@ -823,6 +887,17 @@ Authors' Addresses
    Email: ncamwing@cisco.com
 
 
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 16]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
    Carsten Bormann
    Universität Bremen TZI
    Postfach 330440
@@ -837,4 +912,41 @@ Authors' Addresses
 
 
 
-Birkholz, et al.          Expires 19 July 2024                 [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 17]
