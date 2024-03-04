@@ -119,7 +119,8 @@ provided by COSE, creating a use case for unprotected CWT Claims Sets.
 Similarly, if there is one-way authentication, the party that did not
 authenticate may be in a position to send authentication information through
 this channel that allows the already authenticated party to authenticate the
-other party.
+other party; this effectively turns the channel into a mutually
+secured channel.
 
 This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 (UCCS) as such and discusses conditions for its proper use in the scope of
@@ -162,10 +163,9 @@ Secure Channel:
 
   For the purposes of the present document, we focus on a protected communication
   channel used for conveyance that can ensure the same qualities as CWT without
-  the COSE protection. Examples include conveyance via PCIe (Peripheral Component Interconnect Express) IDE (Integrity and Data Encryption), a TLS tunnel,
-  or other object security than COSE, such as CMS or X.509 v3 certificates.
-  Note that this means that, in specific cases, the Secure Channel as defined here
-  does not itself provide mutual authentication.  See {{secchan}}.
+  the COSE protection. Examples include conveyance via PCIe
+  (Peripheral Component Interconnect Express) IDE (Integrity and Data
+  Encryption), or a TLS tunnel.
 
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
@@ -211,7 +211,11 @@ derives a session key, where the handshake protocol establishes the
 (identity and thus) authenticity of one or both ends of the communication.
 The session key can
 then be used to provide confidentiality and integrity of the transfer of
-information inside the Secure Channel.  A well-known example of a such a
+information inside the Secure Channel.
+(Where the handshake did not provide a mutually secure channel,
+further authentication information can be conveyed by the party not
+yet authenticated, leading to a mutually secured channel.)
+A well-known example of a such a
 Secure Channel setup protocol is the TLS {{-tls}} handshake; the
 TLS record protocol can then be used for secure conveyance.
 
