@@ -85,20 +85,20 @@ Table of Contents
      1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Deployment and Usage of UCCS  . . . . . . . . . . . . . . . .   4
    3.  Characteristics of a Secure Channel . . . . . . . . . . . . .   5
-   4.  UCCS and Remote Attestation Procedures (RATS) . . . . . . . .   5
-     4.1.  Conceptual Messages Conveyance  . . . . . . . . . . . . .   5
-     4.2.  Delegated Attestation . . . . . . . . . . . . . . . . . .   7
-     4.3.  Privacy Preservation  . . . . . . . . . . . . . . . . . .   7
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-     6.1.  General Considerations  . . . . . . . . . . . . . . . . .   8
-     6.2.  AES-CBC_MAC . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.3.  AES-GCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.4.  AES-CCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .  10
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  11
+   4.  UCCS in RATS Conceptual Message Conveyance  . . . . . . . . .   5
+   5.  Considerations for using UCCS in other RATS contexts  . . . .   7
+     5.1.  Delegated Attestation . . . . . . . . . . . . . . . . . .   7
+     5.2.  Privacy Preservation  . . . . . . . . . . . . . . . . . .   7
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+     7.1.  General Considerations  . . . . . . . . . . . . . . . . .   8
+     7.2.  AES-CBC_MAC . . . . . . . . . . . . . . . . . . . . . . .   9
+     7.3.  AES-GCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
+     7.4.  AES-CCM . . . . . . . . . . . . . . . . . . . . . . . . .   9
+     7.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .  10
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  11
    Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  12
    Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  14
    Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  14
@@ -264,16 +264,16 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    UCCS, similar considerations need to be documented before UCCS can be
    used.
 
-4.  UCCS and Remote Attestation Procedures (RATS)
+4.  UCCS in RATS Conceptual Message Conveyance
 
-   This section describes three detailed usage scenarios for UCCS in the
-   context of RATS.
-
-4.1.  Conceptual Messages Conveyance
+   This section describes a detailed usage scenario for UCCS in the
+   context of RATS in conjunction with its attendant security
+   requirements.  The use of UCCS tag TBD601 outside of the RATS context
+   MUST come with additional instruction leaflets and security
+   considerations.
 
    For the purposes of this section, any RATS role can be the sender or
    the receiver of the UCCS.
-
 
 
 
@@ -342,7 +342,12 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    UCCS Claim, and this statement does not apply to UCCS nested into
    UCCS, only to fully formed CWTs.)
 
-4.2.  Delegated Attestation
+5.  Considerations for using UCCS in other RATS contexts
+
+   This section discusses two additional usage scenarios for UCCS in the
+   context of RATS.
+
+5.1.  Delegated Attestation
 
    Another usage scenario is that of a sub-Attester that has no signing
    keys (for example, to keep the implementation complexity to a
@@ -355,7 +360,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    for example, using a Detached-Submodule-Digest or Detached EAT Bundle
    (Section 5 of [I-D.ietf-rats-eat]).
 
-4.3.  Privacy Preservation
+5.2.  Privacy Preservation
 
    A Secure Channel which preserves the privacy of the Attester may
    provide security properties equivalent to COSE, but only inside the
@@ -374,17 +379,12 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    physical sensor in a factory) and unacceptable in others (e.g., if
    the Attesting Environment is a user device belonging to a child).
 
-5.  IANA Considerations
+6.  IANA Considerations
 
    In the CBOR Tags registry [IANA.cbor-tags] as defined in Section 9.2
    of [RFC8949], IANA is requested to allocate the tag in Table 1 from
    the Specification Required space (1+2 size), with the present
    document as the specification reference.
-
-
-
-
-
 
 
 
@@ -403,7 +403,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
                          Table 1: Values for Tags
 
-6.  Security Considerations
+7.  Security Considerations
 
    The security considerations of [RFC8949] apply.  The security
    considerations of [RFC8392] need to be applied analogously, replacing
@@ -418,7 +418,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    scope where a scope-specific security consideration discussion has
    not been conducted, vetted and approved for that use.
 
-6.1.  General Considerations
+7.1.  General Considerations
 
    Implementations of Secure Channels are often separate from the
    application logic that has security requirements on them.  Similar
@@ -465,7 +465,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    *  Ensuring that appropriate protections are in place to address
       potential traffic analysis attacks.
 
-6.2.  AES-CBC_MAC
+7.2.  AES-CBC_MAC
 
    *  A given key should only be used for messages of fixed or known
       length.
@@ -478,7 +478,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    Section 3.2.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-6.3.  AES-GCM
+7.3.  AES-GCM
 
    *  The key and nonce pair is unique for every encrypted message.
 
@@ -488,7 +488,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    Section 4.1.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-6.4.  AES-CCM
+7.4.  AES-CCM
 
    *  The key and nonce pair is unique for every encrypted message.
 
@@ -509,7 +509,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    Section 4.2.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-6.5.  ChaCha20 and Poly1305
+7.5.  ChaCha20 and Poly1305
 
    *  The nonce is unique for every encrypted message.
 
@@ -519,9 +519,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    Section 4.3.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [IANA.cbor-tags]
               IANA, "Concise Binary Object Representation (CBOR) Tags",
@@ -577,7 +577,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
               DOI 10.17487/RFC9165, December 2021,
               <https://www.rfc-editor.org/rfc/rfc9165>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
