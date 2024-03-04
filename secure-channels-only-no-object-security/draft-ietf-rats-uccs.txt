@@ -102,7 +102,7 @@ Table of Contents
    Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  12
    Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  14
    Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  14
-   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  14
+   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  15
    Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
@@ -749,6 +749,8 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 Appendix B.  Example
 
+   This appendix is informative.
+
    The example CWT Claims Set from Appendix A.1 of [RFC8392] can be
    turned into a UCCS by enclosing it with a tag number CPA601:
 
@@ -766,6 +768,8 @@ Appendix B.  Example
 
 Appendix C.  JSON Support
 
+   This appendix is informative.
+
    The above definitions, concepts and security considerations all may
    be applied to define a JSON-encoded Claims-Set. Such an unsigned
    Claims-Set can be referred to as a "UJCS", an "Unprotected JWT Claims
@@ -773,11 +777,7 @@ Appendix C.  JSON Support
 
    UJCS = Claims-Set
 
-Appendix D.  EAT
 
-   The following CDDL adds UCCS-format and UJCS-format tokens to EAT
-   using its predefined extension points (see Section 4.2.18 (submods)
-   of [I-D.ietf-rats-eat]).
 
 
 
@@ -785,6 +785,14 @@ Birkholz, et al.        Expires 5 September 2024               [Page 14]
 
 Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
+
+Appendix D.  EAT
+
+   This appendix is informative.
+
+   The following CDDL adds UCCS-format and UJCS-format tokens to EAT
+   using its predefined extension points (see Section 4.2.18 (submods)
+   of [I-D.ietf-rats-eat]).
 
    $EAT-CBOR-Tagged-Token /= UCCS-Tagged
    $EAT-CBOR-Untagged-Token /= UCCS-Untagged
@@ -823,6 +831,17 @@ Authors' Addresses
    Email: ncamwing@cisco.com
 
 
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 15]
+
+Internet-Draft         Unprotected CWT Claims Sets            March 2024
+
+
    Carsten Bormann
    Universität Bremen TZI
    Postfach 330440
@@ -837,4 +856,41 @@ Authors' Addresses
 
 
 
-Birkholz, et al.        Expires 5 September 2024               [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.        Expires 5 September 2024               [Page 16]
