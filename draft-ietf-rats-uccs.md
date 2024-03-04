@@ -362,6 +362,11 @@ RATS are not covered by this document.  The UCCS specification -- and the
 use of the UCCS CBOR tag, correspondingly -- is not intended for use in a
 scope where a scope-specific security consideration discussion has not
 been conducted, vetted and approved for that use.
+In order to be able to use the UCCS CBOR tag in another such scope,
+the secure channel and/or the application protocol (e.g., TLS and the
+protocol identified by ALPN) MUST specify the roles of the endpoints
+in a fashion that the security properties of conveying UCCS via a
+Secure Channel between the roles are well-defined.
 
 ## General Considerations
 
