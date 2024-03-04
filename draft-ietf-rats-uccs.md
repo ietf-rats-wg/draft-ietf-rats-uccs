@@ -60,6 +60,7 @@ normative:
   RFC8725: jwtbcp
   RFC8392: cwt
   IANA.cbor-tags: tags
+  IANA.cwt:
   RFC8610: cddl
   RFC9165: control1
 
@@ -163,7 +164,11 @@ Secure Channel:
 
   For the purposes of the present document, we focus on a protected communication
   channel used for conveyance that can ensure the same qualities as CWT without
-  the COSE protection. Examples include conveyance via PCIe
+  having the COSE protection available: mutual authentication,
+  integrity protection, confidentiality.
+  (Replay protection can be added by including a nonce claim such as
+  Nonce (claim 10 {{IANA.cwt}}).)
+  Examples include conveyance via PCIe
   (Peripheral Component Interconnect Express) IDE (Integrity and Data
   Encryption), or a TLS tunnel.
 
