@@ -1164,7 +1164,7 @@ This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-uccs-in-rats-conceptual-mes" class="internal xref">UCCS in RATS Conceptual Message Conveyance</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-considerations-for-using-uc" class="internal xref">Considerations for using UCCS in other RATS contexts</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-considerations-for-using-uc" class="internal xref">Considerations for Using UCCS in Other RATS Contexts</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-delegated-attestation" class="internal xref">Delegated Attestation</a></p>
@@ -1385,7 +1385,7 @@ UCCS can be used.<a href="#section-3-5" class="pilcrow">¶</a></p>
 <p id="section-4-1">This section describes a detailed usage scenario for UCCS in the
 context of RATS in conjunction with its attendant security
 requirements.
-The use of UCCS tag TBD601 outside of the RATS context <span class="bcp14">MUST</span> come with additional instruction leaflets and security considerations.<a href="#section-4-1" class="pilcrow">¶</a></p>
+The use of UCCS tag CPA601 outside of the RATS context <span class="bcp14">MUST</span> come with additional instruction leaflets and security considerations.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">For the purposes of this section, any RATS role can be the sender or the receiver of the UCCS.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">Secure Channels can be transient in nature.  For the purposes of this
 specification, the mechanisms used to establish a Secure Channel are out of
@@ -1431,7 +1431,7 @@ fully formed CWTs.)<a href="#section-4-10" class="pilcrow">¶</a></p>
 <div id="considerations-for-using-uccs-in-other-rats-contexts">
 <section id="section-5">
       <h2 id="name-considerations-for-using-uc">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-considerations-for-using-uc" class="section-name selfRef">Considerations for using UCCS in other RATS contexts</a>
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-considerations-for-using-uc" class="section-name selfRef">Considerations for Using UCCS in Other RATS Contexts</a>
       </h2>
 <p id="section-5-1">This section discusses two additional usage scenarios for UCCS in the
 context of RATS.<a href="#section-5-1" class="pilcrow">¶</a></p>
@@ -1490,13 +1490,20 @@ as the specification reference.<a href="#section-6-1" class="pilcrow">¶</a></p>
         </thead>
         <tbody>
           <tr>
-            <td class="text-right" rowspan="1" colspan="1">TBD601</td>
+            <td class="text-right" rowspan="1" colspan="1">CPA601</td>
             <td class="text-left" rowspan="1" colspan="1">map (Claims-Set as per <a href="#cddl" class="auto internal xref">Appendix A</a> of [RFCthis])</td>
             <td class="text-left" rowspan="1" colspan="1">Unprotected CWT Claims Set [RFCthis]</td>
           </tr>
         </tbody>
       </table>
 </div>
+<p id="section-6-3"><span class="cref" id="cpa">RFC-Editor: This document uses the CPA (code point allocation)
+  convention described in [I-D.bormann-cbor-draft-numbers].  For
+  each usage of the term "CPA", please remove the prefix "CPA"
+  from the indicated value and replace the residue with the value
+  assigned by IANA; perform an analogous substitution for all other
+  occurrences of the prefix "CPA" in the document.  Finally,
+  please remove this note.</span><a href="#section-6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
@@ -1753,14 +1760,18 @@ determine when rekeying is required.<a href="#section-7.5-1.2.1" class="pilcrow"
 structures for protocol messages and data formats that use CBOR or
 JSON.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2"><span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span> does not define CDDL for CWT Claims Sets.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
-<p id="appendix-A-3">This specification proposes using the definitions in <a href="#fig-claims-set" class="auto internal xref">Figure 1</a>
+<p id="appendix-A-3"><span class="cref" id="cpa601">RFC-Editor: This document uses the CPA (code point allocation)
+  convention described in [I-D.bormann-cbor-draft-numbers].
+  Please replace the number 601 in the code blocks below by the
+  value that has been assigned for CPA601 and remove this note.</span><a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">This specification proposes using the definitions in <a href="#fig-claims-set" class="auto internal xref">Figure 1</a>
 for the CWT Claims Set defined in <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.  Note that these definitions
 have been built such that they also can describe <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> Claims sets by
 disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present specification.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+flexibility is not the subject of the present specification.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <span id="name-cddl-definition-for-claims-"></span><div id="fig-claims-set">
 <figure id="figure-1">
-        <div class="lang-cddl sourcecode" id="appendix-A-4.1">
+        <div class="lang-cddl sourcecode" id="appendix-A-5.1">
 <pre>
 UCCS-Untagged = Claims-Set
 UCCS-Tagged = #6.601(UCCS-Untagged)
@@ -1797,9 +1808,9 @@ JC&lt;J,C&gt; = JSON-ONLY&lt;J&gt; / CBOR-ONLY&lt;C&gt;
 <a href="#name-cddl-definition-for-claims-" class="selfRef">CDDL definition for Claims-Set</a>
         </figcaption></figure>
 </div>
-<p id="appendix-A-5">Specifications that define additional Claims should also supply
-additions to the $$Claims-Set-Claims socket, e.g.:<a href="#appendix-A-5" class="pilcrow">¶</a></p>
-<div class="lang-cddl sourcecode" id="appendix-A-6">
+<p id="appendix-A-6">Specifications that define additional Claims should also supply
+additions to the $$Claims-Set-Claims socket, e.g.:<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<div class="lang-cddl sourcecode" id="appendix-A-7">
 <pre>
 ; [RFC8747]
 $$Claims-Set-Claims //= ( 8: CWT-cnf ) ; cnf
@@ -1817,7 +1828,7 @@ CWT-kid = bytes
 ;;; definitions.  This can be done manually or automated by a
 ;;; tool that implements an import directive such as:
 ;# import rfc9052
-</pre><a href="#appendix-A-6" class="pilcrow">¶</a>
+</pre><a href="#appendix-A-7" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -1827,7 +1838,7 @@ CWT-kid = bytes
 <a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-example" class="section-name selfRef">Example</a>
       </h2>
 <p id="appendix-B-1">The example CWT Claims Set from <span><a href="https://rfc-editor.org/rfc/rfc8392#appendix-A.1" class="relref">Appendix A.1</a> of [<a href="#RFC8392" class="cite xref">RFC8392</a>]</span> can be turned into
-an UCCS by enclosing it with a tag number TBD601:<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+a UCCS by enclosing it with a tag number CPA601:<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <div class="lang-cbor-diag sourcecode" id="appendix-B-2">
 <pre>
  601(
