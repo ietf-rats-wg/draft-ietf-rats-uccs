@@ -60,6 +60,7 @@ normative:
   RFC8725: jwtbcp
   RFC8392: cwt
   IANA.cbor-tags: tags
+  IANA.cwt:
   RFC8610: cddl
   RFC9165: control1
 
@@ -119,7 +120,8 @@ provided by COSE, creating a use case for unprotected CWT Claims Sets.
 Similarly, if there is one-way authentication, the party that did not
 authenticate may be in a position to send authentication information through
 this channel that allows the already authenticated party to authenticate the
-other party.
+other party; this effectively turns the channel into a mutually
+secured channel.
 
 This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 (UCCS) as such and discusses conditions for its proper use in the scope of
@@ -162,10 +164,13 @@ Secure Channel:
 
   For the purposes of the present document, we focus on a protected communication
   channel used for conveyance that can ensure the same qualities as CWT without
-  the COSE protection. Examples include conveyance via PCIe (Peripheral Component Interconnect Express) IDE (Integrity and Data Encryption), a TLS tunnel,
-  or other object security than COSE, such as CMS or X.509 v3 certificates.
-  Note that this means that, in specific cases, the Secure Channel as defined here
-  does not itself provide mutual authentication.  See {{secchan}}.
+  having the COSE protection available: mutual authentication,
+  integrity protection, confidentiality.
+  (Replay protection can be added by including a nonce claim such as
+  Nonce (claim 10 {{IANA.cwt}}).)
+  Examples include conveyance via PCIe
+  (Peripheral Component Interconnect Express) IDE (Integrity and Data
+  Encryption), or a TLS tunnel.
 
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
@@ -177,7 +182,8 @@ this document.
 Usage scenarios involving the conveyance of Claims, in particular
 RATS, require a standardized data definition and encoding format that
 can be transferred
-and transported using different communication channels.  As these are Claims, {{-cwt}} is
+and transported using different communication channels.  As these are
+Claims, the Claims sets defined in {{-cwt}} are
 a suitable format.  However, the way these Claims are secured depends on the deployment, the security
 capabilities of the device, as well as their software stack.  For example, a Claim may be securely
 stored and conveyed using a device's Trusted Execution Environment (TEE, see {{-teep}}) or
@@ -211,7 +217,11 @@ derives a session key, where the handshake protocol establishes the
 (identity and thus) authenticity of one or both ends of the communication.
 The session key can
 then be used to provide confidentiality and integrity of the transfer of
-information inside the Secure Channel.  A well-known example of a such a
+information inside the Secure Channel.
+(Where the handshake did not provide a mutually secure channel,
+further authentication information can be conveyed by the party not
+yet authenticated, leading to a mutually secured channel.)
+A well-known example of a such a
 Secure Channel setup protocol is the TLS {{-tls}} handshake; the
 TLS record protocol can then be used for secure conveyance.
 
@@ -221,11 +231,12 @@ their use in these channels.  Where other environments are intended to be
 used to convey UCCS, similar considerations need to be documented before
 UCCS can be used.
 
-# UCCS and Remote Attestation Procedures (RATS)
+# UCCS in RATS Conceptual Message Conveyance
 
-This section describes three detailed usage scenarios for UCCS in the context of RATS.
-
-## Conceptual Messages Conveyance
+This section describes a detailed usage scenario for UCCS in the
+context of RATS in conjunction with its attendant security
+requirements.
+The use of UCCS tag CPA601 outside of the RATS context MUST come with additional instruction leaflets and security considerations.
 
 For the purposes of this section, any RATS role can be the sender or the receiver of the UCCS.
 
@@ -233,22 +244,23 @@ Secure Channels can be transient in nature.  For the purposes of this
 specification, the mechanisms used to establish a Secure Channel are out of
 scope.
 
-As a minimum requirement in the scope of RATS Claims, the receiver MUST
+In the scope of RATS Claims, the receiver MUST
 authenticate the sender as part of the establishment of the Secure Channel.
 Furthermore, the channel MUST provide integrity of the communication between the
 communicating RATS roles.
-If data confidentiality {{-sec-glossary}} is also required, the receiving side MUST be
-authenticated as well; this can be achieved if the sender and receiver
+For data confidentiality {{-sec-glossary}}, the receiving side MUST be
+authenticated as well; this is achieved if the sender and receiver
 mutually authenticate when establishing the Secure Channel.
+The quality of the receiver's authentication and authorization will
+influence whether the sender can disclose the UCCS.
 
 The extent to which a Secure Channel can provide assurances that UCCS
 originate from a trustworthy Attesting Environment depends on the
 characteristics of both the cryptographic mechanisms used to establish the
 channel and the characteristics of the Attesting Environment itself.
-
-A Secure Channel established or maintained using weak cryptography
-may not provide the assurance required by a Relying Party of the authenticity
-and integrity of the UCCS.
+The assurance provided to a Relying Party depends on the authenticity
+and integrity properties of the Secure Channel used for conveying
+the UCCS to it.
 
 Ultimately, it is up to the receiver's policy to determine whether to accept
 a UCCS from the sender and to the type of Secure Channel it must negotiate.
@@ -257,28 +269,44 @@ to COSE, the considerations of the Secure Channel should also adhere to the poli
 configured at each of end of the Secure Channel.  However, the policy controls
 and definitions are out of scope for this document.
 
-Where the security assurance required of an Attesting Environment by a
-Relying Party requires it, the Attesting Environment SHOULD be implemented
-using techniques designed to provide enhanced protection from an attacker
-wishing to tamper with or forge UCCS.  A possible approach might be to
-implement the Attesting Environment in a hardened environment such as a
-TEE {{-teep}} or a TPM {{TPM2}}.
+Where an Attesting Environment serves as an endpoint of a Secure
+Channel used to convey a UCCS, the security assurance required of that
+Attesting Environment by a Relying Party generally calls for the
+Attesting Environment to be implemented using techniques designed to
+provide enhanced protection from an attacker wishing to tamper with or
+forge UCCS originating from that Attesting Environment.
+A possible approach might be to implement the Attesting Environment in
+a hardened environment such as a TEE {{-teep}} or a TPM {{TPM2}}.
 
 When UCCS emerge from the Secure Channel and into the receiver, the security
 properties of the secure channel no longer protect the UCCS, which now are subject to the same security properties
 as any other unprotected data in the Verifier environment.
 If the receiver subsequently forwards UCCS, they are treated as though they originated within the receiver.
 
-As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens) of -eat}}), the Secure
+The Secure Channel context does not govern fully formed CWTs in the
+same way it governs UCCS.
+As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens)
+of -eat}}), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
-Effectively, the COSE envelope of a CWT (or a nested EAT) shields the CWT Claims Set from the
-endorsement of the secure channel.  (Note that EAT might add a nested UCCS
+Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
+CWT Claims Set from the endorsement of the secure channel.
+(Note that EAT might add a nested UCCS
 Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs.)
 
+
+# Considerations for Using UCCS in Other RATS Contexts
+
+This section discusses two additional usage scenarios for UCCS in the
+context of RATS.
+
 ## Delegated Attestation
 
-Another usage scenario is that of a sub-Attester that has no signing keys (for example, to keep the implementation complexity to a minimum) and has a Secure Channel, such as a local IPC, to interact with a lead Attester (see Composite Device, {{Section 3.3 of -rats}}).
+Another usage scenario is that of a sub-Attester that has no signing
+keys (for example, to keep the implementation complexity to a minimum)
+and has a Secure Channel, such as local inter-process communication,
+to interact with a lead Attester (see Composite Device, {{Section 3.3
+of -rats}}).
 The sub-Attester produces a UCCS with the required CWT Claims Set and sends the UCCS through the Secure Channel to the lead Attester.
 The lead Attester then computes a cryptographic hash of the UCCS and
 protects that hash using its signing key for Evidence, for example,
@@ -307,9 +335,18 @@ the Specification Required space (1+2 size), with the present document
 as the specification reference.
 
 | Tag    | Data Item | Semantics                             |
-| TBD601 | map (Claims-Set as per {{cddl}} of \[RFCthis]) | Unprotected CWT Claims Set \[RFCthis] |
+| CPA601 | map (Claims-Set as per {{cddl}} of \[RFCthis]) | Unprotected CWT Claims Set \[RFCthis] |
 {: #tab-tag-values cols='r l l' title="Values for Tags"}
 
+[^cpa]
+
+[^cpa]: RFC-Editor: This document uses the CPA (code point allocation)
+      convention described in [I-D.bormann-cbor-draft-numbers].  For
+      each usage of the term "CPA", please remove the prefix "CPA"
+      from the indicated value and replace the residue with the value
+      assigned by IANA; perform an analogous substitution for all other
+      occurrences of the prefix "CPA" in the document.  Finally,
+      please remove this note.
 
 # Security Considerations
 
@@ -325,6 +362,11 @@ RATS are not covered by this document.  The UCCS specification -- and the
 use of the UCCS CBOR tag, correspondingly -- is not intended for use in a
 scope where a scope-specific security consideration discussion has not
 been conducted, vetted and approved for that use.
+In order to be able to use the UCCS CBOR tag in another such scope,
+the secure channel and/or the application protocol (e.g., TLS and the
+protocol identified by ALPN) MUST specify the roles of the endpoints
+in a fashion that the security properties of conveying UCCS via a
+Secure Channel between the roles are well-defined.
 
 ## General Considerations
 
@@ -355,6 +397,9 @@ factors such as:
   freshness or algorithm restrictions.
 * Ensuring that appropriate protections are in place to address potential
   traffic analysis attacks.
+
+
+The remaining subsections of this section highlight some aspects of specific cryptography choices that are detailed further in {{-cose-new-algs}}.
 
 ## AES-CBC_MAC
 
@@ -398,6 +443,14 @@ structures for protocol messages and data formats that use CBOR or
 JSON.
 
 {{-cwt}} does not define CDDL for CWT Claims Sets.
+
+
+[^cpa601]
+
+[^cpa601]: RFC-Editor: This document uses the CPA (code point allocation)
+      convention described in [I-D.bormann-cbor-draft-numbers].
+      Please replace the number 601 in the code blocks below by the
+      value that has been assigned for CPA601 and remove this note.
 
 This specification proposes using the definitions in {{fig-claims-set}}
 for the CWT Claims Set defined in {{-cwt}}.  Note that these definitions
@@ -463,8 +516,10 @@ CWT-kid = bytes
 
 # Example
 
+This appendix is informative.
+
 The example CWT Claims Set from {{Appendix A.1 of -cwt}} can be turned into
-an UCCS by enclosing it with a tag number TBD601:
+a UCCS by enclosing it with a tag number CPA601:
 
 ~~~~ cbor-diag
  601(
@@ -487,6 +542,8 @@ an UCCS by enclosing it with a tag number TBD601:
 
 # JSON Support
 
+This appendix is informative.
+
 The above definitions, concepts and security considerations all may be applied to define a JSON-encoded Claims-Set.
 Such an unsigned Claims-Set can be referred to as a "UJCS", an "Unprotected JWT Claims Set".
 The CDDL definition in {{fig-claims-set}} can be used for a "UJCS".
@@ -496,6 +553,8 @@ UJCS = Claims-Set
 ~~~
 
 # EAT
+
+This appendix is informative.
 
 The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see {{Section 4.2.18 (submods) of -eat}}).
 
