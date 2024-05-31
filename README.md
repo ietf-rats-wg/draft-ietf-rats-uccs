@@ -6,6 +6,8 @@ This is the working area for the IETF [RATS Working Group](https://datatracker.i
 * [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-rats-uccs)
 * [Compare Editor's Copy to Working Group Draft](https://ietf-rats-wg.github.io/draft-ietf-rats-uccs/#go.draft-ietf-rats-uccs.diff)
 
+[All branches](https://ietf-rats-wg.github.io/draft-ietf-rats-uccs/)
+
 ## Building the Draft
 
 Formatted text and HTML versions of the draft can be built using `make`.
