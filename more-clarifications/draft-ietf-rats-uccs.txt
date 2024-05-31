@@ -5,12 +5,12 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                           J. O'Donoghue
-Expires: 5 September 2024                     Qualcomm Technologies Inc.
+Expires: 2 December 2024                      Qualcomm Technologies Inc.
                                                            N. Cam-Winget
                                                            Cisco Systems
                                                               C. Bormann
                                                   Universität Bremen TZI
-                                                            4 March 2024
+                                                             31 May 2024
 
 
                A CBOR Tag for Unprotected CWT Claims Sets
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Birkholz, et al.        Expires 5 September 2024                [Page 1]
+Birkholz, et al.         Expires 2 December 2024                [Page 1]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
    Internet-Drafts are draft documents valid for a maximum of six months
@@ -63,7 +63,7 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2024.
+   This Internet-Draft will expire on 2 December 2024.
 
 Copyright Notice
 
@@ -99,19 +99,19 @@ Table of Contents
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  11
-   Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  13
-   Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  15
-   Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  15
-   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  16
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  16
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
+   Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  12
+   Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  14
+   Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  14
+   Appendix D.  EAT  . . . . . . . . . . . . . . . . . . . . . . . .  15
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
 
 
 
-Birkholz, et al.        Expires 5 September 2024                [Page 2]
+Birkholz, et al.         Expires 2 December 2024                [Page 2]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-Birkholz, et al.        Expires 5 September 2024                [Page 3]
+Birkholz, et al.         Expires 2 December 2024                [Page 3]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
    UCCS:  Unprotected CWT Claims Set(s); CBOR map(s) of Claims as
@@ -221,9 +221,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-Birkholz, et al.        Expires 5 September 2024                [Page 4]
+Birkholz, et al.         Expires 2 December 2024                [Page 4]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
    Channel characteristics in general and further describe RATS usage
@@ -277,9 +277,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-Birkholz, et al.        Expires 5 September 2024                [Page 5]
+Birkholz, et al.         Expires 2 December 2024                [Page 5]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
    Secure Channels can be transient in nature.  For the purposes of this
@@ -333,9 +333,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-Birkholz, et al.        Expires 5 September 2024                [Page 6]
+Birkholz, et al.         Expires 2 December 2024                [Page 6]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
    The Secure Channel context does not govern fully formed CWTs in the
@@ -372,7 +372,8 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    life-span of the session established.  In general, when a privacy
    preserving Secure Channel is employed for conveying a conceptual
    message the receiver cannot correlate the message with the senders of
-   other received UCCS messages.
+   other received UCCS messages beyond the information the secure
+   channel authentication provides.
 
    An Attester must consider whether any UCCS it returns over a privacy
    preserving Secure Channel compromises the privacy in unacceptable
@@ -388,10 +389,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-
-Birkholz, et al.        Expires 5 September 2024                [Page 7]
+Birkholz, et al.         Expires 2 December 2024                [Page 7]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
 6.  IANA Considerations
@@ -423,7 +423,10 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
    The security considerations of [RFC8949] apply.  The security
    considerations of [RFC8392] need to be applied analogously, replacing
-   the function of COSE with that of the Secure Channel.
+   the function of COSE with that of the Secure Channel; in particular
+   "it is not only important to protect the CWT in transit but also to
+   ensure that the recipient can authenticate the party that assembled
+   the claims and created the CWT".
 
    Section 3 discusses security considerations for Secure Channels, in
    which UCCS might be used.  This document provides the CBOR tag
@@ -442,12 +445,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-
-
-
-Birkholz, et al.        Expires 5 September 2024                [Page 8]
+Birkholz, et al.         Expires 2 December 2024                [Page 8]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
 7.1.  General Considerations
@@ -501,9 +501,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-Birkholz, et al.        Expires 5 September 2024                [Page 9]
+Birkholz, et al.         Expires 2 December 2024                [Page 9]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
    *  A mechanism to ensure that IV cannot be modified is required.
@@ -557,9 +557,9 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-Birkholz, et al.        Expires 5 September 2024               [Page 10]
+Birkholz, et al.         Expires 2 December 2024               [Page 10]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -605,17 +605,17 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
               Wallace, "The Entity Attestation Token (EAT)", Work in
-              Progress, Internet-Draft, draft-ietf-rats-eat-25, 15
-              January 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-rats-eat-25>.
+              Progress, Internet-Draft, draft-ietf-rats-eat-27, 26 May
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              rats-eat-27>.
 
 
 
 
 
-Birkholz, et al.        Expires 5 September 2024               [Page 11]
+Birkholz, et al.         Expires 2 December 2024               [Page 11]
 
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
 
 
    [NIST-SP800-90Ar1]
@@ -661,20 +661,18 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
               “2.0”, Level 00, Revision 01.59 ed., Trusted Computing
               Group", 2019.
 
-
-
-
-
-
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 12]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
-
 Appendix A.  CDDL
+
+   This appendix is informative.
+
+
+
+
+
+Birkholz, et al.         Expires 2 December 2024               [Page 12]
+
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
+
 
    The Concise Data Definition Language (CDDL), as defined in [RFC8610]
    and [RFC9165], provides an easy and unambiguous way to express
@@ -689,46 +687,11 @@ Appendix A.  CDDL
    // replace the number 601 in the code blocks below by the value that
    // has been assigned for CPA601 and remove this note.
 
-   This specification proposes using the definitions in Figure 1 for the
-   CWT Claims Set defined in [RFC8392].  Note that these definitions
+   In Figure 1, this specification shows how to use CDDL for defining
+   the CWT Claims Set defined in [RFC8392].  Note that these CDDL rules
    have been built such that they also can describe [RFC7519] Claims
    sets by disabling feature "cbor" and enabling feature "json", but
    this flexibility is not the subject of the present specification.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 13]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
 
    UCCS-Untagged = Claims-Set
    UCCS-Tagged = #6.601(UCCS-Untagged)
@@ -760,31 +723,17 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
    CBOR-ONLY<C> = C .feature "cbor"
    JC<J,C> = JSON-ONLY<J> / CBOR-ONLY<C>
 
+
+
+Birkholz, et al.         Expires 2 December 2024               [Page 13]
+
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
+
+
                   Figure 1: CDDL definition for Claims-Set
 
    Specifications that define additional Claims should also supply
    additions to the $$Claims-Set-Claims socket, e.g.:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 14]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
 
    ; [RFC8747]
    $$Claims-Set-Claims //= ( 8: CWT-cnf ) ; cnf
@@ -826,21 +775,23 @@ Appendix C.  JSON Support
 
    This appendix is informative.
 
+
+
+
+
+
+
+Birkholz, et al.         Expires 2 December 2024               [Page 14]
+
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
+
+
    The above definitions, concepts and security considerations all may
    be applied to define a JSON-encoded Claims-Set. Such an unsigned
    Claims-Set can be referred to as a "UJCS", an "Unprotected JWT Claims
    Set".  The CDDL definition in Figure 1 can be used for a "UJCS".
 
    UJCS = Claims-Set
-
-
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 15]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
-
 
 Appendix D.  EAT
 
@@ -879,23 +830,24 @@ Authors' Addresses
    Email: jodonogh@qti.qualcomm.com
 
 
+
+
+
+
+
+
+
+Birkholz, et al.         Expires 2 December 2024               [Page 15]
+
+Internet-Draft         Unprotected CWT Claims Sets              May 2024
+
+
    Nancy Cam-Winget
    Cisco Systems
    3550 Cisco Way
    San Jose, CA 95134
    United States of America
    Email: ncamwing@cisco.com
-
-
-
-
-
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 16]
-
-Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
    Carsten Bormann
@@ -941,12 +893,4 @@ Internet-Draft         Unprotected CWT Claims Sets            March 2024
 
 
 
-
-
-
-
-
-
-
-
-Birkholz, et al.        Expires 5 September 2024               [Page 17]
+Birkholz, et al.         Expires 2 December 2024               [Page 16]
