@@ -395,7 +395,7 @@ Applications that use this media type:
 Fragment identifier considerations:
 : The syntax and semantics of
       fragment identifiers is as specified for "application/cbor".  (At
-      publication of RFC 9290, there is no fragment identification
+      publication of this document, there is no fragment identification
       syntax defined for "application/cbor".)
 
 Additional information:
