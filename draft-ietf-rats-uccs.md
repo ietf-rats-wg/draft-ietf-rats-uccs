@@ -65,6 +65,8 @@ normative:
   RFC9165: control1
 
 informative:
+  IANA.media-types:
+  IANA.core-parameters:
   RFC4949: sec-glossary
   RFC8446: tls
   RFC9334: rats
@@ -78,10 +80,10 @@ informative:
   RFC9052: cose
   RFC9053: cose-new-algs
   RFC8747: cnf        # used in CDDL only
-#  RFC8693: tokex      # used in CDDL only
-#  RFC6749: scope      # used in CDDL only
-#  RFC9200: ace-oauth  # used in CDDL only
   NIST-SP800-90Ar1: DOI.10.6028/NIST.SP.800-90Ar1
+
+entity:
+  SELF: RFCthis
 
 --- abstract
 
@@ -329,13 +331,15 @@ Attesting Environment is a user device belonging to a child).
 
 # IANA Considerations
 
+## CBOR Tag registration
+
 In the CBOR Tags registry {{-tags}} as defined in {{Section 9.2 of
 -cbor}}, IANA is requested to allocate the tag in {{tab-tag-values}} from
 the Specification Required space (1+2 size), with the present document
 as the specification reference.
 
 | Tag    | Data Item | Semantics                             |
-| CPA601 | map (Claims-Set as per {{cddl}} of \[RFCthis]) | Unprotected CWT Claims Set \[RFCthis] |
+| CPA601 | map (Claims-Set as per {{cddl}} of \[{{&SELF}}]) | Unprotected CWT Claims Set \[{{&SELF}}] |
 {: #tab-tag-values cols='r l l' title="Values for Tags"}
 
 [^cpa]
@@ -348,7 +352,92 @@ as the specification reference.
       occurrences of the prefix "CPA" in the document.  Finally,
       please remove this note.
 
-# Security Considerations
+## Media-Type application/uccs+cbor Registration {#media-type}
+
+
+IANA is requested to add the following Media-Type to the "Media Types"
+registry {{IANA.media-types}}.
+
+| Name      | Template              | Reference               |
+| uccs+cbor | application/uccs+cbor | {{media-type}} of {{&SELF}} |
+{: #new-media-type title="Media Type Registration"}
+
+
+{:compact}
+Type name:
+: application
+
+Subtype name:
+: uccs+cbor
+
+Required parameters:
+: n/a
+
+Optional parameters:
+: n/a
+
+Encoding considerations:
+: binary (CBOR data item)
+
+Security considerations:
+: {{seccons}} of {{&SELF}}
+
+Interoperability considerations:
+: none
+
+Published specification:
+: {{&SELF}}
+
+Applications that use this media type:
+: Applications that transfer Unprotected CWT Claims Set(s) (UCCS) over
+  Secure Channels
+
+Fragment identifier considerations:
+: The syntax and semantics of
+      fragment identifiers is as specified for "application/cbor".  (At
+      publication of this document, there is no fragment identification
+      syntax defined for "application/cbor".)
+
+Additional information:
+: Deprecated alias names for this type:
+  : N/A
+
+  Magic number(s):
+  : N/A
+
+  File extension(s):
+  : .uccs
+
+  Macintosh file type code(s):
+  : N/A
+
+Person and email address to contact for further information:
+: RATS WG mailing list (rats@ietf.org)
+
+Intended usage:
+: COMMON
+
+Restrictions on usage:
+: none
+
+Author/Change controller:
+: IETF
+
+
+
+## Content-Format registration {#ct}
+
+IANA is requested to register a Content-Format number in the "CoAP
+Content-Formats" subregistry, within the "Constrained RESTful
+Environments (CoRE) Parameters" registry {{IANA.core-parameters}}, as
+follows:
+
+| Media Type            | Encoding | ID     | Reference       |
+| application/uccs+cbor | -        | TBD601 | {{ct}} of {{&SELF}} |
+{: #content-format-reg title="Content-Format Registration" }
+
+
+# Security Considerations {#seccons}
 
 The security considerations of {{-cbor}} apply.
 The security considerations of {{-cwt}} need to be applied analogously,
