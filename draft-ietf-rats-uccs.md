@@ -319,7 +319,7 @@ security properties equivalent to COSE, but only inside the life-span of the
 session established.  In general, when a privacy preserving Secure
 Channel is employed for conveying a conceptual message the receiver
 cannot correlate the message with the senders of
-other received UCCS messages beyond the information the secure channel
+other received UCCS messages beyond the information the Secure Channel
 authentication provides.
 
 An Attester must consider whether any UCCS it returns over a privacy
