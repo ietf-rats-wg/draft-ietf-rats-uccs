@@ -318,7 +318,11 @@ using a Detached-Submodule-Digest or Detached EAT Bundle ({{Section 5 of -eat}})
 
 A Secure Channel which preserves the privacy of the Attester may provide
 security properties equivalent to COSE, but only inside the life-span of the
-session established.  In general, when a privacy preserving Secure Channel is employed for conveying a conceptual message the receiver cannot correlate the message with the senders of other received UCCS messages.
+session established.  In general, when a privacy preserving Secure
+Channel is employed for conveying a conceptual message, the receiver
+cannot correlate the message with the senders of
+other received UCCS messages beyond the information the Secure Channel
+authentication provides.
 
 An Attester must consider whether any UCCS it returns over a privacy
 preserving Secure Channel compromises the privacy in unacceptable ways.  As
@@ -441,7 +445,8 @@ follows:
 
 The security considerations of {{-cbor}} apply.
 The security considerations of {{-cwt}} need to be applied analogously,
-replacing the function of COSE with that of the Secure Channel.
+replacing the function of COSE with that of the Secure Channel; in
+particular "it is not only important to protect the CWT in transit but also to ensure that the recipient can authenticate the party that assembled the claims and created the CWT".
 
 {{secchan}} discusses security considerations for Secure Channels, in which
 UCCS might be used.
@@ -526,6 +531,8 @@ The remaining subsections of this section highlight some aspects of specific cry
 
 # CDDL
 
+This appendix is informative.
+
 The Concise Data Definition Language (CDDL), as defined in {{-cddl}} and
 {{-control1}}, provides an easy and unambiguous way to express
 structures for protocol messages and data formats that use CBOR or
@@ -541,8 +548,10 @@ JSON.
       Please replace the number 601 in the code blocks below by the
       value that has been assigned for CPA601 and remove this note.
 
-This specification proposes using the definitions in {{fig-claims-set}}
-for the CWT Claims Set defined in {{-cwt}}.  Note that these definitions
+In {{fig-claims-set}},
+this specification shows how to use CDDL
+for defining the CWT Claims Set defined in {{-cwt}}.
+Note that these CDDL rules
 have been built such that they also can describe {{-jwt}} Claims sets by
 disabling feature "cbor" and enabling feature "json", but this
 flexibility is not the subject of the present specification.
