@@ -89,7 +89,7 @@ Table of Contents
    5.  Considerations for Using UCCS in Other RATS Contexts  . . . .   7
      5.1.  Delegated Attestation . . . . . . . . . . . . . . . . . .   7
      5.2.  Privacy Preservation  . . . . . . . . . . . . . . . . . .   7
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
      6.1.  CBOR Tag registration . . . . . . . . . . . . . . . . . .   8
      6.2.  Media-Type application/uccs+cbor Registration . . . . . .   8
      6.3.  Content-Format registration . . . . . . . . . . . . . . .   9
@@ -99,9 +99,9 @@ Table of Contents
      7.3.  AES-GCM . . . . . . . . . . . . . . . . . . . . . . . . .  11
      7.4.  AES-CCM . . . . . . . . . . . . . . . . . . . . . . . . .  11
      7.5.  ChaCha20 and Poly1305 . . . . . . . . . . . . . . . . . .  11
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  12
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  13
    Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  14
    Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  16
    Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  16
@@ -371,8 +371,9 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
    provide security properties equivalent to COSE, but only inside the
    life-span of the session established.  In general, when a privacy
    preserving Secure Channel is employed for conveying a conceptual
-   message the receiver cannot correlate the message with the senders of
-   other received UCCS messages.
+   message, the receiver cannot correlate the message with the senders
+   of other received UCCS messages beyond the information the Secure
+   Channel authentication provides.
 
    An Attester must consider whether any UCCS it returns over a privacy
    preserving Secure Channel compromises the privacy in unacceptable
@@ -384,7 +385,6 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
    physical sensor in a factory) and unacceptable in others (e.g., if
    the Attesting Environment is a user device belonging to a child).
 
-6.  IANA Considerations
 
 
 
@@ -393,6 +393,8 @@ Birkholz, et al.         Expires 5 January 2025                 [Page 7]
 
 Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
+
+6.  IANA Considerations
 
 6.1.  CBOR Tag registration
 
@@ -440,8 +442,6 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
    Security considerations:  Section 7 of RFCthis
    Interoperability considerations:  none
    Published specification:  RFCthis
-   Applications that use this media type:  Applications that transfer
-      Unprotected CWT Claims Set(s) (UCCS) over Secure Channels
 
 
 
@@ -450,6 +450,8 @@ Birkholz, et al.         Expires 5 January 2025                 [Page 8]
 Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
 
+   Applications that use this media type:  Applications that transfer
+      Unprotected CWT Claims Set(s) (UCCS) over Secure Channels
    Fragment identifier considerations:  The syntax and semantics of
       fragment identifiers is as specified for "application/cbor".  (At
       publication of this document, there is no fragment identification
@@ -487,17 +489,15 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
    The security considerations of [RFC8949] apply.  The security
    considerations of [RFC8392] need to be applied analogously, replacing
-   the function of COSE with that of the Secure Channel.
+   the function of COSE with that of the Secure Channel; in particular
+   "it is not only important to protect the CWT in transit but also to
+   ensure that the recipient can authenticate the party that assembled
+   the claims and created the CWT".
 
    Section 3 discusses security considerations for Secure Channels, in
    which UCCS might be used.  This document provides the CBOR tag
    definition for UCCS and a discussion on security consideration for
    the use of UCCS in RATS.  Uses of UCCS outside the scope of RATS are
-   not covered by this document.  The UCCS specification -- and the use
-   of the UCCS CBOR tag, correspondingly -- is not intended for use in a
-   scope where a scope-specific security consideration discussion has
-   not been conducted, vetted and approved for that use.  In order to be
-   able to use the UCCS CBOR tag in another such scope, the secure
 
 
 
@@ -506,6 +506,11 @@ Birkholz, et al.         Expires 5 January 2025                 [Page 9]
 Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
 
+   not covered by this document.  The UCCS specification -- and the use
+   of the UCCS CBOR tag, correspondingly -- is not intended for use in a
+   scope where a scope-specific security consideration discussion has
+   not been conducted, vetted and approved for that use.  In order to be
+   able to use the UCCS CBOR tag in another such scope, the secure
    channel and/or the application protocol (e.g., TLS and the protocol
    identified by ALPN) MUST specify the roles of the endpoints in a
    fashion that the security properties of conveying UCCS via a Secure
@@ -549,11 +554,6 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
    *  Ensuring that appropriate protections are in place to address
       potential traffic analysis attacks.
 
-   The remaining subsections of this section highlight some aspects of
-   specific cryptography choices that are detailed further in [RFC9053].
-
-
-
 
 
 
@@ -561,6 +561,9 @@ Birkholz, et al.         Expires 5 January 2025                [Page 10]
 
 Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
+
+   The remaining subsections of this section highlight some aspects of
+   specific cryptography choices that are detailed further in [RFC9053].
 
 7.2.  AES-CBC_MAC
 
@@ -608,15 +611,14 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
    Section 4.3.1 of [RFC9053] contains a detailed explanation of these
    considerations.
 
-8.  References
-
-
 
 
 Birkholz, et al.         Expires 5 January 2025                [Page 11]
 
 Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
+
+8.  References
 
 8.1.  Normative References
 
@@ -665,14 +667,14 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
               DOI 10.17487/RFC9165, December 2021,
               <https://www.rfc-editor.org/rfc/rfc9165>.
 
-8.2.  Informative References
-
 
 
 Birkholz, et al.         Expires 5 January 2025                [Page 12]
 
 Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
+
+8.2.  Informative References
 
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
@@ -723,8 +725,6 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
 
 
-
-
 Birkholz, et al.         Expires 5 January 2025                [Page 13]
 
 Internet-Draft         Unprotected CWT Claims Sets             July 2024
@@ -746,6 +746,8 @@ Internet-Draft         Unprotected CWT Claims Sets             July 2024
 
 Appendix A.  CDDL
 
+   This appendix is informative.
+
    The Concise Data Definition Language (CDDL), as defined in [RFC8610]
    and [RFC9165], provides an easy and unambiguous way to express
    structures for protocol messages and data formats that use CBOR or
@@ -759,13 +761,11 @@ Appendix A.  CDDL
    // replace the number 601 in the code blocks below by the value that
    // has been assigned for CPA601 and remove this note.
 
-   This specification proposes using the definitions in Figure 1 for the
-   CWT Claims Set defined in [RFC8392].  Note that these definitions
+   In Figure 1, this specification shows how to use CDDL for defining
+   the CWT Claims Set defined in [RFC8392].  Note that these CDDL rules
    have been built such that they also can describe [RFC7519] Claims
    sets by disabling feature "cbor" and enabling feature "json", but
    this flexibility is not the subject of the present specification.
-
-
 
 
 
