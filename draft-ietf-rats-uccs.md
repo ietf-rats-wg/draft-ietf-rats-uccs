@@ -103,7 +103,7 @@ This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS
 
 A CBOR Web Token (CWT) as specified by {{-cwt}} is always wrapped in a
 CBOR Object Signing and Encryption (COSE, {{-cose}}) envelope.
-COSE provides -- amongst other things -- end-to-end data origin
+COSE provides -- among other things -- end-to-end data origin
 authentication and integrity protection employed by RFC 8392 as well as
 optional encryption for CWTs.
 Under the right circumstances ({{secchan}}),
