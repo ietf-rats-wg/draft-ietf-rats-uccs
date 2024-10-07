@@ -111,7 +111,7 @@ though, a signature providing proof for authenticity and integrity can be
 provided through the transfer protocol and thus omitted from the
 information in a CWT without compromising the intended goal of authenticity
 and integrity.
-In other words, if communicating parties have a pre-existing security
+In other words, if communicating parties have a preexisting security
 association, they can reuse it to provide authenticity and integrity
 for their messages, enabling the basic principle of using resources
 parsimoniously.
