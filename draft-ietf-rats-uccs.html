@@ -17,22 +17,22 @@ This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS
 
 
     " name="description">
-<meta content="xml2rfc 3.22.0" name="generator">
+<meta content="xml2rfc 3.23.2" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-rats-uccs-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.22.0
-    Python 3.12.3
+  xml2rfc 3.23.2
+    Python 3.12.6
     ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
     lxml 4.9.4
-    platformdirs 4.2.2
+    platformdirs 4.3.6
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
-    setuptools 69.5.1
+    setuptools 70.3.0
     wcwidth 0.2.13
 -->
 <link href="draft-ietf-rats-uccs.xml" rel="alternate" type="application/rfc+xml">
@@ -1032,11 +1032,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Unprotected CWT Claims Sets</td>
-<td class="right">July 2024</td>
+<td class="right">October 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 5 January 2025</td>
+<td class="center">Expires 10 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-uccs-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-07-04" class="published">4 July 2024</time>
+<time datetime="2024-10-07" class="published">7 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-01-05">5 January 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-10">10 April 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1116,7 +1116,7 @@ This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 10 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1247,7 +1247,7 @@ This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS
       </h2>
 <p id="section-1-1">A CBOR Web Token (CWT) as specified by <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span> is always wrapped in a
 CBOR Object Signing and Encryption (COSE, <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>) envelope.
-COSE provides -- amongst other things -- end-to-end data origin
+COSE provides -- among other things -- end-to-end data origin
 authentication and integrity protection employed by RFC 8392 as well as
 optional encryption for CWTs.
 Under the right circumstances (<a href="#secchan" class="auto internal xref">Section 3</a>),
@@ -1255,7 +1255,7 @@ though, a signature providing proof for authenticity and integrity can be
 provided through the transfer protocol and thus omitted from the
 information in a CWT without compromising the intended goal of authenticity
 and integrity.
-In other words, if communicating parties have a pre-existing security
+In other words, if communicating parties have a preexisting security
 association, they can reuse it to provide authenticity and integrity
 for their messages, enabling the basic principle of using resources
 parsimoniously.
@@ -1436,7 +1436,7 @@ as any other unprotected data in the Verifier environment.
 If the receiver subsequently forwards UCCS, they are treated as though they originated within the receiver.<a href="#section-4-8" class="pilcrow">¶</a></p>
 <p id="section-4-9">The Secure Channel context does not govern fully formed CWTs in the
 same way it governs UCCS.
-As with EATs nested in other EATs (Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28#section-4.2.18.3" class="relref">4.2.18.3</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28#section-4.2.18.3" class="relref">Nested Tokens</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>), the Secure
+As with EATs nested in other EATs (Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">4.2.18.3</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">Nested Tokens</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
 CWT Claims Set from the endorsement of the secure channel.
@@ -1464,7 +1464,7 @@ to interact with a lead Attester (see Composite Device, <span><a href="https://r
 The sub-Attester produces a UCCS with the required CWT Claims Set and sends the UCCS through the Secure Channel to the lead Attester.
 The lead Attester then computes a cryptographic hash of the UCCS and
 protects that hash using its signing key for Evidence, for example,
-using a Detached-Submodule-Digest or Detached EAT Bundle (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28#section-5" class="relref">Section 5</a> of [<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>).<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+using a Detached-Submodule-Digest or Detached EAT Bundle (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-5" class="relref">Section 5</a> of [<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>).<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="privacy-preservation">
@@ -1481,7 +1481,7 @@ other received UCCS messages beyond the information the Secure Channel
 authentication provides.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 <p id="section-5.2-2">An Attester must consider whether any UCCS it returns over a privacy
 preserving Secure Channel compromises the privacy in unacceptable ways.  As
-an example, the use of the EAT UEID Claim <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28#section-4.2.1" class="relref">Section 4.2.1</a> of [<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span> in UCCS over a privacy
+an example, the use of the EAT UEID Claim <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.1" class="relref">Section 4.2.1</a> of [<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span> in UCCS over a privacy
 preserving Secure Channel allows a Verifier to correlate UCCS from a single
 Attesting Environment across many Secure Channel sessions. This may be
 acceptable in some use-cases (e.g., if the Attesting Environment is a
@@ -1703,6 +1703,8 @@ follows:<a href="#section-6.3-1" class="pilcrow">¶</a></p>
           </tbody>
         </table>
 </div>
+<p id="section-6.3-3"><span class="cref" id="tbd">RFC editor: please replace TBD601 by the number actually
+assigned by IANA (601 is suggested).</span><a href="#section-6.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1855,6 +1857,7 @@ determine when rekeying is required.<a href="#section-7.5-1.2.1" class="pilcrow"
 </div>
 </section>
 </div>
+<div id="sec-combined-references">
 <section id="section-8">
       <h2 id="name-references">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
@@ -1867,11 +1870,11 @@ determine when rekeying is required.<a href="#section-7.5-1.2.1" class="pilcrow"
 <dl class="references">
 <dt id="IANA.cbor-tags">[IANA.cbor-tags]</dt>
         <dd>
-<span class="refAuthor">IANA</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR) Tags"</span>, <span>&lt;<a href="http://www.iana.org/assignments/cbor-tags">http://www.iana.org/assignments/cbor-tags</a>&gt;</span>. </dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR) Tags"</span>, <span>&lt;<a href="https://www.iana.org/assignments/cbor-tags">https://www.iana.org/assignments/cbor-tags</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA.cwt">[IANA.cwt]</dt>
         <dd>
-<span class="refAuthor">IANA</span>, <span class="refTitle">"CBOR Web Token (CWT) Claims"</span>, <span>&lt;<a href="http://www.iana.org/assignments/cwt">http://www.iana.org/assignments/cwt</a>&gt;</span>. </dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"CBOR Web Token (CWT) Claims"</span>, <span>&lt;<a href="https://www.iana.org/assignments/cwt">https://www.iana.org/assignments/cwt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -1916,15 +1919,15 @@ determine when rekeying is required.<a href="#section-7.5-1.2.1" class="pilcrow"
 <dl class="references">
 <dt id="I-D.ietf-rats-eat">[I-D.ietf-rats-eat]</dt>
         <dd>
-<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-28</span>, <time datetime="2024-06-25" class="refDate">25 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28</a>&gt;</span>. </dd>
+<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-31</span>, <time datetime="2024-09-06" class="refDate">6 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA.core-parameters">[IANA.core-parameters]</dt>
         <dd>
-<span class="refAuthor">IANA</span>, <span class="refTitle">"Constrained RESTful Environments (CoRE) Parameters"</span>, <span>&lt;<a href="http://www.iana.org/assignments/core-parameters">http://www.iana.org/assignments/core-parameters</a>&gt;</span>. </dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"Constrained RESTful Environments (CoRE) Parameters"</span>, <span>&lt;<a href="https://www.iana.org/assignments/core-parameters">https://www.iana.org/assignments/core-parameters</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA.media-types">[IANA.media-types]</dt>
         <dd>
-<span class="refAuthor">IANA</span>, <span class="refTitle">"Media Types"</span>, <span>&lt;<a href="http://www.iana.org/assignments/media-types">http://www.iana.org/assignments/media-types</a>&gt;</span>. </dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"Media Types"</span>, <span>&lt;<a href="https://www.iana.org/assignments/media-types">https://www.iana.org/assignments/media-types</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="NIST-SP800-90Ar1">[NIST-SP800-90Ar1]</dt>
         <dd>
@@ -1966,6 +1969,7 @@ determine when rekeying is required.<a href="#section-7.5-1.2.1" class="pilcrow"
 </section>
 </div>
 </section>
+</div>
 <div id="cddl">
 <section id="appendix-A">
       <h2 id="name-cddl">
@@ -2098,7 +2102,7 @@ UJCS = Claims-Set
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-eat" class="section-name selfRef">EAT</a>
       </h2>
 <p id="appendix-D-1">This appendix is informative.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28#section-4.2.18" class="relref">4.2.18</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28#section-4.2.18" class="relref">submods</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>).<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">4.2.18</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">submods</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>).<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <div class="lang-cddl sourcecode" id="appendix-D-3">
 <pre>
 $EAT-CBOR-Tagged-Token /= UCCS-Tagged
