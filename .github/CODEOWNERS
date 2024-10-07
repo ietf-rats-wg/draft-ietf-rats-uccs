@@ -1,2 +1,3 @@
-# Automatically generated CODEOWNERS file.
-draft-ietf-rats-uccs.md henk.birkholz@sit.fraunhofer.de jodonogh@qti.qualcomm.com ncamwing@cisco.com cabo@tzi.de
+# Automatically generated CODEOWNERS
+# Regenerate with `make update-codeowners`
+draft-ietf-rats-uccs.md henk.birkholz@ietf.contact jodonogh@qti.qualcomm.com ncamwing@cisco.com cabo@tzi.org
