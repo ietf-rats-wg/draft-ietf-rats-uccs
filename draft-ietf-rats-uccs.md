@@ -440,6 +440,10 @@ follows:
 | application/uccs+cbor | -        | TBD601 | {{ct}} of {{&SELF}} |
 {: #content-format-reg title="Content-Format Registration" }
 
+[^tbd]
+
+[^tbd]: RFC editor: please replace TBD601 by the number actually
+    assigned by IANA (601 is suggested).
 
 # Security Considerations {#seccons}
 
