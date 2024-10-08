@@ -499,40 +499,19 @@ factors such as:
 * Ensuring that appropriate protections are in place to address potential
   traffic analysis attacks.
 
+## Algorithm-specific Security Considerations
 
-The remaining subsections of this section highlight some aspects of specific cryptography choices that are detailed further in {{-cose-new-algs}}.
+{{tab-algsec}} provides references to some security considerations of
+specific cryptography choices that are discussed in {{-cose-new-algs}}.
 
-## AES-CBC_MAC
+| Algorithm         | Reference                         |
+|-------------------|-----------------------------------|
+| AES-CBC-MAC       | {{Section 3.2.1 of -cose-new-algs}} |
+| AES-GCM           | {{Section 4.1.1 of -cose-new-algs}} |
+| AES-CCM           | {{Section 4.2.1 of -cose-new-algs}} |
+| ChaCha20/Poly1305 | {{Section 4.3.1 of -cose-new-algs}} |
+{: #tab-algsec title="Algorithm-specific Security Considerations"}
 
-* A given key should only be used for messages of fixed or known length.
-* Different keys should be used for authentication and encryption operations.
-* A mechanism to ensure that IV cannot be modified is required.
-
-{{Section 3.2.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
-
-## AES-GCM
-
-* The key and nonce pair is unique for every encrypted message.
-* The maximum number of messages to be encrypted for a given key is not exceeded.
-
-{{Section 4.1.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
-
-## AES-CCM
-
-* The key and nonce pair is unique for every encrypted message.
-* The maximum number of messages to be encrypted for a given block cipher is not exceeded.
-* The number of messages both successfully and unsuccessfully decrypted is used to
-  determine when rekeying is required.
-
-{{Section 4.2.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
-
-## ChaCha20 and Poly1305
-
-* The nonce is unique for every encrypted message.
-* The number of messages both successfully and unsuccessfully decrypted is used to
-  determine when rekeying is required.
-
-{{Section 4.3.1 of -cose-new-algs}} contains a detailed explanation of these considerations.
 
 --- back
 
