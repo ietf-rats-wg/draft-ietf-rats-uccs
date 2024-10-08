@@ -162,7 +162,7 @@ Secure Channel:
   ensures confidentiality, integrity and replay protection, as well as
   mutual authentication between the entities or components. The secure
   channel may be provided using approved cryptographic, physical or
-  procedural methods, or a combination thereof"
+  procedural methods, or a combination thereof."
 
   For the purposes of the present document, we focus on a protected communication
   channel used for conveyance that can ensure the same qualities as CWT without
