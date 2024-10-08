@@ -327,7 +327,7 @@ authentication provides.
 
 An Attester must consider whether any UCCS it returns over a privacy
 preserving Secure Channel compromises the privacy in unacceptable ways.  As
-an example, the use of the EAT UEID Claim {{Section 4.2.1 of -eat}} in UCCS over a privacy
+an example, the use of the EAT UEID Claim ({{Section 4.2.1 of -eat}}) in UCCS over a privacy
 preserving Secure Channel allows a Verifier to correlate UCCS from a single
 Attesting Environment across many Secure Channel sessions. This may be
 acceptable in some use-cases (e.g., if the Attesting Environment is a
