@@ -57,7 +57,8 @@ author:
 normative:
   RFC8949: cbor
   RFC7519: jwt
-  RFC8725: jwtbcp
+  BCP225: jwtbcp
+# RFC8725
   RFC8392: cwt
   IANA.cbor-tags: tags
   IANA.cwt:
@@ -177,7 +178,7 @@ Secure Channel:
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
 
-{::boilerplate bcp14-tagged}
+{::boilerplate bcp14-tagged-bcp14}
 
 # Deployment and Usage of UCCS
 
@@ -201,7 +202,7 @@ corresponding requirements for UCCS deployment.
 A Secure Channel for the conveyance of UCCS needs to provide the security
 properties that would otherwise be provided by COSE for a CWT.
 In this regard, UCCS is similar in security considerations to JWTs {{-jwtbcp}}
-using the algorithm "none".  RFC 8725 states:
+using the algorithm "none".  {{Section 3.2 of RFC8725@-jwtbcp}} states:
 
 {:quote}
 > \[...] if a JWT is cryptographically
@@ -211,7 +212,7 @@ layer of cryptographic protections to the JWT.  In such cases, the use of
 the "none" algorithm can be perfectly acceptable.
 
 The security considerations discussed, e.g., in {{Sections 2.1, 3.1,
-and 3.2 of -jwtbcp}} apply in an analogous way to the use of UCCS as
+and 3.2 of RFC8725@-jwtbcp}} apply in an analogous way to the use of UCCS as
 elaborated on in this document.
 
 Secure Channels are often set up in a handshake protocol that mutually
