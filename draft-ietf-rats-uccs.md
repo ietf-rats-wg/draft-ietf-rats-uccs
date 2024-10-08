@@ -55,7 +55,8 @@ author:
   email: cabo@tzi.org
 
 normative:
-  RFC8949: cbor
+  STD94: cbor
+# RFC8949
   RFC7519: jwt
   BCP225: jwtbcp
 # RFC8725
@@ -78,7 +79,8 @@ informative:
       Trusted Computing Group
     date: 2019
   I-D.ietf-rats-eat: eat
-  RFC9052: cose
+  STD96: cose
+# RFC9052
   RFC9053: cose-new-algs
   RFC8747: cnf        # used in CDDL only
   NIST-SP800-90Ar1: DOI.10.6028/NIST.SP.800-90Ar1
@@ -339,7 +341,7 @@ Attesting Environment is a user device belonging to a child).
 ## CBOR Tag registration
 
 In the CBOR Tags registry {{-tags}} as defined in {{Section 9.2 of
--cbor}}, IANA is requested to allocate the tag in {{tab-tag-values}} from
+RFC8949@-cbor}}, IANA is requested to allocate the tag in {{tab-tag-values}} from
 the Specification Required space (1+2 size), with the present document
 as the specification reference.
 
