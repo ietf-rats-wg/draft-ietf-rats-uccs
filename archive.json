@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-08T01:00:19.922659+00:00",
+  "timestamp": "2024-10-10T00:59:53.389742+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-uccs",
   "labels": [
     {
@@ -2364,6 +2364,46 @@
           "body": "application/uccs+cbor ftw",
           "createdAt": "2024-07-04T07:51:19Z",
           "updatedAt": "2024-07-04T07:51:19Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "id": "PR_kwDOFf01-859-fX7",
+      "title": "Addressing Deb Cooley's IESG evaluation comment",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/31",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Indeed, this is much better without the less-than-perfect restatements.\r\n",
+      "createdAt": "2024-10-08T16:50:38Z",
+      "updatedAt": "2024-10-08T17:18:40Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "c8e40d7af1886398831837ac8dad46a868feec03",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "headRefName": "iesg-dc",
+      "headRefOid": "146cf15f56036694d99a812a2599a0baaa1bec01",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOFf01-86MX_KR",
+          "commit": {
+            "abbreviatedOid": "146cf15"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "nice",
+          "createdAt": "2024-10-08T17:18:40Z",
+          "updatedAt": "2024-10-08T17:18:40Z",
           "comments": []
         }
       ]
