@@ -175,7 +175,7 @@ Secure Channel:
   Nonce (claim 10 {{IANA.cwt}}).)
   Examples include conveyance via PCIe
   (Peripheral Component Interconnect Express) IDE (Integrity and Data
-  Encryption), or a TLS tunnel.
+  Encryption) or a TLS tunnel.
 
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
@@ -193,7 +193,7 @@ a suitable format.  However, the way these Claims are secured depends on the dep
 capabilities of the device, as well as their software stack.  For example, a Claim may be securely
 stored and conveyed using a device's Trusted Execution Environment (TEE, see {{-teep}}) or
 a Trusted Platform Module (TPM, see {{TPM2}}).
-Especially in some resource constrained environments, the same process that provides the secure communication
+Especially in some resource-constrained environments, the same process that provides the secure communication
 transport is also the delegate to compose the Claim to be conveyed.  Whether it is a transfer
 or transport, a Secure Channel is presumed to be used for conveying such UCCS.  The following sections
 elaborate on Secure Channel characteristics in general and further describe RATS usage scenarios and
@@ -268,7 +268,7 @@ and integrity properties of the Secure Channel used for conveying
 the UCCS to it.
 
 Ultimately, it is up to the receiver's policy to determine whether to accept
-a UCCS from the sender and to the type of Secure Channel it must negotiate.
+a UCCS from the sender and to determine the type of Secure Channel it must negotiate.
 While the security considerations of the cryptographic algorithms used are similar
 to COSE, the considerations of the Secure Channel should also adhere to the policy
 configured at each of end of the Secure Channel.  However, the policy controls
