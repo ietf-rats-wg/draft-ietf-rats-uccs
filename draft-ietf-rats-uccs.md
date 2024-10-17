@@ -90,7 +90,7 @@ entity:
 
 --- abstract
 
-When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for a true CWT.
+When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for an actual RFC 8392 CWT.
 This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS) and discusses conditions for its proper use.
 
 <!--
@@ -133,7 +133,7 @@ This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 Remote Attestation Procedures (RATS {{-rats}}) for the
 conveyance of RATS Conceptual Messages.
 
-This specification does not change {{-cwt}}: A true CWT does not make use of
+This specification does not change {{-cwt}}: An actual RFC 8392 CWT does not make use of
 the tag allocated here; the UCCS tag is an alternative to using COSE
 protection and a CWT tag.
 Consequently, within the well-defined scope of a secure channel, it
