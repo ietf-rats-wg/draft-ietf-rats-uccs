@@ -535,12 +535,12 @@ JSON.
       value that has been assigned for CPA601 and remove this note.
 
 In {{fig-claims-set}},
-this specification shows how to use CDDL
+this CDDL model shows how to use CDDL
 for defining the CWT Claims Set defined in {{-cwt}}.
 Note that these CDDL rules
 have been built such that they also can describe {{-jwt}} Claims sets by
 disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present specification.
+flexibility is not the subject of the present document.
 
 ~~~ cddl
 UCCS-Untagged = Claims-Set
