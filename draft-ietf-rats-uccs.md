@@ -222,6 +222,9 @@ algorithms for setting up and protecting the Secure Channel.
 For instance, their cryptographic strength should be at least as
 strong as any cryptographic keys the Secure Channel will be used for
 to protect in transport.
+{{tab-algsec}} in {{algsec}} provides references to some more security
+considerations for specific cryptography choices that are discussed in
+the COSE initial algorithms specification {{-cose-new-algs}}.
 
 Secure Channels are often set up in a handshake protocol that mutually
 derives a session key, where the handshake protocol establishes the
@@ -505,7 +508,7 @@ factors such as:
 * Ensuring that appropriate protections are in place to address potential
   traffic analysis attacks.
 
-## Algorithm-specific Security Considerations
+## Algorithm-specific Security Considerations {#algsec}
 
 {{tab-algsec}} provides references to some security considerations of
 specific cryptography choices that are discussed in {{-cose-new-algs}}.
