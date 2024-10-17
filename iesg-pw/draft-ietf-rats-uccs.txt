@@ -250,7 +250,10 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    includes choosing appropriate cryptographic algorithms for setting up
    and protecting the Secure Channel.  For instance, their cryptographic
    strength should be at least as strong as any cryptographic keys the
-   Secure Channel will be used for to protect in transport.
+   Secure Channel will be used for to protect in transport.  Table 4 in
+   Section 7.2 provides references to some more security considerations
+   for specific cryptography choices that are discussed in the COSE
+   initial algorithms specification [RFC9053].
 
    Secure Channels are often set up in a handshake protocol that
    mutually derives a session key, where the handshake protocol
@@ -269,9 +272,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    channels.  Where other environments are intended to be used to convey
    UCCS, similar considerations need to be documented before UCCS can be
    used.
-
-
-
 
 
 

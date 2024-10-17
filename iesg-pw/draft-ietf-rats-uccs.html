@@ -1363,7 +1363,10 @@ In particular, the need to "Use Appropriate Algorithms" (Section <a href="https:
 algorithms for setting up and protecting the Secure Channel.
 For instance, their cryptographic strength should be at least as
 strong as any cryptographic keys the Secure Channel will be used for
-to protect in transport.<a href="#section-3-3" class="pilcrow">¶</a></p>
+to protect in transport.
+<a href="#tab-algsec" class="auto internal xref">Table 4</a> in <a href="#algsec" class="auto internal xref">Section 7.2</a> provides references to some more security
+considerations for specific cryptography choices that are discussed in
+the COSE initial algorithms specification <span>[<a href="#RFC9053" class="cite xref">RFC9053</a>]</span>.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">Secure Channels are often set up in a handshake protocol that mutually
 derives a session key, where the handshake protocol establishes the
 (identity and thus) authenticity of one or both ends of the communication.
@@ -1778,7 +1781,7 @@ traffic analysis attacks.<a href="#section-7.1-4.4.1" class="pilcrow">¶</a></p>
         </ul>
 </section>
 </div>
-<div id="algorithm-specific-security-considerations">
+<div id="algsec">
 <section id="section-7.2">
         <h3 id="name-algorithm-specific-security">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-algorithm-specific-security" class="section-name selfRef">Algorithm-specific Security Considerations</a>
