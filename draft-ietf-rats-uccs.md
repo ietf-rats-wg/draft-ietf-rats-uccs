@@ -216,6 +216,12 @@ the "none" algorithm can be perfectly acceptable.
 The security considerations discussed, e.g., in {{Sections 2.1, 3.1,
 and 3.2 of RFC8725@-jwtbcp}} apply in an analogous way to the use of UCCS as
 elaborated on in this document.
+In particular, the need to "Use Appropriate Algorithms" ({{Section 3.2
+of RFC8725@-jwtbcp}}) includes choosing appropriate cryptographic
+algorithms for setting up and protecting the Secure Channel.
+For instance, their cryptographic strength should be at least as
+strong as any cryptographic keys the Secure Channel will be used for
+to protect in transport.
 
 Secure Channels are often set up in a handshake protocol that mutually
 derives a session key, where the handshake protocol establishes the
