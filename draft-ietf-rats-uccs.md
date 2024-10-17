@@ -290,7 +290,7 @@ If the receiver subsequently forwards UCCS, they are treated as though they orig
 
 The Secure Channel context does not govern fully formed CWTs in the
 same way it governs UCCS.
-As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens)
+As with Entity Attestation Tokens (EATs, see {{-eat}}) nested in other EATs ({{Section 4.2.18.3 (Nested Tokens)
 of -eat}}), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
