@@ -194,7 +194,7 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
       (Replay protection can be added by including a nonce claim such as
       Nonce (claim 10 [IANA.cwt]).)  Examples include conveyance via
       PCIe (Peripheral Component Interconnect Express) IDE (Integrity
-      and Data Encryption), or a TLS tunnel.
+      and Data Encryption) or a TLS tunnel.
 
    All terms referenced or defined in this section are capitalized in
    the remainder of this document.
@@ -216,7 +216,7 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    as well as their software stack.  For example, a Claim may be
    securely stored and conveyed using a device's Trusted Execution
    Environment (TEE, see [RFC9397]) or a Trusted Platform Module (TPM,
-   see [TPM2]).  Especially in some resource constrained environments,
+   see [TPM2]).  Especially in some resource-constrained environments,
    the same process that provides the secure communication transport is
 
 
@@ -322,8 +322,8 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    Channel used for conveying the UCCS to it.
 
    Ultimately, it is up to the receiver's policy to determine whether to
-   accept a UCCS from the sender and to the type of Secure Channel it
-   must negotiate.  While the security considerations of the
+   accept a UCCS from the sender and to determine the type of Secure
+   Channel it must negotiate.  While the security considerations of the
    cryptographic algorithms used are similar to COSE, the considerations
    of the Secure Channel should also adhere to the policy configured at
    each of end of the Secure Channel.  However, the policy controls and
