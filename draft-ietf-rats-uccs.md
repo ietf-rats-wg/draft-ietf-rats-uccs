@@ -448,8 +448,8 @@ Content-Formats" subregistry, within the "Constrained RESTful
 Environments (CoRE) Parameters" registry {{IANA.core-parameters}}, as
 follows:
 
-| Media Type            | Encoding | ID     | Reference       |
-| application/uccs+cbor | -        | TBD601 | {{ct}} of {{&SELF}} |
+| Content Type          | Content Coding | ID     | Reference       |
+| application/uccs+cbor | -              | TBD601 | {{ct}} of {{&SELF}} |
 {: #content-format-reg title="Content-Format Registration" }
 
 [^tbd]
