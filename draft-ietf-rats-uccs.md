@@ -100,6 +100,7 @@ This specification defines a CBOR tag for UCCS and describes the UCCS
 format, its encoding, and processing considerations, and discusses
 security implications of using unprotected claims sets.
 
+
 <!--
 [^status]
 
@@ -140,7 +141,7 @@ This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 Remote Attestation Procedures (RATS {{-rats}}) for the
 conveyance of RATS Conceptual Messages.
 
-This specification does not change {{-cwt}}: A true CWT does not make use of
+This specification does not change {{-cwt}}: An actual RFC 8392 CWT does not make use of
 the tag allocated here; the UCCS tag is an alternative to using COSE
 protection and a CWT tag.
 Consequently, within the well-defined scope of a secure channel, it
@@ -182,7 +183,7 @@ Secure Channel:
   Nonce (claim 10 {{IANA.cwt}}).)
   Examples include conveyance via PCIe
   (Peripheral Component Interconnect Express) IDE (Integrity and Data
-  Encryption), or a TLS tunnel.
+  Encryption) or a TLS tunnel.
 
 All terms referenced or defined in this section are capitalized in the remainder of
 this document.
@@ -200,7 +201,7 @@ a suitable format.  However, the way these Claims are secured depends on the dep
 capabilities of the device, as well as their software stack.  For example, a Claim may be securely
 stored and conveyed using a device's Trusted Execution Environment (TEE, see {{-teep}}) or
 a Trusted Platform Module (TPM, see {{TPM2}}).
-Especially in some resource constrained environments, the same process that provides the secure communication
+Especially in some resource-constrained environments, the same process that provides the secure communication
 transport is also the delegate to compose the Claim to be conveyed.  Whether it is a transfer
 or transport, a Secure Channel is presumed to be used for conveying such UCCS.  The following sections
 elaborate on Secure Channel characteristics in general and further describe RATS usage scenarios and
@@ -223,6 +224,15 @@ the "none" algorithm can be perfectly acceptable.
 The security considerations discussed, e.g., in {{Sections 2.1, 3.1,
 and 3.2 of RFC8725@-jwtbcp}} apply in an analogous way to the use of UCCS as
 elaborated on in this document.
+In particular, the need to "Use Appropriate Algorithms" ({{Section 3.2
+of RFC8725@-jwtbcp}}) includes choosing appropriate cryptographic
+algorithms for setting up and protecting the Secure Channel.
+For instance, their cryptographic strength should be at least as
+strong as any cryptographic keys the Secure Channel will be used for
+to protect in transport.
+{{tab-algsec}} in {{algsec}} provides references to some more security
+considerations for specific cryptography choices that are discussed in
+the COSE initial algorithms specification {{-cose-new-algs}}.
 
 Secure Channels are often set up in a handshake protocol that mutually
 derives a session key, where the handshake protocol establishes the
@@ -275,7 +285,7 @@ and integrity properties of the Secure Channel used for conveying
 the UCCS to it.
 
 Ultimately, it is up to the receiver's policy to determine whether to accept
-a UCCS from the sender and to the type of Secure Channel it must negotiate.
+a UCCS from the sender and to determine the type of Secure Channel it must negotiate.
 While the security considerations of the cryptographic algorithms used are similar
 to COSE, the considerations of the Secure Channel should also adhere to the policy
 configured at each of end of the Secure Channel.  However, the policy controls
@@ -297,7 +307,7 @@ If the receiver subsequently forwards UCCS, they are treated as though they orig
 
 The Secure Channel context does not govern fully formed CWTs in the
 same way it governs UCCS.
-As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens)
+As with Entity Attestation Tokens (EATs, see {{-eat}}) nested in other EATs ({{Section 4.2.18.3 (Nested Tokens)
 of -eat}}), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
@@ -446,8 +456,8 @@ Content-Formats" subregistry, within the "Constrained RESTful
 Environments (CoRE) Parameters" registry {{IANA.core-parameters}}, as
 follows:
 
-| Media Type            | Encoding | ID     | Reference       |
-| application/uccs+cbor | -        | TBD601 | {{ct}} of {{&SELF}} |
+| Content Type          | Content Coding | ID     | Reference       |
+| application/uccs+cbor | -              | TBD601 | {{ct}} of {{&SELF}} |
 {: #content-format-reg title="Content-Format Registration" }
 
 [^tbd]
@@ -506,7 +516,7 @@ factors such as:
 * Ensuring that appropriate protections are in place to address potential
   traffic analysis attacks.
 
-## Algorithm-specific Security Considerations
+## Algorithm-specific Security Considerations {#algsec}
 
 {{tab-algsec}} provides references to some security considerations of
 specific cryptography choices that are discussed in {{-cose-new-algs}}.
@@ -542,12 +552,12 @@ JSON.
       value that has been assigned for CPA601 and remove this note.
 
 In {{fig-claims-set}},
-this specification shows how to use CDDL
+this CDDL model shows how to use CDDL
 for defining the CWT Claims Set defined in {{-cwt}}.
 Note that these CDDL rules
 have been built such that they also can describe {{-jwt}} Claims sets by
 disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present specification.
+flexibility is not the subject of the present document.
 
 ~~~ cddl
 UCCS-Untagged = Claims-Set
