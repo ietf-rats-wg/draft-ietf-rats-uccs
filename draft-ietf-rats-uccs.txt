@@ -5,12 +5,12 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                           J. O'Donoghue
-Expires: 14 April 2025                        Qualcomm Technologies Inc.
+Expires: 21 April 2025                        Qualcomm Technologies Inc.
                                                            N. Cam-Winget
                                                            Cisco Systems
                                                               C. Bormann
                                                   Universität Bremen TZI
-                                                         11 October 2024
+                                                         18 October 2024
 
 
                A CBOR Tag for Unprotected CWT Claims Sets
@@ -20,9 +20,9 @@ Abstract
 
    When transported over secure channels, CBOR Web Token (CWT, RFC 8392)
    Claims Sets may not need the protection afforded by wrapping them
-   into COSE, as is required for a true CWT.  This specification defines
-   a CBOR tag for such unprotected CWT Claims Sets (UCCS) and discusses
-   conditions for its proper use.
+   into COSE, as is required for an actual RFC 8392 CWT.  This
+   specification defines a CBOR tag for such unprotected CWT Claims Sets
+   (UCCS) and discusses conditions for its proper use.
 
 About This Document
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Birkholz, et al.          Expires 14 April 2025                 [Page 1]
+Birkholz, et al.          Expires 21 April 2025                 [Page 1]
 
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
@@ -63,7 +63,7 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 April 2025.
+   This Internet-Draft will expire on 21 April 2025.
 
 Copyright Notice
 
@@ -85,20 +85,20 @@ Table of Contents
      1.1.  Terminology . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Deployment and Usage of UCCS  . . . . . . . . . . . . . . . .   4
    3.  Characteristics of a Secure Channel . . . . . . . . . . . . .   5
-   4.  UCCS in RATS Conceptual Message Conveyance  . . . . . . . . .   5
+   4.  UCCS in RATS Conceptual Message Conveyance  . . . . . . . . .   6
    5.  Considerations for Using UCCS in Other RATS Contexts  . . . .   7
      5.1.  Delegated Attestation . . . . . . . . . . . . . . . . . .   7
-     5.2.  Privacy Preservation  . . . . . . . . . . . . . . . . . .   7
+     5.2.  Privacy Preservation  . . . . . . . . . . . . . . . . . .   8
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
      6.1.  CBOR Tag registration . . . . . . . . . . . . . . . . . .   8
-     6.2.  Media-Type application/uccs+cbor Registration . . . . . .   8
+     6.2.  Media-Type application/uccs+cbor Registration . . . . . .   9
      6.3.  Content-Format registration . . . . . . . . . . . . . . .   9
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
      7.1.  General Considerations  . . . . . . . . . . . . . . . . .  10
      7.2.  Algorithm-specific Security Considerations  . . . . . . .  11
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  11
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  12
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  13
    Appendix A.  CDDL . . . . . . . . . . . . . . . . . . . . . . . .  14
    Appendix B.  Example  . . . . . . . . . . . . . . . . . . . . . .  16
    Appendix C.  JSON Support . . . . . . . . . . . . . . . . . . . .  16
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Birkholz, et al.          Expires 14 April 2025                 [Page 2]
+Birkholz, et al.          Expires 21 April 2025                 [Page 2]
 
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
@@ -144,14 +144,15 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    use in the scope of Remote Attestation Procedures (RATS [RFC9334])
    for the conveyance of RATS Conceptual Messages.
 
-   This specification does not change [RFC8392]: A true CWT does not
-   make use of the tag allocated here; the UCCS tag is an alternative to
-   using COSE protection and a CWT tag.  Consequently, within the well-
-   defined scope of a secure channel, it can be acceptable and economic
-   to use the contents of a CWT without its COSE container and tag it
-   with a UCCS CBOR tag for further processing within that scope -- or
-   to use the contents of a UCCS CBOR tag for building a CWT to be
-   signed by some entity that can vouch for those contents.
+   This specification does not change [RFC8392]: An actual RFC 8392 CWT
+   does not make use of the tag allocated here; the UCCS tag is an
+   alternative to using COSE protection and a CWT tag.  Consequently,
+   within the well-defined scope of a secure channel, it can be
+   acceptable and economic to use the contents of a CWT without its COSE
+   container and tag it with a UCCS CBOR tag for further processing
+   within that scope -- or to use the contents of a UCCS CBOR tag for
+   building a CWT to be signed by some entity that can vouch for those
+   contents.
 
 1.1.  Terminology
 
@@ -160,15 +161,17 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    The terms Claim Key, Claim Value, and CWT Claims Set are used as in
    [RFC8392].
 
-   The terms Attester, Attesting Environment, Evidence, Relying Party
-   and Verifier are used as in [RFC9334].
 
 
 
-Birkholz, et al.          Expires 14 April 2025                 [Page 3]
+
+Birkholz, et al.          Expires 21 April 2025                 [Page 3]
 
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
+
+   The terms Attester, Attesting Environment, Evidence, Relying Party
+   and Verifier are used as in [RFC9334].
 
    UCCS:  Unprotected CWT Claims Set(s); CBOR map(s) of Claims as
       defined by the CWT Claims Registry that are composed of pairs of
@@ -215,17 +218,17 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    Environment (TEE, see [RFC9397]) or a Trusted Platform Module (TPM,
    see [TPM2]).  Especially in some resource constrained environments,
    the same process that provides the secure communication transport is
-   also the delegate to compose the Claim to be conveyed.  Whether it is
-   a transfer or transport, a Secure Channel is presumed to be used for
-   conveying such UCCS.  The following sections elaborate on Secure
 
 
 
-Birkholz, et al.          Expires 14 April 2025                 [Page 4]
+Birkholz, et al.          Expires 21 April 2025                 [Page 4]
 
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
 
+   also the delegate to compose the Claim to be conveyed.  Whether it is
+   a transfer or transport, a Secure Channel is presumed to be used for
+   conveying such UCCS.  The following sections elaborate on Secure
    Channel characteristics in general and further describe RATS usage
    scenarios and corresponding requirements for UCCS deployment.
 
@@ -265,6 +268,20 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    UCCS, similar considerations need to be documented before UCCS can be
    used.
 
+
+
+
+
+
+
+
+
+
+Birkholz, et al.          Expires 21 April 2025                 [Page 5]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
+
 4.  UCCS in RATS Conceptual Message Conveyance
 
    This section describes a detailed usage scenario for UCCS in the
@@ -272,15 +289,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    requirements.  The use of UCCS tag CPA601 outside of the RATS context
    MUST come with additional instruction leaflets and security
    considerations.
-
-
-
-
-
-Birkholz, et al.          Expires 14 April 2025                 [Page 5]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
 
    For the purposes of this section, any RATS role can be the sender or
    the receiver of the UCCS.
@@ -315,6 +323,21 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    each of end of the Secure Channel.  However, the policy controls and
    definitions are out of scope for this document.
 
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.          Expires 21 April 2025                 [Page 6]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
+
    Where an Attesting Environment serves as an endpoint of a Secure
    Channel used to convey a UCCS, the security assurance required of
    that Attesting Environment by a Relying Party generally calls for the
@@ -331,21 +354,15 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    subsequently forwards UCCS, they are treated as though they
    originated within the receiver.
 
-
-
-Birkholz, et al.          Expires 14 April 2025                 [Page 6]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
-
    The Secure Channel context does not govern fully formed CWTs in the
-   same way it governs UCCS.  As with EATs nested in other EATs
-   (Section 4.2.18.3 (Nested Tokens) of [I-D.ietf-rats-eat]), the Secure
-   Channel does not endorse fully formed CWTs transferred through it.
-   Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
-   CWT Claims Set from the endorsement of the secure channel.  (Note
-   that EAT might add a nested UCCS Claim, and this statement does not
-   apply to UCCS nested into UCCS, only to fully formed CWTs.)
+   same way it governs UCCS.  As with Entity Attestation Tokens (EATs,
+   see [I-D.ietf-rats-eat]) nested in other EATs (Section 4.2.18.3
+   (Nested Tokens) of [I-D.ietf-rats-eat]), the Secure Channel does not
+   endorse fully formed CWTs transferred through it.  Effectively, the
+   COSE envelope of a CWT (or a nested EAT) shields the CWT Claims Set
+   from the endorsement of the secure channel.  (Note that EAT might add
+   a nested UCCS Claim, and this statement does not apply to UCCS nested
+   into UCCS, only to fully formed CWTs.)
 
 5.  Considerations for Using UCCS in Other RATS Contexts
 
@@ -364,6 +381,18 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    a cryptographic hash of the UCCS and protects that hash using its
    signing key for Evidence, for example, using a Detached-Submodule-
    Digest or Detached EAT Bundle (Section 5 of [I-D.ietf-rats-eat]).
+
+
+
+
+
+
+
+
+Birkholz, et al.          Expires 21 April 2025                 [Page 7]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
 
 5.2.  Privacy Preservation
 
@@ -384,15 +413,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    acceptable in some use-cases (e.g., if the Attesting Environment is a
    physical sensor in a factory) and unacceptable in others (e.g., if
    the Attesting Environment is a user device belonging to a child).
-
-
-
-
-
-Birkholz, et al.          Expires 14 April 2025                 [Page 7]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
 
 6.  IANA Considerations
 
@@ -421,6 +441,15 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    // occurrences of the prefix "CPA" in the document.  Finally, please
    // remove this note.
 
+
+
+
+
+Birkholz, et al.          Expires 21 April 2025                 [Page 8]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
+
 6.2.  Media-Type application/uccs+cbor Registration
 
    IANA is requested to add the following Media-Type to the "Media
@@ -442,14 +471,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    Security considerations:  Section 7 of RFCthis
    Interoperability considerations:  none
    Published specification:  RFCthis
-
-
-
-Birkholz, et al.          Expires 14 April 2025                 [Page 8]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
-
    Applications that use this media type:  Applications that transfer
       Unprotected CWT Claims Set(s) (UCCS) over Secure Channels
    Fragment identifier considerations:  The syntax and semantics of
@@ -476,6 +497,15 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    Environments (CoRE) Parameters" registry [IANA.core-parameters], as
    follows:
 
+
+
+
+
+Birkholz, et al.          Expires 21 April 2025                 [Page 9]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
+
         +=======================+==========+========+=============+
         | Media Type            | Encoding | ID     | Reference   |
         +=======================+==========+========+=============+
@@ -497,14 +527,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    "it is not only important to protect the CWT in transit but also to
    ensure that the recipient can authenticate the party that assembled
    the claims and created the CWT".
-
-
-
-
-Birkholz, et al.          Expires 14 April 2025                 [Page 9]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
 
    Section 3 discusses security considerations for Secure Channels, in
    which UCCS might be used.  This document provides the CBOR tag
@@ -531,6 +553,15 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
       or secret key material used to establish or protect the Secure
       Channel.
 
+
+
+
+
+Birkholz, et al.          Expires 21 April 2025                [Page 10]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
+
    *  Using a key for more than one algorithm can leak information about
       the key and is not recommended.
 
@@ -554,13 +585,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
    *  Using key material in accordance with any usage restrictions such
       as freshness or algorithm restrictions.
-
-
-
-Birkholz, et al.          Expires 14 April 2025                [Page 10]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
 
    *  Ensuring that appropriate protections are in place to address
       potential traffic analysis attacks.
@@ -587,6 +611,13 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
 8.  References
 
+
+
+Birkholz, et al.          Expires 21 April 2025                [Page 11]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
+
 8.1.  Normative References
 
    [BCP14]    Best Current Practice 14,
@@ -611,13 +642,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
               DOI 10.17487/RFC8725, February 2020,
               <https://www.rfc-editor.org/info/rfc8725>.
 
-
-
-Birkholz, et al.          Expires 14 April 2025                [Page 11]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
-
    [IANA.cbor-tags]
               IANA, "Concise Binary Object Representation (CBOR) Tags",
               <https://www.iana.org/assignments/cbor-tags>.
@@ -638,6 +662,17 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
               Express Concise Binary Object Representation (CBOR) and
               JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
               June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
+
+
+
+
+
+
+
+Birkholz, et al.          Expires 21 April 2025                [Page 12]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
 
    [RFC9165]  Bormann, C., "Additional Control Operators for the Concise
               Data Definition Language (CDDL)", RFC 9165,
@@ -667,13 +702,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
               Parameters",
               <https://www.iana.org/assignments/core-parameters>.
 
-
-
-Birkholz, et al.          Expires 14 April 2025                [Page 12]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
-
    [IANA.media-types]
               IANA, "Media Types",
               <https://www.iana.org/assignments/media-types>.
@@ -692,6 +720,15 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/rfc/rfc8446>.
+
+
+
+
+
+Birkholz, et al.          Expires 21 April 2025                [Page 13]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
 
    [RFC8747]  Jones, M., Seitz, L., Selander, G., Erdtman, S., and H.
               Tschofenig, "Proof-of-Possession Key Semantics for CBOR
@@ -721,15 +758,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
               DOI 10.17487/RFC9052, August 2022,
               <https://www.rfc-editor.org/info/rfc9052>.
 
-
-
-
-
-Birkholz, et al.          Expires 14 April 2025                [Page 13]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
-
               Schaad, J., "CBOR Object Signing and Encryption (COSE):
               Countersignatures", STD 96, RFC 9338,
               DOI 10.17487/RFC9338, December 2022,
@@ -751,40 +779,23 @@ Appendix A.  CDDL
    [RFC8392] does not define CDDL for CWT Claims Sets.
 
 
+
+
+Birkholz, et al.          Expires 21 April 2025                [Page 14]
+
+Internet-Draft         Unprotected CWT Claims Sets          October 2024
+
+
    // RFC-Editor: This document uses the CPA (code point allocation)
    // convention described in [I-D.bormann-cbor-draft-numbers].  Please
    // replace the number 601 in the code blocks below by the value that
    // has been assigned for CPA601 and remove this note.
 
-   In Figure 1, this specification shows how to use CDDL for defining
-   the CWT Claims Set defined in [RFC8392].  Note that these CDDL rules
-   have been built such that they also can describe [RFC7519] Claims
-   sets by disabling feature "cbor" and enabling feature "json", but
-   this flexibility is not the subject of the present specification.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Birkholz, et al.          Expires 14 April 2025                [Page 14]
-
-Internet-Draft         Unprotected CWT Claims Sets          October 2024
-
+   In Figure 1, this CDDL model shows how to use CDDL for defining the
+   CWT Claims Set defined in [RFC8392].  Note that these CDDL rules have
+   been built such that they also can describe [RFC7519] Claims sets by
+   disabling feature "cbor" and enabling feature "json", but this
+   flexibility is not the subject of the present document.
 
    UCCS-Untagged = Claims-Set
    UCCS-Tagged = #6.601(UCCS-Untagged)
@@ -826,18 +837,7 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Birkholz, et al.          Expires 14 April 2025                [Page 15]
+Birkholz, et al.          Expires 21 April 2025                [Page 15]
 
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
@@ -893,7 +893,7 @@ Appendix C.  JSON Support
 
 
 
-Birkholz, et al.          Expires 14 April 2025                [Page 16]
+Birkholz, et al.          Expires 21 April 2025                [Page 16]
 
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
@@ -949,7 +949,7 @@ Authors' Addresses
 
 
 
-Birkholz, et al.          Expires 14 April 2025                [Page 17]
+Birkholz, et al.          Expires 21 April 2025                [Page 17]
 
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
@@ -1005,4 +1005,4 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
 
 
-Birkholz, et al.          Expires 14 April 2025                [Page 18]
+Birkholz, et al.          Expires 21 April 2025                [Page 18]

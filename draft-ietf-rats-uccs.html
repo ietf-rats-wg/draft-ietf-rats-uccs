@@ -10,7 +10,7 @@
 <meta content="Nancy Cam-Winget" name="author">
 <meta content="Carsten Bormann" name="author">
 <meta content="
-       When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for a true CWT.
+       When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for an actual RFC 8392 CWT.
 This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS) and discusses conditions for its proper use. 
        
 
@@ -1036,7 +1036,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 14 April 2025</td>
+<td class="center">Expires 21 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-uccs-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-10-11" class="published">11 October 2024</time>
+<time datetime="2024-10-18" class="published">18 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-04-14">14 April 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-21">21 April 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1079,7 +1079,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">A CBOR Tag for Unprotected CWT Claims Sets</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for a true CWT.
+<p id="section-abstract-1">When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for an actual RFC 8392 CWT.
 This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS) and discusses conditions for its proper use.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
@@ -1116,7 +1116,7 @@ This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1263,7 +1263,7 @@ secured channel.<a href="#section-1-1" class="pilcrow">¶</a></p>
 (UCCS) as such and discusses conditions for its proper use in the scope of
 Remote Attestation Procedures (RATS <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>) for the
 conveyance of RATS Conceptual Messages.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This specification does not change <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>: A true CWT does not make use of
+<p id="section-1-3">This specification does not change <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>: An actual RFC 8392 CWT does not make use of
 the tag allocated here; the UCCS tag is an alternative to using COSE
 protection and a CWT tag.
 Consequently, within the well-defined scope of a secure channel, it
@@ -1427,7 +1427,7 @@ as any other unprotected data in the Verifier environment.
 If the receiver subsequently forwards UCCS, they are treated as though they originated within the receiver.<a href="#section-4-8" class="pilcrow">¶</a></p>
 <p id="section-4-9">The Secure Channel context does not govern fully formed CWTs in the
 same way it governs UCCS.
-As with EATs nested in other EATs (Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">4.2.18.3</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">Nested Tokens</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>), the Secure
+As with Entity Attestation Tokens (EATs, see <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>) nested in other EATs (Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">4.2.18.3</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">Nested Tokens</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
 CWT Claims Set from the endorsement of the secure channel.
@@ -1969,12 +1969,12 @@ JSON.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
   Please replace the number 601 in the code blocks below by the
   value that has been assigned for CPA601 and remove this note.</span><a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <p id="appendix-A-5">In <a href="#fig-claims-set" class="auto internal xref">Figure 1</a>,
-this specification shows how to use CDDL
+this CDDL model shows how to use CDDL
 for defining the CWT Claims Set defined in <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.
 Note that these CDDL rules
 have been built such that they also can describe <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> Claims sets by
 disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present specification.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+flexibility is not the subject of the present document.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
 <span id="name-cddl-definition-for-claims-"></span><div id="fig-claims-set">
 <figure id="figure-1">
         <div class="lang-cddl sourcecode" id="appendix-A-6.1">
