@@ -90,7 +90,7 @@ entity:
 
 --- abstract
 
-When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for a true CWT.
+When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for an actual RFC 8392 CWT.
 This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS) and discusses conditions for its proper use.
 
 <!--
@@ -133,7 +133,7 @@ This specification allocates a CBOR tag to mark Unprotected CWT Claims Sets
 Remote Attestation Procedures (RATS {{-rats}}) for the
 conveyance of RATS Conceptual Messages.
 
-This specification does not change {{-cwt}}: A true CWT does not make use of
+This specification does not change {{-cwt}}: An actual RFC 8392 CWT does not make use of
 the tag allocated here; the UCCS tag is an alternative to using COSE
 protection and a CWT tag.
 Consequently, within the well-defined scope of a secure channel, it
@@ -290,7 +290,7 @@ If the receiver subsequently forwards UCCS, they are treated as though they orig
 
 The Secure Channel context does not govern fully formed CWTs in the
 same way it governs UCCS.
-As with EATs nested in other EATs ({{Section 4.2.18.3 (Nested Tokens)
+As with Entity Attestation Tokens (EATs, see {{-eat}}) nested in other EATs ({{Section 4.2.18.3 (Nested Tokens)
 of -eat}}), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
@@ -535,12 +535,12 @@ JSON.
       value that has been assigned for CPA601 and remove this note.
 
 In {{fig-claims-set}},
-this specification shows how to use CDDL
+this CDDL model shows how to use CDDL
 for defining the CWT Claims Set defined in {{-cwt}}.
 Note that these CDDL rules
 have been built such that they also can describe {{-jwt}} Claims sets by
 disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present specification.
+flexibility is not the subject of the present document.
 
 ~~~ cddl
 UCCS-Untagged = Claims-Set
