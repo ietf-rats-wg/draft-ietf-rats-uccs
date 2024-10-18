@@ -1043,7 +1043,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 14 April 2025</td>
+<td class="center">Expires 21 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1056,12 +1056,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-uccs-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-10-11" class="published">11 October 2024</time>
+<time datetime="2024-10-18" class="published">18 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-04-14">14 April 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-21">21 April 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1130,7 @@ security implications of using unprotected claims sets.<a href="#section-abstrac
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1277,7 +1277,7 @@ secured channel.<a href="#section-1-1" class="pilcrow">¶</a></p>
 (UCCS) as such and discusses conditions for its proper use in the scope of
 Remote Attestation Procedures (RATS <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>) for the
 conveyance of RATS Conceptual Messages.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This specification does not change <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>: A true CWT does not make use of
+<p id="section-1-3">This specification does not change <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>: An actual RFC 8392 CWT does not make use of
 the tag allocated here; the UCCS tag is an alternative to using COSE
 protection and a CWT tag.
 Consequently, within the well-defined scope of a secure channel, it
@@ -1320,7 +1320,7 @@ integrity protection, confidentiality.
 Nonce (claim 10 <span>[<a href="#IANA.cwt" class="cite xref">IANA.cwt</a>]</span>).)
 Examples include conveyance via PCIe
 (Peripheral Component Interconnect Express) IDE (Integrity and Data
-Encryption), or a TLS tunnel.<a href="#section-1.1-4.4.3" class="pilcrow">¶</a></p>
+Encryption) or a TLS tunnel.<a href="#section-1.1-4.4.3" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1348,7 +1348,7 @@ a suitable format.  However, the way these Claims are secured depends on the dep
 capabilities of the device, as well as their software stack.  For example, a Claim may be securely
 stored and conveyed using a device's Trusted Execution Environment (TEE, see <span>[<a href="#RFC9397" class="cite xref">RFC9397</a>]</span>) or
 a Trusted Platform Module (TPM, see <span>[<a href="#TPM2" class="cite xref">TPM2</a>]</span>).
-Especially in some resource constrained environments, the same process that provides the secure communication
+Especially in some resource-constrained environments, the same process that provides the secure communication
 transport is also the delegate to compose the Claim to be conveyed.  Whether it is a transfer
 or transport, a Secure Channel is presumed to be used for conveying such UCCS.  The following sections
 elaborate on Secure Channel characteristics in general and further describe RATS usage scenarios and
@@ -1372,7 +1372,15 @@ layer of cryptographic protections to the JWT.  In such cases, the use of
 the "none" algorithm can be perfectly acceptable.<a href="#section-3-2.1" class="pilcrow">¶</a></p>
 </blockquote>
 <p id="section-3-3">The security considerations discussed, e.g., in Sections <a href="https://rfc-editor.org/rfc/rfc8725#section-2.1" class="relref">2.1</a>, <a href="https://rfc-editor.org/rfc/rfc8725#section-3.1" class="relref">3.1</a>, and <a href="https://rfc-editor.org/rfc/rfc8725#section-3.2" class="relref">3.2</a> of RFC 8725 <span>[<a href="#BCP225" class="cite xref">BCP225</a>]</span> apply in an analogous way to the use of UCCS as
-elaborated on in this document.<a href="#section-3-3" class="pilcrow">¶</a></p>
+elaborated on in this document.
+In particular, the need to "Use Appropriate Algorithms" (Section <a href="https://rfc-editor.org/rfc/rfc8725#section-3.2" class="relref">3.2</a> of RFC 8725 <span>[<a href="#BCP225" class="cite xref">BCP225</a>]</span>) includes choosing appropriate cryptographic
+algorithms for setting up and protecting the Secure Channel.
+For instance, their cryptographic strength should be at least as
+strong as any cryptographic keys the Secure Channel will be used for
+to protect in transport.
+<a href="#tab-algsec" class="auto internal xref">Table 4</a> in <a href="#algsec" class="auto internal xref">Section 7.2</a> provides references to some more security
+considerations for specific cryptography choices that are discussed in
+the COSE initial algorithms specification <span>[<a href="#RFC9053" class="cite xref">RFC9053</a>]</span>.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">Secure Channels are often set up in a handshake protocol that mutually
 derives a session key, where the handshake protocol establishes the
 (identity and thus) authenticity of one or both ends of the communication.
@@ -1422,7 +1430,7 @@ The assurance provided to a Relying Party depends on the authenticity
 and integrity properties of the Secure Channel used for conveying
 the UCCS to it.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <p id="section-4-6">Ultimately, it is up to the receiver's policy to determine whether to accept
-a UCCS from the sender and to the type of Secure Channel it must negotiate.
+a UCCS from the sender and to determine the type of Secure Channel it must negotiate.
 While the security considerations of the cryptographic algorithms used are similar
 to COSE, the considerations of the Secure Channel should also adhere to the policy
 configured at each of end of the Secure Channel.  However, the policy controls
@@ -1441,7 +1449,7 @@ as any other unprotected data in the Verifier environment.
 If the receiver subsequently forwards UCCS, they are treated as though they originated within the receiver.<a href="#section-4-8" class="pilcrow">¶</a></p>
 <p id="section-4-9">The Secure Channel context does not govern fully formed CWTs in the
 same way it governs UCCS.
-As with EATs nested in other EATs (Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">4.2.18.3</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">Nested Tokens</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>), the Secure
+As with Entity Attestation Tokens (EATs, see <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>) nested in other EATs (Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">4.2.18.3</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18.3" class="relref">Nested Tokens</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>), the Secure
 Channel does not endorse fully formed CWTs transferred through it.
 Effectively, the COSE envelope of a CWT (or a nested EAT) shields the
 CWT Claims Set from the endorsement of the secure channel.
@@ -1691,8 +1699,8 @@ follows:<a href="#section-6.3-1" class="pilcrow">¶</a></p>
           </caption>
 <thead>
             <tr>
-              <th class="text-left" rowspan="1" colspan="1">Media Type</th>
-              <th class="text-left" rowspan="1" colspan="1">Encoding</th>
+              <th class="text-left" rowspan="1" colspan="1">Content Type</th>
+              <th class="text-left" rowspan="1" colspan="1">Content Coding</th>
               <th class="text-left" rowspan="1" colspan="1">ID</th>
               <th class="text-left" rowspan="1" colspan="1">Reference</th>
             </tr>
@@ -1787,7 +1795,7 @@ traffic analysis attacks.<a href="#section-7.1-4.4.1" class="pilcrow">¶</a></p>
         </ul>
 </section>
 </div>
-<div id="algorithm-specific-security-considerations">
+<div id="algsec">
 <section id="section-7.2">
         <h3 id="name-algorithm-specific-security">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-algorithm-specific-security" class="section-name selfRef">Algorithm-specific Security Considerations</a>
@@ -1983,12 +1991,12 @@ JSON.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
   Please replace the number 601 in the code blocks below by the
   value that has been assigned for CPA601 and remove this note.</span><a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <p id="appendix-A-5">In <a href="#fig-claims-set" class="auto internal xref">Figure 1</a>,
-this specification shows how to use CDDL
+this CDDL model shows how to use CDDL
 for defining the CWT Claims Set defined in <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.
 Note that these CDDL rules
 have been built such that they also can describe <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> Claims sets by
 disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present specification.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+flexibility is not the subject of the present document.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
 <span id="name-cddl-definition-for-claims-"></span><div id="fig-claims-set">
 <figure id="figure-1">
         <div class="lang-cddl sourcecode" id="appendix-A-6.1">
