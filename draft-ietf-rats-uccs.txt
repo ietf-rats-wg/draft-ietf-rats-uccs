@@ -248,7 +248,15 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
    The security considerations discussed, e.g., in Sections 2.1, 3.1,
    and 3.2 of RFC 8725 [BCP225] apply in an analogous way to the use of
-   UCCS as elaborated on in this document.
+   UCCS as elaborated on in this document.  In particular, the need to
+   "Use Appropriate Algorithms" (Section 3.2 of RFC 8725 [BCP225])
+   includes choosing appropriate cryptographic algorithms for setting up
+   and protecting the Secure Channel.  For instance, their cryptographic
+   strength should be at least as strong as any cryptographic keys the
+   Secure Channel will be used for to protect in transport.  Table 4 in
+   Section 7.2 provides references to some more security considerations
+   for specific cryptography choices that are discussed in the COSE
+   initial algorithms specification [RFC9053].
 
    Secure Channels are often set up in a handshake protocol that
    mutually derives a session key, where the handshake protocol
@@ -262,14 +270,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    protocol is the TLS [RFC8446] handshake; the TLS record protocol can
    then be used for secure conveyance.
 
-   As UCCS were initially created for use in RATS Secure Channels, the
-   following section provides a discussion of their use in these
-   channels.  Where other environments are intended to be used to convey
-   UCCS, similar considerations need to be documented before UCCS can be
-   used.
-
-
-
 
 
 
@@ -281,6 +281,12 @@ Birkholz, et al.          Expires 21 April 2025                 [Page 5]
 
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
+
+   As UCCS were initially created for use in RATS Secure Channels, the
+   following section provides a discussion of their use in these
+   channels.  Where other environments are intended to be used to convey
+   UCCS, similar considerations need to be documented before UCCS can be
+   used.
 
 4.  UCCS in RATS Conceptual Message Conveyance
 
@@ -322,12 +328,6 @@ Internet-Draft         Unprotected CWT Claims Sets          October 2024
    of the Secure Channel should also adhere to the policy configured at
    each of end of the Secure Channel.  However, the policy controls and
    definitions are out of scope for this document.
-
-
-
-
-
-
 
 
 
