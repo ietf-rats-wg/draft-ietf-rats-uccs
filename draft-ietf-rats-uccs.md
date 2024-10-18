@@ -90,8 +90,16 @@ entity:
 
 --- abstract
 
-When transported over secure channels, CBOR Web Token (CWT, RFC 8392) Claims Sets may not need the protection afforded by wrapping them into COSE, as is required for an actual RFC 8392 CWT.
-This specification defines a CBOR tag for such unprotected CWT Claims Sets (UCCS) and discusses conditions for its proper use.
+This document defines the Unprotected CWT Claims Set (UCCS), a data format for
+representing a CBOR Web Token (CWT) Claims Set without protecting it
+by a signature, message authentication code (MAC), or encryption.
+UCCS enables the use of CWT claims in environments where protection is
+provided by other means, such as secure communication channels or
+trusted execution environments.
+This specification defines a CBOR tag for UCCS and describes the UCCS
+format, its encoding, and processing considerations, and discusses
+security implications of using unprotected claims sets.
+
 
 <!--
 [^status]
