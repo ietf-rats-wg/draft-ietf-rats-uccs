@@ -506,12 +506,12 @@ Birkholz, et al.          Expires 21 April 2025                 [Page 9]
 Internet-Draft         Unprotected CWT Claims Sets          October 2024
 
 
-        +=======================+==========+========+=============+
-        | Media Type            | Encoding | ID     | Reference   |
-        +=======================+==========+========+=============+
-        | application/uccs+cbor | -        | TBD601 | Section 6.3 |
-        |                       |          |        | of RFCthis  |
-        +-----------------------+----------+--------+-------------+
+     +=======================+================+========+=============+
+     | Content Type          | Content Coding | ID     | Reference   |
+     +=======================+================+========+=============+
+     | application/uccs+cbor | -              | TBD601 | Section 6.3 |
+     |                       |                |        | of RFCthis  |
+     +-----------------------+----------------+--------+-------------+
 
                     Table 3: Content-Format Registration
 
