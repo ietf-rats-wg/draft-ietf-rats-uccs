@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-17T01:00:35.428374+00:00",
+  "timestamp": "2024-10-20T01:05:59.798414+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-uccs",
   "labels": [
     {
@@ -2428,78 +2428,210 @@
       "id": "PR_kwDOFf01-85-WDLK",
       "title": "GENART nits",
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/32",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cabo",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-10-11T13:32:27Z",
-      "updatedAt": "2024-10-11T13:32:27Z",
+      "updatedAt": "2024-10-18T10:30:32Z",
       "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
       "baseRefName": "main",
       "baseRefOid": "9477824429a4b18052859a18c4e91a0f6ac7e081",
       "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
       "headRefName": "ietf-genart",
       "headRefOid": "78096ffc02cb486bb786a206625565af4805ba29",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-10-18T10:30:31Z",
+      "mergedAt": "2024-10-18T10:30:31Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "fb1eed001d68074b8b93b131369ff73ecbace00b"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOFf01-86Nt_bJ",
+          "commit": {
+            "abbreviatedOid": "78096ff"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-18T10:07:33Z",
+          "updatedAt": "2024-10-18T10:07:33Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 33,
       "id": "PR_kwDOFf01-85-WHhK",
       "title": "Rewrite abstract as proposed",
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/33",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cabo",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-10-11T13:42:22Z",
-      "updatedAt": "2024-10-11T13:42:22Z",
+      "updatedAt": "2024-10-19T01:10:41Z",
       "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
       "baseRefName": "main",
-      "baseRefOid": "9477824429a4b18052859a18c4e91a0f6ac7e081",
+      "baseRefOid": "fb1eed001d68074b8b93b131369ff73ecbace00b",
       "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
       "headRefName": "iesg-gv",
-      "headRefOid": "e57047dc556f5c1276543a7f1453a08fd086dfa9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "ac11fd7d383a946a684f6ba61212adbdab4c7feb",
+      "closedAt": "2024-10-19T01:10:41Z",
+      "mergedAt": "2024-10-19T01:10:41Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "995eea4d7ed95cd29dadecc8fcbc185ee9a8195e"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOFf01-86Nt_nO",
+          "commit": {
+            "abbreviatedOid": "e57047d"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-18T10:07:55Z",
+          "updatedAt": "2024-10-18T10:07:55Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 34,
       "id": "PR_kwDOFf01-85-WOTD",
       "title": "IESG evaluation by Francesca Palombini",
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/34",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cabo",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-10-11T13:57:31Z",
-      "updatedAt": "2024-10-11T13:58:00Z",
+      "updatedAt": "2024-10-18T10:30:01Z",
       "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
       "baseRefName": "main",
       "baseRefOid": "9477824429a4b18052859a18c4e91a0f6ac7e081",
       "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
       "headRefName": "iesg-fp",
       "headRefOid": "a144c9f36cdf7c3a18a046d4213be2560e1e2b44",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-10-18T10:30:00Z",
+      "mergedAt": "2024-10-18T10:30:00Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "d03d27caa4b981079baf6819f748ccaa2135d462"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOFf01-86Nt_w7",
+          "commit": {
+            "abbreviatedOid": "a144c9f"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-18T10:08:15Z",
+          "updatedAt": "2024-10-18T10:08:15Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "PR_kwDOFf01-85-8uJp",
+      "title": "Elaborate on Section 3.2 of RFC 8725 (BCP225)...",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/35",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "* Elaborate on Section 3.2 of RFC 8725 (BCP225): use appropriate  algorithms for setting up and protecting the Secure Channel, specifically mentioning the protection of cryptographic keys.\r\n\r\n* Use the next text in Section 3.2 to explain the use of Table 4 in Section 7.2",
+      "createdAt": "2024-10-17T10:35:26Z",
+      "updatedAt": "2024-10-18T10:29:39Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "9477824429a4b18052859a18c4e91a0f6ac7e081",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "headRefName": "iesg-pw",
+      "headRefOid": "c7354c93f336bad846bdfe0b034d7f8761e54ae6",
+      "closedAt": "2024-10-18T10:29:39Z",
+      "mergedAt": "2024-10-18T10:29:39Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "b8883efdb40c2922115432df2027d36c3e34fa68"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOFf01-86NuAUT",
+          "commit": {
+            "abbreviatedOid": "c7354c9"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-18T10:09:23Z",
+          "updatedAt": "2024-10-18T10:09:23Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOFf01-85_BGim",
+      "title": "IESG evaluation by \u00c9ric Vyncke",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/36",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-17T20:41:55Z",
+      "updatedAt": "2024-10-18T10:29:16Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "9477824429a4b18052859a18c4e91a0f6ac7e081",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "headRefName": "iesg-ev",
+      "headRefOid": "2c64f23e88201d86307074a128675467ee94745c",
+      "closedAt": "2024-10-18T10:29:15Z",
+      "mergedAt": "2024-10-18T10:29:15Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "befe1f320580b74bef21003492955e925c774e77"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOFf01-86NuAhr",
+          "commit": {
+            "abbreviatedOid": "2c64f23"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-18T10:09:50Z",
+          "updatedAt": "2024-10-18T10:09:50Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
