@@ -1012,12 +1012,14 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2024
 
 Appendix C.  EAT
 
-   The following CDDL adds UCCS-format tokens to EAT using its
-   predefined extension points (see Section 4.2.18 (submods) of
-   [I-D.ietf-rats-eat]).
+   The following CDDL adds UCCS-format and UJCS-format tokens to EAT
+   using its predefined extension points (see Section 4.2.18 (submods)
+   of [I-D.ietf-rats-eat]).
 
    $EAT-CBOR-Tagged-Token /= UCCS-Tagged
    $EAT-CBOR-Untagged-Token /= UCCS-Untagged
+
+   $JSON-Selector /= [type: "UJCS", nested-token: UJCS]
 
 Acknowledgements
 
@@ -1056,9 +1058,63 @@ Authors' Addresses
    Postfach 330440
    D-28359 Bremen
    Germany
+
+
+
+Birkholz, et al.           Expires 6 May 2025                  [Page 19]
+
+Internet-Draft         Unprotected CWT Claims Sets         November 2024
+
+
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
 
 
 
-Birkholz, et al.           Expires 6 May 2025                  [Page 19]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Birkholz, et al.           Expires 6 May 2025                  [Page 20]

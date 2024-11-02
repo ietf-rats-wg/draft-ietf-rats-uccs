@@ -2317,11 +2317,13 @@ a UCCS by enclosing it with a tag number CPA601:<a href="#appendix-B-2" class="p
       <h2 id="name-eat">
 <a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-eat" class="section-name selfRef">EAT</a>
       </h2>
-<p id="appendix-C-1">The following CDDL adds UCCS-format tokens to EAT using its predefined extension points (see Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">4.2.18</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">submods</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>).<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">4.2.18</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">submods</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>).<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 <div class="lang-cddl sourcecode" id="appendix-C-2">
 <pre>
 $EAT-CBOR-Tagged-Token /= UCCS-Tagged
 $EAT-CBOR-Untagged-Token /= UCCS-Untagged
+
+$JSON-Selector /= [type: "UJCS", nested-token: UJCS]
 </pre><a href="#appendix-C-2" class="pilcrow">¶</a>
 </div>
 </section>
