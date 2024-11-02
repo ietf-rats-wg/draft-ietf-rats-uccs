@@ -100,13 +100,12 @@ This specification defines a CBOR tag for UCCS and describes the UCCS
 format, its encoding, and processing considerations, and discusses
 security implications of using unprotected claims sets.
 
-
-<!--
 [^status]
 
-[^status]:
-    The present version (-03)
- -->
+[^status]: (This editors' note will be removed by the RFC editor:)\\
+    The present revision (–12) contains remaining document changes
+    based on feedback from the IESG evaluation and has been submitted
+    as input to IETF 121.
 
 --- middle
 
@@ -190,7 +189,29 @@ this document.
 
 {::boilerplate bcp14-tagged-bcp14}
 
-# Deployment and Usage of UCCS
+## Structure of this document
+
+{{usage}} briefly discusses use cases for UCCS.
+{{secchan}} addresses general characteristics of secure channels,
+followed by a specific discussion of using them in the context of RATS Conceptual
+Message Conveyance in {{uccs-rats}}, and finally some more
+forward-looking considerations for using UCCS in other RATS contexts
+in {{other-rats}}.
+Conventional sections ({{<<iana}}, {{<<seccons}},
+{{<<sec-normative-references}}, and {{<<sec-informative-references}})
+follow.
+The normative {{cddl}} provides a formal definition of the structure of
+UCCS as no
+formal definition of CWT Claims Sets was provided in {{-cwt}}.
+This employs the Concise Data Definition Language (CDDL) {{-cddl}},
+using its ability to also describe the structurally similar
+Unprotected JWT Claims Sets {{-jwt}} in the same definition.
+{{example}} provides an (informative) example for CBOR-Tagged UCCS.
+The normative {{eat}} provides CDDL rules that add UCCS-format tokens to
+Entity Attestation Tokens (EATs, see {{-eat}}) using its predefined
+extension points.
+
+# Deployment and Usage of UCCS {#usage}
 
 Usage scenarios involving the conveyance of Claims, in particular
 RATS, require a standardized data definition and encoding format that
@@ -253,7 +274,7 @@ their use in these channels.  Where other environments are intended to be
 used to convey UCCS, similar considerations need to be documented before
 UCCS can be used.
 
-# UCCS in RATS Conceptual Message Conveyance
+# UCCS in RATS Conceptual Message Conveyance {#uccs-rats}
 
 This section describes a detailed usage scenario for UCCS in the
 context of RATS in conjunction with its attendant security
@@ -317,7 +338,7 @@ Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs.)
 
 
-# Considerations for Using UCCS in Other RATS Contexts
+# Considerations for Using UCCS in Other RATS Contexts {#other-rats}
 
 This section discusses two additional usage scenarios for UCCS in the
 context of RATS.
@@ -353,7 +374,7 @@ acceptable in some use-cases (e.g., if the Attesting Environment is a
 physical sensor in a factory) and unacceptable in others (e.g., if the
 Attesting Environment is a user device belonging to a child).
 
-# IANA Considerations
+# IANA Considerations {#iana}
 
 ## CBOR Tag registration
 
@@ -431,6 +452,78 @@ Additional information:
 
   File extension(s):
   : .uccs
+
+  Macintosh file type code(s):
+  : N/A
+
+Person and email address to contact for further information:
+: RATS WG mailing list (rats@ietf.org)
+
+Intended usage:
+: COMMON
+
+Restrictions on usage:
+: none
+
+Author/Change controller:
+: IETF
+
+
+## Media-Type application/ujcs+json Registration {#media-type-json}
+
+
+IANA is requested to add the following Media-Type to the "Media Types"
+registry {{IANA.media-types}}.
+
+| Name      | Template              | Reference               |
+| ujcs+cbor | application/ujcs+cbor | {{media-type-json}} of {{&SELF}} |
+{: #new-media-type-json title="JSON Media Type Registration"}
+
+
+{:compact}
+Type name:
+: application
+
+Subtype name:
+: ujcs+json
+
+Required parameters:
+: n/a
+
+Optional parameters:
+: n/a
+
+Encoding considerations:
+: binary (UTF-8)
+
+Security considerations:
+: {{seccons}} of {{&SELF}}
+
+Interoperability considerations:
+: none
+
+Published specification:
+: {{&SELF}}
+
+Applications that use this media type:
+: Applications that transfer Unprotected JWT Claims Set(s) (UJCS) over
+  Secure Channels
+
+Fragment identifier considerations:
+: The syntax and semantics of
+      fragment identifiers is as specified for "application/json".  (At
+      publication of this document, there is no fragment identification
+      syntax defined for "application/json".)
+
+Additional information:
+: Deprecated alias names for this type:
+  : N/A
+
+  Magic number(s):
+  : N/A
+
+  File extension(s):
+  : .ujcs
 
   Macintosh file type code(s):
   : N/A
@@ -534,8 +627,6 @@ specific cryptography choices that are discussed in {{-cose-new-algs}}.
 
 # CDDL
 
-This appendix is informative.
-
 The Concise Data Definition Language (CDDL), as defined in {{-cddl}} and
 {{-control1}}, provides an easy and unambiguous way to express
 structures for protocol messages and data formats that use CBOR or
@@ -551,13 +642,11 @@ JSON.
       Please replace the number 601 in the code blocks below by the
       value that has been assigned for CPA601 and remove this note.
 
-In {{fig-claims-set}},
-this CDDL model shows how to use CDDL
+The CDDL model in {{fig-claims-set}} shows how to use CDDL
 for defining the CWT Claims Set defined in {{-cwt}}.
-Note that these CDDL rules
+These CDDL rules
 have been built such that they also can describe {{-jwt}} Claims sets by
-disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present document.
+disabling feature "cbor" and enabling feature "json".
 
 ~~~ cddl
 UCCS-Untagged = Claims-Set
@@ -615,6 +704,16 @@ CWT-kid = bytes
 ~~~
 {: sourcecode-name="uccs-additional-examples.cddl"}
 
+The above definitions, concepts and security considerations all may be
+applied to define a JSON-encoded Claims-Set as encapsulated in a JWT.
+Such an unsigned Claims-Set can be referred to as a "Unprotected JWT
+Claims Set", a "UJCS".
+The CDDL definition of `Claims-Set` in {{fig-claims-set}} can be used for a "UJCS":
+
+~~~ cddl
+UJCS = Claims-Set
+~~~
+
 # Example
 
 This appendix is informative.
@@ -641,21 +740,8 @@ a UCCS by enclosing it with a tag number CPA601:
 <!--  LocalWords:  Verifier's CWTs Attester Verifier FCFS
  -->
 
-# JSON Support
-
-This appendix is informative.
-
-The above definitions, concepts and security considerations all may be applied to define a JSON-encoded Claims-Set.
-Such an unsigned Claims-Set can be referred to as a "UJCS", an "Unprotected JWT Claims Set".
-The CDDL definition in {{fig-claims-set}} can be used for a "UJCS".
-
-~~~ cddl
-UJCS = Claims-Set
-~~~
-
 # EAT
 
-This appendix is informative.
 
 The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see {{Section 4.2.18 (submods) of -eat}}).
 
