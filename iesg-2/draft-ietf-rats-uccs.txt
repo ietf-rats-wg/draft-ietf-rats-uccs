@@ -972,7 +972,7 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2024
    ;# import rfc9052
 
    The above definitions, concepts and security considerations all may
-   be applied to define a JSON-encoded Claims-Set as would be found in a
+   be applied to define a JSON-encoded Claims-Set as encapsulated in a
    JWT.  Such an unsigned Claims-Set can be referred to as a
    "Unprotected JWT Claims Set", a "UJCS".  The CDDL definition of
    Claims-Set in Figure 1 can be used for a "UJCS":
