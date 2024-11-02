@@ -1411,7 +1411,7 @@ UCCS as no
 formal definition of CWT Claims Sets was provided in <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.
 This employs the Concise Data Definition Language (CDDL) <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>,
 using its ability to also describe the structurally similar
-Unprotected JWT Claims Sets <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> in the same definition.
+Unprotected JWT Claims Sets <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> (UJCS) in the same definition.
 <a href="#example" class="auto internal xref">Appendix B</a> provides an (informative) example for CBOR-Tagged UCCS.
 The normative <a href="#eat" class="auto internal xref">Appendix C</a> provides CDDL rules that add UCCS-format tokens to
 Entity Attestation Tokens (EATs, see <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>) using its predefined
@@ -2275,8 +2275,7 @@ CWT-kid = bytes
 ;# import rfc9052
 </pre><a href="#appendix-A-7" class="pilcrow">¶</a>
 </div>
-<p id="appendix-A-8">The above definitions, concepts and security considerations all may be
-applied to define a JSON-encoded Claims-Set as encapsulated in a JWT.
+<p id="appendix-A-8">The above definitions, concepts and security considerations also define a JSON-encoded Claims-Set as encapsulated in a JWT.
 Such an unsigned Claims-Set can be referred to as a "Unprotected JWT
 Claims Set", a "UJCS".
 The CDDL definition of <code>Claims-Set</code> in <a href="#fig-claims-set" class="auto internal xref">Figure 1</a> can be used for a "UJCS":<a href="#appendix-A-8" class="pilcrow">¶</a></p>
