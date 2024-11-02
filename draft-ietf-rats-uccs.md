@@ -205,7 +205,7 @@ UCCS as no
 formal definition of CWT Claims Sets was provided in {{-cwt}}.
 This employs the Concise Data Definition Language (CDDL) {{-cddl}},
 using its ability to also describe the structurally similar
-Unprotected JWT Claims Sets {{-jwt}} in the same definition.
+Unprotected JWT Claims Sets {{-jwt}} (UJCS) in the same definition.
 {{example}} provides an (informative) example for CBOR-Tagged UCCS.
 The normative {{eat}} provides CDDL rules that add UCCS-format tokens to
 Entity Attestation Tokens (EATs, see {{-eat}}) using its predefined
@@ -704,8 +704,7 @@ CWT-kid = bytes
 ~~~
 {: sourcecode-name="uccs-additional-examples.cddl"}
 
-The above definitions, concepts and security considerations all may be
-applied to define a JSON-encoded Claims-Set as encapsulated in a JWT.
+The above definitions, concepts and security considerations also define a JSON-encoded Claims-Set as encapsulated in a JWT.
 Such an unsigned Claims-Set can be referred to as a "Unprotected JWT
 Claims Set", a "UJCS".
 The CDDL definition of `Claims-Set` in {{fig-claims-set}} can be used for a "UJCS":
