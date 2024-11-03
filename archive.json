@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-31T01:01:49.059878+00:00",
+  "timestamp": "2024-11-03T01:05:21.736880+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-uccs",
   "labels": [
     {
@@ -2630,6 +2630,53 @@
           "createdAt": "2024-10-18T10:09:50Z",
           "updatedAt": "2024-10-18T10:09:50Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "id": "PR_kwDOFf01-86AtDiZ",
+      "title": "Second round of addressing IESG comments around UJCS",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/37",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-11-02T17:17:20Z",
+      "updatedAt": "2024-11-02T18:25:49Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "995eea4d7ed95cd29dadecc8fcbc185ee9a8195e",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "headRefName": "iesg-2",
+      "headRefOid": "bd7a35d863687f5289825b9eff81bbcd346aa94a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOFf01-86PvAf6",
+          "commit": {
+            "abbreviatedOid": "e2c9f00"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-02T17:46:38Z",
+          "updatedAt": "2024-11-02T18:02:30Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "nice, I didn't know `<<`",
+              "createdAt": "2024-11-02T17:46:38Z",
+              "updatedAt": "2024-11-02T18:02:30Z"
+            }
+          ]
         }
       ]
     }
