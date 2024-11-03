@@ -476,7 +476,7 @@ IANA is requested to add the following Media-Type to the "Media Types"
 registry {{IANA.media-types}}.
 
 | Name      | Template              | Reference               |
-| ujcs+cbor | application/ujcs+cbor | {{media-type-json}} of {{&SELF}} |
+| ujcs+json | application/ujcs+json | {{media-type-json}} of {{&SELF}} |
 {: #new-media-type-json title="JSON Media Type Registration"}
 
 
