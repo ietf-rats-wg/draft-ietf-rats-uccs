@@ -19,22 +19,22 @@ trusted execution environments.
 This specification defines a CBOR tag for UCCS and describes the UCCS
 format, its encoding, and processing considerations, and discusses
 security implications of using unprotected claims sets. 
-       
-
-
-
+       (This editors' note will be removed by the RFC editor:) 
+The present revision (–12) contains remaining document changes
+based on feedback from the IESG evaluation and has been submitted
+as input to IETF 121. 
     " name="description">
-<meta content="xml2rfc 3.23.2" name="generator">
+<meta content="xml2rfc 3.24.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-rats-uccs-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.23.2
+  xml2rfc 3.24.0
     Python 3.12.7
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
-    lxml 4.9.4
+    lxml 5.3.0
     platformdirs 4.3.6
     pycountry 22.3.5
     PyYAML 6.0.1
@@ -176,31 +176,6 @@ security implications of using unprotected claims sets.
 }
 
 @font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
   font-family: 'Oxygen Mono';
   font-style: normal;
   font-weight: 400;
@@ -217,6 +192,77 @@ security implications of using unprotected claims sets.
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   color-scheme: light dark;
   --background-color: #fff;
@@ -229,6 +275,7 @@ security implications of using unprotected claims sets.
   --pilcrow-strong: #bbb;
   --small-font-size: 14.5px;
   --font-mono: 'Oxygen Mono', monospace;
+  --font-title: "Sofia Sans Semi Condensed", sans-serif;
   scrollbar-color: #bbb #eee;
 }
 body {
@@ -247,8 +294,8 @@ body {
 
 /* headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Cabin Condensed", sans-serif;
-  font-weight: 600;
+  font-family: var(--font-title);
+  font-weight: 680;
   margin: 0.8em 0 0.3em;
   font-size-adjust: 0.5;
   color: var(--title-color);
@@ -656,6 +703,12 @@ sub, sup {
   padding: 0.75em 0 2em 0;
   margin-bottom: 1em;
 }
+@media screen {
+  #toc nav {
+    font-family: var(--font-title);
+    font-weight: 360;
+  }
+}
 #toc nav ul {
   margin: 0 0.5em 0 0;
   padding: 0;
@@ -1039,11 +1092,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Unprotected CWT Claims Sets</td>
-<td class="right">October 2024</td>
+<td class="right">November 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 22 April 2025</td>
+<td class="center">Expires 7 May 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1056,12 +1109,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-uccs-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-10-19" class="published">19 October 2024</time>
+<time datetime="2024-11-03" class="published">3 November 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-04-22">22 April 2025</time></dd>
+<dd class="expires"><time datetime="2025-05-07">7 May 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1095,6 +1148,10 @@ trusted execution environments.
 This specification defines a CBOR tag for UCCS and describes the UCCS
 format, its encoding, and processing considerations, and discusses
 security implications of using unprotected claims sets.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2"><span class="cref" id="status">(This editors' note will be removed by the RFC editor:)<br>
+The present revision (–12) contains remaining document changes
+based on feedback from the IESG evaluation and has been submitted
+as input to IETF 121.</span><a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1130,7 +1187,7 @@ security implications of using unprotected claims sets.<a href="#section-abstrac
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 May 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1165,10 +1222,13 @@ security implications of using unprotected claims sets.<a href="#section-abstrac
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+                <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-structure-of-this-document" class="internal xref">Structure of this document</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-deployment-and-usage-of-ucc" class="internal xref">Deployment and Usage of UCCS</a></p>
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-deployment-and-usage-of-ucc" class="internal xref">Deployment and Usage of UCCS</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-characteristics-of-a-secure" class="internal xref">Characteristics of a Secure Channel</a></p>
@@ -1197,7 +1257,10 @@ security implications of using unprotected claims sets.<a href="#section-abstrac
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-media-type-application-uccs" class="internal xref">Media-Type application/uccs+cbor Registration</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
-                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-content-format-registration" class="internal xref">Content-Format registration</a></p>
+                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-media-type-application-ujcs" class="internal xref">Media-Type application/ujcs+json Registration</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-content-format-registration" class="internal xref">Content-Format registration</a></p>
 </li>
             </ul>
 </li>
@@ -1230,16 +1293,13 @@ security implications of using unprotected claims sets.<a href="#section-abstrac
             <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-example" class="internal xref">Example</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-json-support" class="internal xref">JSON Support</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-eat" class="internal xref">EAT</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-D" class="auto internal xref">Appendix D</a>.  <a href="#name-eat" class="internal xref">EAT</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-F" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1332,9 +1392,35 @@ described in <span>[<a href="#BCP14" class="cite xref">BCP14</a>]</span> (<a hre
 appear in all capitals, as shown here.<a href="#section-1.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="structure-of-this-document">
+<section id="section-1.2">
+        <h3 id="name-structure-of-this-document">
+<a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-structure-of-this-document" class="section-name selfRef">Structure of this document</a>
+        </h3>
+<p id="section-1.2-1"><a href="#usage" class="auto internal xref">Section 2</a> briefly discusses use cases for UCCS.
+<a href="#secchan" class="auto internal xref">Section 3</a> addresses general characteristics of secure channels,
+followed by a specific discussion of using them in the context of RATS Conceptual
+Message Conveyance in <a href="#uccs-rats" class="auto internal xref">Section 4</a>, and finally some more
+forward-looking considerations for using UCCS in other RATS contexts
+in <a href="#other-rats" class="auto internal xref">Section 5</a>.
+Conventional sections (<a href="#iana" class="internal xref">IANA Considerations</a>, <a href="#seccons" class="internal xref">Security Considerations</a>,
+<a href="#sec-normative-references" class="internal xref">Normative References</a>, and <a href="#sec-informative-references" class="internal xref">Informative References</a>)
+follow.
+The normative <a href="#cddl" class="auto internal xref">Appendix A</a> provides a formal definition of the structure of
+UCCS as no
+formal definition of CWT Claims Sets was provided in <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.
+This employs the Concise Data Definition Language (CDDL) <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>,
+using its ability to also describe the structurally similar
+Unprotected JWT Claims Sets <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> (UJCS) in the same definition.
+<a href="#example" class="auto internal xref">Appendix B</a> provides an (informative) example for CBOR-Tagged UCCS.
+The normative <a href="#eat" class="auto internal xref">Appendix C</a> provides CDDL rules that add UCCS-format tokens to
+Entity Attestation Tokens (EATs, see <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>) using its predefined
+extension points.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="deployment-and-usage-of-uccs">
+</section>
+</div>
+<div id="usage">
 <section id="section-2">
       <h2 id="name-deployment-and-usage-of-ucc">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-deployment-and-usage-of-ucc" class="section-name selfRef">Deployment and Usage of UCCS</a>
@@ -1378,7 +1464,7 @@ algorithms for setting up and protecting the Secure Channel.
 For instance, their cryptographic strength should be at least as
 strong as any cryptographic keys the Secure Channel will be used for
 to protect in transport.
-<a href="#tab-algsec" class="auto internal xref">Table 4</a> in <a href="#algsec" class="auto internal xref">Section 7.2</a> provides references to some more security
+<a href="#tab-algsec" class="auto internal xref">Table 5</a> in <a href="#algsec" class="auto internal xref">Section 7.2</a> provides references to some more security
 considerations for specific cryptography choices that are discussed in
 the COSE initial algorithms specification <span>[<a href="#RFC9053" class="cite xref">RFC9053</a>]</span>.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">Secure Channels are often set up in a handshake protocol that mutually
@@ -1400,7 +1486,7 @@ used to convey UCCS, similar considerations need to be documented before
 UCCS can be used.<a href="#section-3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="uccs-in-rats-conceptual-message-conveyance">
+<div id="uccs-rats">
 <section id="section-4">
       <h2 id="name-uccs-in-rats-conceptual-mes">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-uccs-in-rats-conceptual-mes" class="section-name selfRef">UCCS in RATS Conceptual Message Conveyance</a>
@@ -1458,7 +1544,7 @@ Claim, and this statement does not apply to UCCS nested into UCCS, only to
 fully formed CWTs.)<a href="#section-4-9" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="considerations-for-using-uccs-in-other-rats-contexts">
+<div id="other-rats">
 <section id="section-5">
       <h2 id="name-considerations-for-using-uc">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-considerations-for-using-uc" class="section-name selfRef">Considerations for Using UCCS in Other RATS Contexts</a>
@@ -1504,7 +1590,7 @@ Attesting Environment is a user device belonging to a child).<a href="#section-5
 </div>
 </section>
 </div>
-<div id="iana-considerations">
+<div id="iana">
 <section id="section-6">
       <h2 id="name-iana-considerations">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
@@ -1682,19 +1768,153 @@ Secure Channels<a href="#section-6.2-3.18.1" class="pilcrow">¶</a></p>
 </dl>
 </section>
 </div>
-<div id="ct">
+<div id="media-type-json">
 <section id="section-6.3">
-        <h3 id="name-content-format-registration">
-<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-content-format-registration" class="section-name selfRef">Content-Format registration</a>
+        <h3 id="name-media-type-application-ujcs">
+<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-media-type-application-ujcs" class="section-name selfRef">Media-Type application/ujcs+json Registration</a>
         </h3>
-<p id="section-6.3-1">IANA is requested to register a Content-Format number in the "CoAP
-Content-Formats" subregistry, within the "Constrained RESTful
-Environments (CoRE) Parameters" registry <span>[<a href="#IANA.core-parameters" class="cite xref">IANA.core-parameters</a>]</span>, as
-follows:<a href="#section-6.3-1" class="pilcrow">¶</a></p>
-<span id="name-content-format-registration-2"></span><div id="content-format-reg">
+<p id="section-6.3-1">IANA is requested to add the following Media-Type to the "Media Types"
+registry <span>[<a href="#IANA.media-types" class="cite xref">IANA.media-types</a>]</span>.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+<span id="name-json-media-type-registratio"></span><div id="new-media-type-json">
 <table class="center" id="table-3">
           <caption>
 <a href="#table-3" class="selfRef">Table 3</a>:
+<a href="#name-json-media-type-registratio" class="selfRef">JSON Media Type Registration</a>
+          </caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Name</th>
+              <th class="text-left" rowspan="1" colspan="1">Template</th>
+              <th class="text-left" rowspan="1" colspan="1">Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">ujcs+cbor</td>
+              <td class="text-left" rowspan="1" colspan="1">application/ujcs+cbor</td>
+              <td class="text-left" rowspan="1" colspan="1">
+                <a href="#media-type-json" class="auto internal xref">Section 6.3</a> of RFCthis</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-6.3-3">
+          <dt id="section-6.3-3.1">Type name:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.2">
+            <p id="section-6.3-3.2.1">application<a href="#section-6.3-3.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.3">Subtype name:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.4">
+            <p id="section-6.3-3.4.1">ujcs+json<a href="#section-6.3-3.4.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.5">Required parameters:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.6">
+            <p id="section-6.3-3.6.1">n/a<a href="#section-6.3-3.6.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.7">Optional parameters:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.8">
+            <p id="section-6.3-3.8.1">n/a<a href="#section-6.3-3.8.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.9">Encoding considerations:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.10">
+            <p id="section-6.3-3.10.1">binary (UTF-8)<a href="#section-6.3-3.10.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.11">Security considerations:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.12">
+            <p id="section-6.3-3.12.1"><a href="#seccons" class="auto internal xref">Section 7</a> of RFCthis<a href="#section-6.3-3.12.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.13">Interoperability considerations:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.14">
+            <p id="section-6.3-3.14.1">none<a href="#section-6.3-3.14.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.15">Published specification:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.16">
+            <p id="section-6.3-3.16.1">RFCthis<a href="#section-6.3-3.16.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.17">Applications that use this media type:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.18">
+            <p id="section-6.3-3.18.1">Applications that transfer Unprotected JWT Claims Set(s) (UJCS) over
+Secure Channels<a href="#section-6.3-3.18.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.19">Fragment identifier considerations:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.20">
+            <p id="section-6.3-3.20.1">The syntax and semantics of
+    fragment identifiers is as specified for "application/json".  (At
+    publication of this document, there is no fragment identification
+    syntax defined for "application/json".)<a href="#section-6.3-3.20.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.21">Additional information:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.22">
+            <span class="break"></span><dl class="dlParallel" id="section-6.3-3.22.1">
+              <dt id="section-6.3-3.22.1.1">Deprecated alias names for this type:</dt>
+              <dd style="margin-left: 1.5em" id="section-6.3-3.22.1.2">
+                <p id="section-6.3-3.22.1.2.1">N/A<a href="#section-6.3-3.22.1.2.1" class="pilcrow">¶</a></p>
+</dd>
+              <dd class="break"></dd>
+<dt id="section-6.3-3.22.1.3">Magic number(s):</dt>
+              <dd style="margin-left: 1.5em" id="section-6.3-3.22.1.4">
+                <p id="section-6.3-3.22.1.4.1">N/A<a href="#section-6.3-3.22.1.4.1" class="pilcrow">¶</a></p>
+</dd>
+              <dd class="break"></dd>
+<dt id="section-6.3-3.22.1.5">File extension(s):</dt>
+              <dd style="margin-left: 1.5em" id="section-6.3-3.22.1.6">
+                <p id="section-6.3-3.22.1.6.1">.ujcs<a href="#section-6.3-3.22.1.6.1" class="pilcrow">¶</a></p>
+</dd>
+              <dd class="break"></dd>
+<dt id="section-6.3-3.22.1.7">Macintosh file type code(s):</dt>
+              <dd style="margin-left: 1.5em" id="section-6.3-3.22.1.8">
+                <p id="section-6.3-3.22.1.8.1">N/A<a href="#section-6.3-3.22.1.8.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+</dl>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.23">Person and email address to contact for further information:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.24">
+            <p id="section-6.3-3.24.1">RATS WG mailing list (rats@ietf.org)<a href="#section-6.3-3.24.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.25">Intended usage:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.26">
+            <p id="section-6.3-3.26.1">COMMON<a href="#section-6.3-3.26.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.27">Restrictions on usage:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.28">
+            <p id="section-6.3-3.28.1">none<a href="#section-6.3-3.28.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.3-3.29">Author/Change controller:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.3-3.30">
+            <p id="section-6.3-3.30.1">IETF<a href="#section-6.3-3.30.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="ct">
+<section id="section-6.4">
+        <h3 id="name-content-format-registration">
+<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-content-format-registration" class="section-name selfRef">Content-Format registration</a>
+        </h3>
+<p id="section-6.4-1">IANA is requested to register a Content-Format number in the "CoAP
+Content-Formats" subregistry, within the "Constrained RESTful
+Environments (CoRE) Parameters" registry <span>[<a href="#IANA.core-parameters" class="cite xref">IANA.core-parameters</a>]</span>, as
+follows:<a href="#section-6.4-1" class="pilcrow">¶</a></p>
+<span id="name-content-format-registration-2"></span><div id="content-format-reg">
+<table class="center" id="table-4">
+          <caption>
+<a href="#table-4" class="selfRef">Table 4</a>:
 <a href="#name-content-format-registration-2" class="selfRef">Content-Format Registration</a>
           </caption>
 <thead>
@@ -1711,13 +1931,13 @@ follows:<a href="#section-6.3-1" class="pilcrow">¶</a></p>
               <td class="text-left" rowspan="1" colspan="1">-</td>
               <td class="text-left" rowspan="1" colspan="1">TBD601</td>
               <td class="text-left" rowspan="1" colspan="1">
-                <a href="#ct" class="auto internal xref">Section 6.3</a> of RFCthis</td>
+                <a href="#ct" class="auto internal xref">Section 6.4</a> of RFCthis</td>
             </tr>
           </tbody>
         </table>
 </div>
-<p id="section-6.3-3"><span class="cref" id="tbd">RFC editor: please replace TBD601 by the number actually
-assigned by IANA (601 is suggested).</span><a href="#section-6.3-3" class="pilcrow">¶</a></p>
+<p id="section-6.4-3"><span class="cref" id="tbd">RFC editor: please replace TBD601 by the number actually
+assigned by IANA (601 is suggested).</span><a href="#section-6.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1800,12 +2020,12 @@ traffic analysis attacks.<a href="#section-7.1-4.4.1" class="pilcrow">¶</a></p>
         <h3 id="name-algorithm-specific-security">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-algorithm-specific-security" class="section-name selfRef">Algorithm-specific Security Considerations</a>
         </h3>
-<p id="section-7.2-1"><a href="#tab-algsec" class="auto internal xref">Table 4</a> provides references to some security considerations of
+<p id="section-7.2-1"><a href="#tab-algsec" class="auto internal xref">Table 5</a> provides references to some security considerations of
 specific cryptography choices that are discussed in <span>[<a href="#RFC9053" class="cite xref">RFC9053</a>]</span>.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <span id="name-algorithm-specific-security-"></span><div id="tab-algsec">
-<table class="center" id="table-4">
+<table class="center" id="table-5">
           <caption>
-<a href="#table-4" class="selfRef">Table 4</a>:
+<a href="#table-5" class="selfRef">Table 5</a>:
 <a href="#name-algorithm-specific-security-" class="selfRef">Algorithm-specific Security Considerations</a>
           </caption>
 <thead>
@@ -1980,26 +2200,23 @@ specific cryptography choices that are discussed in <span>[<a href="#RFC9053" cl
       <h2 id="name-cddl">
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-cddl" class="section-name selfRef">CDDL</a>
       </h2>
-<p id="appendix-A-1">This appendix is informative.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">The Concise Data Definition Language (CDDL), as defined in <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> and
+<p id="appendix-A-1">The Concise Data Definition Language (CDDL), as defined in <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> and
 <span>[<a href="#RFC9165" class="cite xref">RFC9165</a>]</span>, provides an easy and unambiguous way to express
 structures for protocol messages and data formats that use CBOR or
-JSON.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
-<p id="appendix-A-3"><span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span> does not define CDDL for CWT Claims Sets.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4"><span class="cref" id="cpa601">RFC-Editor: This document uses the CPA (code point allocation)
+JSON.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2"><span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span> does not define CDDL for CWT Claims Sets.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3"><span class="cref" id="cpa601">RFC-Editor: This document uses the CPA (code point allocation)
   convention described in [I-D.bormann-cbor-draft-numbers].
   Please replace the number 601 in the code blocks below by the
-  value that has been assigned for CPA601 and remove this note.</span><a href="#appendix-A-4" class="pilcrow">¶</a></p>
-<p id="appendix-A-5">In <a href="#fig-claims-set" class="auto internal xref">Figure 1</a>,
-this CDDL model shows how to use CDDL
+  value that has been assigned for CPA601 and remove this note.</span><a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">The CDDL model in <a href="#fig-claims-set" class="auto internal xref">Figure 1</a> shows how to use CDDL
 for defining the CWT Claims Set defined in <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.
-Note that these CDDL rules
+These CDDL rules
 have been built such that they also can describe <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> Claims sets by
-disabling feature "cbor" and enabling feature "json", but this
-flexibility is not the subject of the present document.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+disabling feature "cbor" and enabling feature "json".<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <span id="name-cddl-definition-for-claims-"></span><div id="fig-claims-set">
 <figure id="figure-1">
-        <div class="lang-cddl sourcecode" id="appendix-A-6.1">
+        <div class="lang-cddl sourcecode" id="appendix-A-5.1">
 <pre>
 UCCS-Untagged = Claims-Set
 UCCS-Tagged = #6.601(UCCS-Untagged)
@@ -2036,9 +2253,9 @@ JC&lt;J,C&gt; = JSON-ONLY&lt;J&gt; / CBOR-ONLY&lt;C&gt;
 <a href="#name-cddl-definition-for-claims-" class="selfRef">CDDL definition for Claims-Set</a>
         </figcaption></figure>
 </div>
-<p id="appendix-A-7">Specifications that define additional Claims should also supply
-additions to the $$Claims-Set-Claims socket, e.g.:<a href="#appendix-A-7" class="pilcrow">¶</a></p>
-<div class="lang-cddl sourcecode" id="appendix-A-8">
+<p id="appendix-A-6">Specifications that define additional Claims should also supply
+additions to the $$Claims-Set-Claims socket, e.g.:<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<div class="lang-cddl sourcecode" id="appendix-A-7">
 <pre>
 ; [RFC8747]
 $$Claims-Set-Claims //= ( 8: CWT-cnf ) ; cnf
@@ -2056,7 +2273,16 @@ CWT-kid = bytes
 ;;; definitions.  This can be done manually or automated by a
 ;;; tool that implements an import directive such as:
 ;# import rfc9052
-</pre><a href="#appendix-A-8" class="pilcrow">¶</a>
+</pre><a href="#appendix-A-7" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A-8">The above definitions, concepts and security considerations also define a JSON-encoded Claims-Set as encapsulated in a JWT.
+Such an unsigned Claims-Set can be referred to as a "Unprotected JWT
+Claims Set", a "UJCS".
+The CDDL definition of <code>Claims-Set</code> in <a href="#fig-claims-set" class="auto internal xref">Figure 1</a> can be used for a "UJCS":<a href="#appendix-A-8" class="pilcrow">¶</a></p>
+<div class="lang-cddl sourcecode" id="appendix-A-9">
+<pre>
+UJCS = Claims-Set
+</pre><a href="#appendix-A-9" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -2085,50 +2311,33 @@ a UCCS by enclosing it with a tag number CPA601:<a href="#appendix-B-2" class="p
 </div>
 </section>
 </div>
-<div id="json-support">
-<section id="appendix-C">
-      <h2 id="name-json-support">
-<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-json-support" class="section-name selfRef">JSON Support</a>
-      </h2>
-<p id="appendix-C-1">This appendix is informative.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
-<p id="appendix-C-2">The above definitions, concepts and security considerations all may be applied to define a JSON-encoded Claims-Set.
-Such an unsigned Claims-Set can be referred to as a "UJCS", an "Unprotected JWT Claims Set".
-The CDDL definition in <a href="#fig-claims-set" class="auto internal xref">Figure 1</a> can be used for a "UJCS".<a href="#appendix-C-2" class="pilcrow">¶</a></p>
-<div class="lang-cddl sourcecode" id="appendix-C-3">
-<pre>
-UJCS = Claims-Set
-</pre><a href="#appendix-C-3" class="pilcrow">¶</a>
-</div>
-</section>
-</div>
 <div id="eat">
-<section id="appendix-D">
+<section id="appendix-C">
       <h2 id="name-eat">
-<a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-eat" class="section-name selfRef">EAT</a>
+<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-eat" class="section-name selfRef">EAT</a>
       </h2>
-<p id="appendix-D-1">This appendix is informative.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">4.2.18</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">submods</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>).<a href="#appendix-D-2" class="pilcrow">¶</a></p>
-<div class="lang-cddl sourcecode" id="appendix-D-3">
+<p id="appendix-C-1">The following CDDL adds UCCS-format and UJCS-format tokens to EAT using its predefined extension points (see Section <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">4.2.18</a> (<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#section-4.2.18" class="relref">submods</a>)</span> of <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>).<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<div class="lang-cddl sourcecode" id="appendix-C-2">
 <pre>
 $EAT-CBOR-Tagged-Token /= UCCS-Tagged
 $EAT-CBOR-Untagged-Token /= UCCS-Untagged
 
 $JSON-Selector /= [type: "UJCS", nested-token: UJCS]
-</pre><a href="#appendix-D-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-C-2" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="acknowledgements">
-<section id="appendix-E">
+<section id="appendix-D">
       <h2 id="name-acknowledgements">
 <a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="appendix-E-1"><span class="contact-name">Laurence Lundblade</span> suggested some improvements to the CDDL.
-<span class="contact-name">Carl Wallace</span> provided a very useful review.<a href="#appendix-E-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-1"><span class="contact-name">Laurence Lundblade</span> suggested some improvements to the CDDL.
+<span class="contact-name">Carl Wallace</span> provided a very useful review.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-F">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
