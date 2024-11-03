@@ -565,7 +565,7 @@ Internet-Draft         Unprotected CWT Claims Sets         November 2024
       +===========+=======================+========================+
       | Name      | Template              | Reference              |
       +===========+=======================+========================+
-      | ujcs+cbor | application/ujcs+cbor | Section 6.3 of RFCthis |
+      | ujcs+json | application/ujcs+json | Section 6.3 of RFCthis |
       +-----------+-----------------------+------------------------+
 
                   Table 3: JSON Media Type Registration
