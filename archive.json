@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-03T01:05:21.736880+00:00",
+  "timestamp": "2024-11-05T00:59:37.519147+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-uccs",
   "labels": [
     {
@@ -2638,24 +2638,26 @@
       "id": "PR_kwDOFf01-86AtDiZ",
       "title": "Second round of addressing IESG comments around UJCS",
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/37",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cabo",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-11-02T17:17:20Z",
-      "updatedAt": "2024-11-02T18:25:49Z",
+      "updatedAt": "2024-11-03T11:56:54Z",
       "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
       "baseRefName": "main",
       "baseRefOid": "995eea4d7ed95cd29dadecc8fcbc185ee9a8195e",
       "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
       "headRefName": "iesg-2",
       "headRefOid": "bd7a35d863687f5289825b9eff81bbcd346aa94a",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-11-03T11:56:54Z",
+      "mergedAt": "2024-11-03T11:56:54Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "61d81dc3dc81e1cb672e0e1f88d5c103009a447b"
+      },
       "comments": [],
       "reviews": [
         {
@@ -2677,6 +2679,19 @@
               "updatedAt": "2024-11-02T18:02:30Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOFf01-86PwVfs",
+          "commit": {
+            "abbreviatedOid": "bd7a35d"
+          },
+          "author": "OR13",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "Looks good to me",
+          "createdAt": "2024-11-03T09:27:39Z",
+          "updatedAt": "2024-11-03T09:27:39Z",
+          "comments": []
         }
       ]
     }
