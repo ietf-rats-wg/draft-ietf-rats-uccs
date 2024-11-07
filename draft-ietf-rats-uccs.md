@@ -578,6 +578,7 @@ the secure channel and/or the application protocol (e.g., TLS and the
 protocol identified by ALPN) MUST specify the roles of the endpoints
 in a fashion that the security properties of conveying UCCS via a
 Secure Channel between the roles are well-defined.
+The Secure Channel cryptographic strength should be at least as strong as the cryptographic keys it is transporting through this Secure Channel.
 
 ## General Considerations
 
