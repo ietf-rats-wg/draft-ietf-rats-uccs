@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-07T00:59:58.372186+00:00",
+  "timestamp": "2024-11-10T01:03:41.204053+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-uccs",
   "labels": [
     {
@@ -2692,6 +2692,123 @@
           "createdAt": "2024-11-03T09:27:39Z",
           "updatedAt": "2024-11-03T09:27:39Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "id": "PR_kwDOFf01-86BOOXs",
+      "title": "Addressing Paul's DISCUSS",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-uccs/pull/38",
+      "state": "MERGED",
+      "author": "henkbirkholz",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "by literally using his proposed phrasing as an addition to the secconsec.",
+      "createdAt": "2024-11-07T17:52:03Z",
+      "updatedAt": "2024-11-08T10:39:14Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "baseRefName": "main",
+      "baseRefOid": "31ace7a87e4035e8fc68d7b02d68d5b3393f1b18",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-uccs",
+      "headRefName": "pauls-discuss",
+      "headRefOid": "a51440fe41e1ee4eb3c335052e2671974387c2d1",
+      "closedAt": "2024-11-07T17:55:56Z",
+      "mergedAt": "2024-11-07T17:55:56Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "ddf8db1a05d713785eab52098c05b5c08bde45d9"
+      },
+      "comments": [
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "aggreed",
+          "createdAt": "2024-11-07T17:55:51Z",
+          "updatedAt": "2024-11-07T17:55:51Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "COLLABORATOR",
+          "body": "(This was a duplicate of PR #35 and has been reverted in da9337e.)\r\n",
+          "createdAt": "2024-11-08T10:39:08Z",
+          "updatedAt": "2024-11-08T10:39:08Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOFf01-86QWSQn",
+          "commit": {
+            "abbreviatedOid": "f46261d"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-07T17:54:00Z",
+          "updatedAt": "2024-11-07T17:54:00Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "avoid some prose redundancy\r\n```suggestion\r\nThe cryptographic strength of the Secure Channel must be at least as strong as the cryptographic keys it transports.\r\n```",
+              "createdAt": "2024-11-07T17:54:00Z",
+              "updatedAt": "2024-11-07T17:54:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOFf01-86QWSWE",
+          "commit": {
+            "abbreviatedOid": "f46261d"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-07T17:54:11Z",
+          "updatedAt": "2024-11-07T17:54:11Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "poetry",
+              "createdAt": "2024-11-07T17:54:11Z",
+              "updatedAt": "2024-11-07T17:54:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOFf01-86QWS2l",
+          "commit": {
+            "abbreviatedOid": "a51440f"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "really good stuff",
+          "createdAt": "2024-11-07T17:55:15Z",
+          "updatedAt": "2024-11-07T17:55:15Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOFf01-86QWW7v",
+          "commit": {
+            "abbreviatedOid": "f46261d"
+          },
+          "author": "cabo",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-07T18:03:54Z",
+          "updatedAt": "2024-11-07T18:03:55Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Why did the should change to a must?  That is wrong.\r\n(Why must the strength be strong? That's just clumsy.)\r\n",
+              "createdAt": "2024-11-07T18:03:54Z",
+              "updatedAt": "2024-11-07T18:03:55Z"
+            }
+          ]
         }
       ]
     }
